@@ -255,9 +255,10 @@ article .tags li a {
 
 article .post-date {
   font-size: 14px;
-  line-height: 2em;
+  line-height: 1.5em;
   cursor: default;
   display: block;
+  position: relative;
 }
 
 article .post-date:hover {
@@ -398,7 +399,7 @@ blockquote.callout-note::before {
 
 [data-tooltip]:hover .tooltip {
   visibility: visible;
-  bottom: 100%;
+  bottom: 125%;
   opacity: 1;
 }
 
