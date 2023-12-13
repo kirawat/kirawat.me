@@ -1,0 +1,38 @@
+title: Kirawat Sahasewiyon
+theme: ks-theme
+baseURL: https://www.kirawatsahasewiyon.com/
+languageCode: en-us
+timeZone: Asia/Bangkok
+
+menu:
+  main:
+    - name: Home
+      pageRef: /
+      weight: 10
+
+    - name: Garden
+      pageRef: /garden
+      weight: 20
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+frontmatter:
+  lastmod:
+    - lastmod
+    - :fileModTime
+    - :default
+
+ignoreFiles:
+  - content/.obsidian/\.*
+  - content/10 Inbox/\.*
+  - content/20 Notes/\.*
+  - content/30 Projects/\.*
+  - content/40 Journal/\.*
+  - content/50 Commonplace/\.*
+  - content/60 Resources/\.*
+  - content/70 Archive/\.*
