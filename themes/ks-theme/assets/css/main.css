@@ -124,6 +124,13 @@ h2 {
   padding-top: 1.5em;
 }
 
+sup {
+  vertical-align: top;
+  position: relative;
+  left: 0.3em;
+  top: -0.4em;
+}
+
 /* Header */
 
 header {
