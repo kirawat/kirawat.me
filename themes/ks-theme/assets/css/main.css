@@ -1,5 +1,5 @@
 :root {
-  --site-padding: 0 30px;
+  --site-padding: 0 20px;
   --site-max-width: 1280px;
 
   --scrollbar-color: rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@
   --breadcrumbs-link-color: var(--font-color);
   --breadcrumbs-home-icon-color: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -1080 960 960' width='14' height='14'><path fill='black' d='M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z'/></svg>");
 
-  --article-max-width: 740px;
+  --article-max-width: 750px;
 
   --code-font-size: 14px;
   --code-font-color: #555e68;
@@ -121,7 +121,7 @@ h1 {
 }
 
 h2 {
-  padding-top: 2em;
+  padding-top: 1.5em;
 }
 
 /* Header */
@@ -221,7 +221,6 @@ header .fixed {
 article {
   max-width: var(--article-max-width);
   margin: 0 auto;
-  padding: 0 30px 80px 30px;
 }
 
 article .header {
@@ -258,7 +257,6 @@ article .post-date {
   font-size: 14px;
   line-height: 2em;
   cursor: default;
-  position: relative;
   display: block;
 }
 
@@ -301,7 +299,7 @@ blockquote::before {
   font-size: var(--code-font-size);
   line-height: 1.6em;
   margin: 2em 0;
-  padding: 1.5em;
+  padding: 1.5em 1.5em 0 1.5em;
   border-radius: .4rem;
   overflow: auto;
   transition: background-color var(--theme-switch-duration);
@@ -314,6 +312,7 @@ p code, li code, td code {
   padding: 4px 8px;
   border-radius: .4rem;
   transition: color var(--theme-switch-duration), background-color var(--theme-switch-duration);
+  word-break: break-word;
 }
 
 /* Table */
