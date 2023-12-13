@@ -367,7 +367,6 @@ blockquote.callout-note::before {
 .tooltip {
   visibility: hidden;
   position: absolute;
-  width: 230px;
   bottom: 200%;
   left: 50%;
   margin-left: -115px;
