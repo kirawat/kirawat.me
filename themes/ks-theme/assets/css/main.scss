@@ -10,7 +10,16 @@ $icon-pencil: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
 $font-small: 14px;
 $border-radius-default: 0.4rem;
 
-$article-max-width: 720px;
+$main-font-size: clamp(1rem, 2.15vw, 1.15rem);
+
+$article-width: clamp(340px, 80%, 780px);
+$article-font-size: clamp(1.2rem, 1.3vw, 1.28rem);
+
+$blockquote-font-size: 0.95em;
+$blockquote-callout-font-size: 0.9em;
+
+$code-font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+$highlight-font-size: clamp(0.8rem, 1.7vw, 0.9rem);
 
 *,
 *::before,
@@ -29,18 +38,21 @@ h1 {
 
 h2 {
   padding-top: 1.5em;
+  padding-bottom: 0.5em;
+  font-family: 'Inter', 'serif';
 }
 
 sup {
-  position: relative;
-  vertical-align: top;
   left: 0.2em;
   top: -0.4em;
+  position: relative;
+  vertical-align: top;
 }
 
 a:link,
 a:visited {
   color: var(--link-color);
+  text-decoration: none;
 
   code {
     color: var(--link-color) !important;
@@ -63,7 +75,7 @@ body {
   min-height: 100vh;
   background-color: var(--site-bg-color);
   font-family: site.$font-family;
-  font-size: site.$font-size;
+  font-size: 18px;
   color: var(--site-font-color);
   line-height: site.$line-height;
   transition: background-color site.$theme-transition-duration;
@@ -80,13 +92,17 @@ header {
   }
 
   .site-title {
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
 
     a {
       color: var(--site-font-color);
       text-decoration: none;
     }
+  }
+
+  @media screen and (max-width: 560px) {
+    .site-title { font-size: 0.85em; }
   }
 
   .menu {
@@ -124,68 +140,89 @@ main {
   max-width: site.$max-width;
   margin: 0 auto;
   padding: site.$padding;
+  padding-top: 1em;
+  font-size: $main-font-size;
 }
 
 article {
   margin: 0 auto;
-  max-width: $article-max-width;
+  width: 100%;
 
   .header {
+    margin: 0 auto;
     margin-bottom: 1em;
     padding-bottom: 1em;
-    border-bottom: 0.5px solid #dcdcdc;
-  }
 
-  .title {
-    margin-bottom: 10px;
-    font-size: 2.3em;
-  }
+    .title {
+      margin: 0 auto;
+      margin-bottom: 10px;
+      padding-bottom: 0.4em;
+      width: $article-width;
+      font-size: clamp(2rem, 8vw, 3rem);
+      border-bottom: 0.5px solid #dcdcdc;
+    }
 
-  .meta-container {
-    padding-bottom: 1.5em;
-    display: flex;
-
-    .tags {
-      flex: 1;
-      margin-right: 20px;
-      font-size: 14px;
+    .meta-container {
+      margin: 0 auto;
+      padding-bottom: 1.5em;
+      width: $article-width;
+      display: flex;
   
-      ul {
-        margin: 0;
-        padding: 0 10px 0 0;
-      }
-  
-      li {
-        padding-right: 10px;
-        display: inline-block;
-  
-        a {
-          text-decoration: none;
+      .tags {
+        flex: 1;
+        margin-right: 20px;
+        font-size: 14px;
+    
+        ul {
+          margin: 0;
+          padding: 0 10px 0 0;
+        }
+    
+        li {
+          padding-right: 10px;
+          display: inline-block;
+    
+          a {
+            text-decoration: none;
+          }
         }
       }
     }
+
+    .post-date-container {
+      margin-top: 6px;
+    }
+
+    .post-date {
+      font-family: 'Mate', serif;
+      font-size: 15px;
+      line-height: 1.5em;
+      display: block;
+      position: relative;
+      cursor: default;
+    }
+  
+    .post-date:hover {
+      color: var(--post-date-hover-color);
+    }
   }
 
-  .post-date {
-    font-size: 14px;
-    line-height: 1.5em;
-    display: block;
-    position: relative;
-    cursor: default;
-  }
-
-  .post-date:hover {
-    color: var(--post-date-hover-color);
+  .content {
+    margin: 0 auto;
+    width: $article-width;
+    font-family: 'Mate', serif;
+    font-size: $article-font-size;
   }
 
   .footnotes {
     padding-top: 20px;
-    font-size: $font-small;
+    font-size: 16px;
     line-height: 1.4em;
   }
 
   .footnote-ref {
-    font-size: 11px;
+    padding-left: 1px;
+    font-size: 13px;
     text-decoration: none;
   }
 
@@ -207,13 +244,25 @@ blockquote {
   margin: 2em 0 2em 0;
   padding-left: 20px;
   font-style: italic;
+  font-size: $blockquote-font-size;
   position: relative;
+}
+
+blockquote::before {
+  content: '';
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background-color: var(--blockquote-front-color);
+  position: absolute;
 }
 
 blockquote.callout-note {
   width: 100%;
   padding: 12px 24px;
   font-style: normal;
+  font-size: $blockquote-callout-font-size;
   background-color: rgba(2, 122, 255, 0.1);
   border: 0px solid rgba(2, 122, 255, 0.25);
   border-left: none !important;
@@ -228,30 +277,20 @@ blockquote.callout-note {
   .callout-title::before {
     content: $icon-pencil;
     width: 20px;
-    margin-top: 4px;
-    padding-right: 4px;
+    margin-top: 2px;
+    padding-right: 25px;
   }
-}
 
-blockquote.callout-note::before {
-  display: none;
-}
-
-blockquote::before {
-  content: '';
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background-color: #dddddd;
-  position: absolute;
+  .callout-note::before {
+    display: none;
+  }
 }
 
 .chroma {
   margin: 2em 0;
   padding: 1.5em;
   border-radius: $border-radius-default;
-  font-size: $font-small;
+  font-size: $code-font-size;
   line-height: 1.6em;
   overflow: auto;
   transition: site.$theme-transition-duration;
@@ -262,7 +301,7 @@ li code,
 td code {
   padding: 4px 8px;
   color: var(--code-font-color);
-  font-size: $font-small;
+  font-size: $highlight-font-size;
   word-break: break-word;
   background-color: var(--code-bg-color);
   border-radius: $border-radius-default;
@@ -291,7 +330,7 @@ footer {
 
 #breadcrumbs {
   margin: 0 0 50px 0;
-  padding: site.$padding;
+  padding: 0;
   list-style: none;
   font-size: $font-small;
 
@@ -321,10 +360,11 @@ footer {
 
 .tooltip {
   bottom: 200%;
-  left: 50%;
+  left: 40%;
   margin-left: -115px;
   padding: 8px;
   color: var(--tooltip-font-color);
+  font-family: 'Inter', 'san-serif';
   font-size: 11px;
   text-align: center;
   background-color: var(--tooltip-bg-color);
@@ -341,7 +381,7 @@ footer {
 .tooltip::after {
   content: '';
   top: 100%;
-  left: 50%;
+  left: 70%;
   margin-left: -7px;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
