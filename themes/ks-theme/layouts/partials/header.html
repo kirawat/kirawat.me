@@ -1,6 +1,6 @@
 <div id="header">
   <div class="header-container">
-    <div class="header-site-title">{{ site.Title }}</div>
+    <div class="header-site-title"><a href="/">{{ site.Title }}</a></div>
     <div class="header-spacer"></div>
     <div class="header-nav">
       {{- partial "menu.html" (dict "menuID" "main" "page" .) -}}
