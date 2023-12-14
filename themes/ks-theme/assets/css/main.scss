@@ -211,7 +211,7 @@ blockquote {
 }
 
 blockquote.callout-note {
-  width: $article-max-width - 24px;
+  width: 100%;
   padding: 12px 24px;
   font-style: normal;
   background-color: rgba(2, 122, 255, 0.1);
