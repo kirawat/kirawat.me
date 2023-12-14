@@ -6,13 +6,9 @@ timeZone: Asia/Bangkok
 
 menu:
   main:
-    - name: Home
-      pageRef: /
-      weight: 10
-
     - name: Garden
       pageRef: /garden
-      weight: 20
+      weight: 10
 
 params:
   author:

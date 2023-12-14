@@ -183,6 +183,11 @@ header .fixed {
   font-weight: bold;
 }
 
+.header-site-title a{
+  color: var(--body-font-color);
+  text-decoration: none;
+}
+
 .header-nav {
   margin: 0;
   padding: 0;
