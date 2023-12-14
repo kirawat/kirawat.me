@@ -1,14 +1,12 @@
-<div class="footer-wrapper">
-  {{ $copyrightYear := time.Now.Format "2006" }}
-  {{ $authorName := .Site.Title }}
-  
-  {{ if .Site.Params.copyright.year }}
-    {{ $copyrightYear = .Site.Params.copyright.year }}
-  {{ end }}
+{{- $copyrightYear := time.Now.Format "2006" -}}
+{{- $authorName := .Site.Title -}}
 
-  {{ if .Site.Params.author.name }}
-    {{ $authorName = .Site.Params.author.name }}
-  {{ end }}
+{{- if .Site.Params.copyright.year -}}
+  {{- $copyrightYear = .Site.Params.copyright.year -}}
+{{- end -}}
 
-  © {{ $copyrightYear }} {{ $authorName }}
-</div>
+{{- if .Site.Params.author.name -}}
+  {{- $authorName = .Site.Params.author.name -}}
+{{- end -}}
+
+<div class="footer-wrapper">© {{ $copyrightYear }} {{ $authorName }}</div>
