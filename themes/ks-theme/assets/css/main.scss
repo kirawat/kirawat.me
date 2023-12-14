@@ -69,6 +69,12 @@ body {
   transition: background-color site.$theme-transition-duration;
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+}
+
 header {
   .header-container {
     display: flex;
@@ -291,7 +297,7 @@ footer {
 
 #breadcrumbs {
   margin: 0 0 50px 0;
-  padding: site.$padding;
+  padding: 0;
   list-style: none;
   font-size: $font-small;
 
