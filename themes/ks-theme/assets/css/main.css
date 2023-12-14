@@ -361,6 +361,10 @@ table, th, td {
 
 /* Callout */
 
+blockquote {
+  font-size: 17px;
+}
+
 blockquote.callout-note {
   width: var(--article-max-width)-24px;
   font-style: normal;
