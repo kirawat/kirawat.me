@@ -1,1 +1,14 @@
-{{ partialCached "head/js.html" . }}
+<div class="footer-wrapper">
+  {{ $copyrightYear := time.Now.Format "2006" }}
+  {{ $authorName := .Site.Title }}
+  
+  {{ if .Site.Params.copyright.year }}
+    {{ $copyrightYear = .Site.Params.copyright.year }}
+  {{ end }}
+
+  {{ if .Site.Params.author.name }}
+    {{ $authorName = .Site.Params.author.name }}
+  {{ end }}
+
+  © {{ $copyrightYear }} {{ $authorName }}
+</div>
