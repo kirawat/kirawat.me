@@ -9,6 +9,9 @@
 .history
 .svn/
 
+# Sass related
+**/resources/*
+
 # Hugo related
 **/content/*
 themes/theme-sample/*

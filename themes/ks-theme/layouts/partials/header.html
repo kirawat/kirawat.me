@@ -1,8 +1,8 @@
 <div id="header">
   <div class="header-container">
-    <div class="header-site-title"><a href="/">{{ site.Title }}</a></div>
-    <div class="header-spacer"></div>
-    <div class="header-nav">
+    <div class="site-title"><a href="/">{{ site.Title }}</a></div>
+    <div class="spacer"></div>
+    <div class="menu">
       {{- partial "menu.html" (dict "menuID" "main" "page" .) -}}
     </div>
     <div class="theme-slider-container">
