@@ -228,6 +228,7 @@ article {
     width: $article-width;
     font-family: 'Mate', serif;
     font-size: $article-font-size;
+    line-height: 1.7em;
   }
 
   .footnotes {
@@ -288,6 +289,7 @@ blockquote.callout-note {
     display: flex;
     align-items: flex-start;
     color: rgb(2, 122, 255);
+    font-family: 'Inter', 'san-serif';
   }
 
   .callout-title::before {
