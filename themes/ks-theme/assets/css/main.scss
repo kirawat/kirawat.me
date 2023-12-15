@@ -10,10 +10,14 @@ $icon-pencil: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
 $font-small: 14px;
 $border-radius-default: 0.4rem;
 
-$main-font-size: clamp(1rem, 2.15vw, 1.15rem);
+$main-font-size: clamp(1rem, 2.4vw, 1rem);
+$menu-font-size: clamp(0.8rem, 2.4vw, 0.95rem);
+$breadcrumbs-font-size: clamp(0.8rem, 2.4vw, 0.95rem);
+$post-date-font-size: clamp(0.9rem, 2.4vw, 1rem);
+$copyright-font-size: clamp(0.8rem, 2.4vw, 1rem);
 
 $article-width: clamp(340px, 80%, 780px);
-$article-font-size: clamp(1.2rem, 1.3vw, 1.28rem);
+$article-font-size: clamp(1.1rem, 2.4vw, 1.28rem);
 
 $blockquote-font-size: 0.95em;
 $blockquote-callout-font-size: 0.9em;
@@ -124,7 +128,7 @@ header {
   .menu {
     margin: 0;
     padding: 0;
-    font-size: $font-small;
+    font-size: $menu-font-size;
     list-style: none;
 
     a {
@@ -156,7 +160,6 @@ main {
   max-width: site.$max-width;
   margin: 0 auto;
   padding: site.$padding;
-  padding-top: 1em;
   font-size: $main-font-size;
 }
 
@@ -211,7 +214,7 @@ article {
 
     .post-date {
       font-family: 'Mate', serif;
-      font-size: 15px;
+      font-size: $post-date-font-size;
       line-height: 1.5em;
       display: block;
       position: relative;
@@ -343,6 +346,10 @@ footer {
     padding: site.$padding;
     font-size: $font-small;
     max-width: site.$max-width;
+
+    .copyright {
+      font-size: $copyright-font-size;
+    }
   }
 }
 
@@ -350,7 +357,7 @@ footer {
   margin: 0 0 50px 0;
   padding: 0;
   list-style: none;
-  font-size: $font-small;
+  font-size: $breadcrumbs-font-size;
 
   li {
     display: inline-block;
@@ -378,9 +385,9 @@ footer {
 
 .tooltip {
   bottom: 200%;
-  left: 40%;
+  left: 38%;
   margin-left: -115px;
-  padding: 8px;
+  padding: 8px 12px;
   color: var(--tooltip-font-color);
   font-family: 'Inter', 'san-serif';
   font-size: 11px;

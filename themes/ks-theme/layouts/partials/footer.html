@@ -9,4 +9,6 @@
   {{- $authorName = .Site.Params.author.name -}}
 {{- end -}}
 
-<div class="container">© {{ $copyrightYear }} {{ $authorName }}</div>
+<div class="container">
+  <div class="copyright">© {{ $copyrightYear }} {{ $authorName }}</div>
+</div>
