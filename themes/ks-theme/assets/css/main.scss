@@ -65,6 +65,7 @@ a:visited {
 a:hover,
 a:visited:hover {
   color: var(--link-hover-color);
+  background-color: var(--link-hover-bg-color);
 
   code {
     color: var(--link-color) !important;
@@ -101,6 +102,10 @@ header {
     a {
       color: var(--site-font-color);
       text-decoration: none;
+    }
+
+    a:hover {
+      background-color: transparent;
     }
   }
 
@@ -223,8 +228,15 @@ article {
     line-height: 1.4em;
   }
 
+  @media screen and (max-width: 560px) {
+    .footnotes ol {
+        padding-left: 20px;
+    }
+  }
+
   .footnote-ref {
     padding-left: 1px;
+    padding-right: 2px;
     font-family: 'Inter', 'san-serif';
     font-size: 13px;
     text-decoration: none;
@@ -246,8 +258,7 @@ article {
 blockquote {
   width: 95%;
   margin: 2em 0 2em 0;
-  padding-left: 40px;
-  padding-right: 25px;
+  padding-left: 30px;
   color: var(--blockquote-font-color);
   font-style: normal;
   font-size: $blockquote-font-size;
@@ -363,6 +374,7 @@ footer {
 
     a:hover {
       color: var(--link-hover-color);
+      background-color: transparent;
     }
   }
 
