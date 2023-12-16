@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="content">
-      {{- partial "inline/obsidianmd" .Content -}}
+      {{- partial "inline/obsidianmd" (dict "content" .Content "pageRelLink" .Page.RelPermalink) -}}
     </div>
   </article>
 {{ end }}
