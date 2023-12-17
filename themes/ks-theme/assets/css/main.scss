@@ -353,7 +353,8 @@ code,
 
 p code,
 li code,
-td code {
+td code,
+blockquote code {
   padding: 4px 8px;
   color: var(--code-font-color);
   font-size: $highlight-font-size;
