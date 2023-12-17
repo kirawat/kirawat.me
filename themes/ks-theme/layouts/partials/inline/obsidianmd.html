@@ -1,7 +1,26 @@
 {{- define "partials/inline/obsidianmd.html" -}}
   {{- $content := .content -}}
   {{- $pageRelLink := .pageRelLink -}}
-  {{- $links := $content | findRE `href="([^"]*)` -}}
+
+  {{- $regexCallout := `<blockquote>\n<p>\[!(.+)\] ?(.+)?\n` -}}
+  {{- $regexLinks := `href="([^"]*)` -}}
+
+  {{- $callouts := $content | findRE $regexCallout -}}
+  {{- $links := $content | findRE $regexLinks -}}
+
+  {{- /* Convert Callouts */ -}}
+  {{- range $callouts -}}
+    {{- $callout := findRESubmatch $regexCallout . -}}
+    {{- $type := index $callout 0 1 -}}
+    {{- $title := index $callout 0 2 -}}
+    {{ if eq $title "" }}
+      {{- $content = replaceRE $regexCallout `<blockquote class="callout $1"><div class="title">%%$1%%</div><p></p>` $content 1 -}}
+    {{ else }}
+      {{- $content = replaceRE $regexCallout `<blockquote class="callout $1"><div class="title">$2</div><p></p>` $content 1 -}}
+    {{ end }}
+  {{- end -}}
+  {{- $content = replace $content "%%note%%" "Note" -}}
+  {{- $content = replace $content "%%quote%%" "Quote" -}}
 
   {{- /* Run through all the links in content */ -}}
   {{- range $links -}}
@@ -41,9 +60,6 @@
     {{- /* Replace link in content --> */ -}}
     {{- $content = replace $content $source $link -}}
   {{- end -}}
-
-  {{- /* Support Callouts --> */ -}}
-  {{- $content = replace $content "<blockquote>\n<p>[!note]" `<blockquote class="callout-note"><div class="callout-title">Note</div><p>` -}}
 
   {{- /* Output content */ -}}
   {{- $content | safeHTML -}}
