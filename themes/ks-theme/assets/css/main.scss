@@ -460,13 +460,11 @@ footer {
   padding: 80px 0 20px 0;
 
   .container {
+    display: flex;
     margin: 0 auto;
     padding: site.$padding;
     max-width: site.$max-width;
-
-    .copyright {
-      font-size: $copyright-font-size;
-    }
+    font-size: $copyright-font-size;
   }
 }
 
