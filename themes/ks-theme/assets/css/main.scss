@@ -465,6 +465,10 @@ footer {
     padding: site.$padding;
     max-width: site.$max-width;
     font-size: $copyright-font-size;
+
+    .spacer {
+      flex: 1;
+    }
   }
 }
 
