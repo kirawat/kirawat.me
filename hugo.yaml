@@ -27,6 +27,10 @@ frontmatter:
     - :fileModTime
     - :default
 
+services:
+  googleAnalytics:
+    ID: G-9CXL356JPY
+
 ignoreFiles:
   - content/.obsidian/\.*
   - content/10 Inbox/\.*
