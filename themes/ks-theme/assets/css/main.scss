@@ -222,7 +222,7 @@ main {
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1440px) {
   aside {
     display: none;
   }
@@ -327,6 +327,12 @@ article {
 
   .footnote-backref {
     text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  article {
+    padding: 0;
   }
 }
 
