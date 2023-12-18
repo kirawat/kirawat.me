@@ -1,0 +1,13 @@
+$comments-max-width: clamp(340px, 80%, 780px);
+
+.comments-container {
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 0 20px 0 20px;
+  max-width: $comments-max-width;
+}
+
+.giscus {
+  padding-top: 2em;
+  border-top: 1px solid var(--site-font-color);
+}

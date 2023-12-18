@@ -8,11 +8,26 @@ function toggleDarkMode() {
   const container = document.documentElement;
   const dataTheme = container.getAttribute('data-theme');
 
+  function changeGiscusTheme(theme) {
+    function sendMessage(message) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe) return;
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    }
+    sendMessage({
+      setConfig: {
+        theme: theme
+      }
+    });
+  }
+
   if (dataTheme === 'dark') {
     container.setAttribute('data-theme', 'light');
+    changeGiscusTheme('light');
     localStorage.setItem('theme', 'light');
   } else {
     container.setAttribute('data-theme', 'dark');
+    changeGiscusTheme('dark');
     localStorage.setItem('theme', 'dark');
   }
 }

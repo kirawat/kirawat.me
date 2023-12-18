@@ -16,7 +16,34 @@
     </main>
     <footer>
       {{ partial "footer.html" . }}
-      {{ partialCached "head/js.html" . }}
     </footer>
+    {{ partialCached "head/js.html" . }}
+    {{- if .Page.Param "comments" -}}
+      <script>
+        const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme) {
+          const giscusAttributes = {
+            'src': 'https://giscus.app/client.js',
+            'data-repo': 'kirawat/kirawat.me',
+            'data-repo-id': 'R_kgDOK5SkpQ',
+            'data-category': 'Comments',
+            'data-category-id': 'DIC_kwDOK5Skpc4Cb12k',
+            'data-mapping': 'pathname',
+            'data-strict': '0',
+            'data-reactions-enabled': '1',
+            'data-emit-metadata': '0',
+            'data-input-position': 'top',
+            'data-theme': theme,
+            'data-lang': 'en',
+            'data-loading': 'lazy',
+            'crossorigin': 'anonymous',
+            'async': '',
+          };
+          let giscusScript = document.createElement('script');
+          Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+          document.body.appendChild(giscusScript);
+        };
+      </script>
+    {{- end -}}
   </body>
 </html>
