@@ -6,35 +6,47 @@
   {{- $dateLastModMachine := time.Format "2006-01-02T15:04:05-07:00" .Lastmod -}}
   {{- $dateLastModHuman := time.Format "2 Jan 2006 15:04:05 PM (Z07:00)" .Lastmod -}}
 
-  <article>
-    <div class="header">
-      <h1 class="title">{{ .Title }}</h1>
-      <div class="meta-container">
-        <div class="tags">
-          {{- with .GetTerms "tags" -}}
-            <ul>
-              {{- range . -}}
-                <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-              {{- end -}}
-            </ul>
-          {{- end -}}
-        </div>
-        <div class="post-date-container">
-          <div class="post-date">
-            Planted&nbsp;
-            <span id="planted-date" data-datetime="{{ $dateMachine }}"></span>
-            <span class="tooltip">{{ $dateHuman }}</span>
+  <div id="content-container">
+    <aside class="sidebar-l">
+    </aside>
+
+    <article>
+      <div class="header">
+        <h1 class="title">{{ .Title }}</h1>
+        <div class="meta-container">
+          <div class="tags">
+            {{- with .GetTerms "tags" -}}
+              <ul>
+                {{- range . -}}
+                  <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                {{- end -}}
+              </ul>
+            {{- end -}}
           </div>
-          <div class="post-date">
-            Last tended&nbsp;
-            <span id="last-tended" data-datetime="{{ $dateLastModMachine }}"></span>
-            <span class="tooltip">{{ $dateLastModHuman }}</span>
+          <div class="post-date-container">
+            <div class="post-date">
+              Planted&nbsp;
+              <span id="planted-date" data-datetime="{{ $dateMachine }}"></span>
+              <span class="tooltip">{{ $dateHuman }}</span>
+            </div>
+            <div class="post-date">
+              Last tended&nbsp;
+              <span id="last-tended" data-datetime="{{ $dateLastModMachine }}"></span>
+              <span class="tooltip">{{ $dateLastModHuman }}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="content">
-      {{- partial "inline/obsidianmd" (dict "content" .Content "pageRelLink" .Page.RelPermalink) -}}
-    </div>
-  </article>
+      <div class="content">
+        {{- partial "inline/obsidianmd" (dict "content" .Content "pageRelLink" .Page.RelPermalink) -}}
+      </div>
+    </article>
+
+    <aside class="sidebar-r">
+      <div class="toc">
+        <div class="title">Table of Contents</div>
+        {{ .TableOfContents }}
+      </div>
+    </aside>
+  </div>
 {{ end }}
