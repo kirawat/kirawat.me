@@ -8,6 +8,7 @@ function toggleDarkMode() {
   const container = document.documentElement;
   const dataTheme = container.getAttribute('data-theme');
 
+  // https://github.com/giscus/giscus/issues/336#issuecomment-1007922777
   function changeGiscusTheme(theme) {
     function sendMessage(message) {
       const iframe = document.querySelector('iframe.giscus-frame');
