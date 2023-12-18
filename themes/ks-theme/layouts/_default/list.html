@@ -1,9 +1,11 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ partial "inline/obsidianmd" (dict "content" .Content "pageRelLink" .Page.RelPermalink) }}
-  <ul>
-    {{ range (where .Data.Pages.ByLastmod.Reverse "Section" "!=" "") }}
-      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-    {{ end }}
-  </ul>
+  <div id="content-container">
+    <h1>{{ .Title }}</h1>
+    {{ partial "inline/obsidianmd" (dict "content" .Content "pageRelLink" .Page.RelPermalink) }}
+    <ul>
+      {{ range (where .Data.Pages.ByLastmod.Reverse "Section" "!=" "") }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
 {{ end }}
