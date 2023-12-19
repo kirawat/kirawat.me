@@ -307,9 +307,12 @@ article {
   }
 
   .footnotes {
-    padding-top: 20px;
     font-size: $post-date-font-size;
     line-height: 1.4em;
+
+    hr {
+      display: none;
+    }
   }
 
   @media screen and (max-width: 560px) {
