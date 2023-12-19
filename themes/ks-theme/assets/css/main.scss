@@ -25,7 +25,7 @@ $copyright-font-size: clamp(0.8rem, 2.4vw, 1rem);
 
 $content-max-width: 1440px;
 
-$article-width: clamp(340px, 80%, 780px);
+$article-width: clamp(340px, 88%, 780px);
 $article-font-size: clamp(1.1rem, 2.5vw, 1.25rem);
 
 $blockquote-font-size: 1em;
@@ -53,9 +53,15 @@ h1 {
 }
 
 h2 {
-  padding-top: 1.2em;
-  padding-bottom: 0.2em;
+  padding-top: 1em;
   font-family: $header-font-family;
+  line-height: site.$line-height;
+}
+
+h3 {
+  padding-top: 1.2em;
+  font-family: $header-font-family;
+  line-height: site.$line-height;
 }
 
 sup {
@@ -251,7 +257,7 @@ article {
       margin: 0 auto;
       margin-bottom: 10px;
       padding-bottom: 0.4em;
-      font-size: clamp(2rem, 8vw, 3rem);
+      font-size: clamp(2rem, 6vw, 2.8rem);
       border-bottom: 0.5px solid #dcdcdc;
     }
 
