@@ -27,16 +27,11 @@ frontmatter:
     - :fileModTime
     - :default
 
+module:
+  mounts:
+    - source: obsidian/Commonplace/70 Public
+      target: content
+
 services:
   googleAnalytics:
     ID: G-9CXL356JPY
-
-ignoreFiles:
-  - content/.obsidian/\.*
-  - content/10 Inbox/\.*
-  - content/20 Notes/\.*
-  - content/30 Projects/\.*
-  - content/40 Journal/\.*
-  - content/50 Commonplace/\.*
-  - content/60 Resources/\.*
-  - content/70 Archive/\.*
