@@ -48,6 +48,8 @@
     {{- $url = replace $url " - " "-" -}}
     {{- $url = replace $url " " "-" -}}
     {{- $url = replace $url "%20" "-" -}}
+    {{- $url = replace $url "%28" "" -}}
+    {{- $url = replace $url "%29" "" -}}
     {{- $url = replace $url ".md" "" -}}
     {{- $url = replace $url "#" "/#" -}}
     {{- if hasPrefix $url "../" -}}
