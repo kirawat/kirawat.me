@@ -5,8 +5,8 @@
 @use 'modules/_scrollbar.scss';
 @use 'modules/_comments.scss';
 
-$header-font-family: 'Mate', serif;
-$content-font-family: 'Mate', serif;
+$header-font-family: 'Mate', 'Trirong', serif;
+$content-font-family: 'Mate', 'Trirong', serif;
 $meta-font-family: 'Inter', sans-serif;
 
 $icon-home: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1080 960 960" width="14" height="14"><path fill="grey" d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>');
