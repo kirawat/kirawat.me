@@ -311,6 +311,11 @@ article {
     font-family: $content-font-family;
     font-size: $article-font-size;
     line-height: $article-line-height;
+
+    img {
+      width: 100%;
+      display: block;
+    }
   }
 
   .footnotes {
