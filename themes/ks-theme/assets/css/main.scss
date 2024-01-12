@@ -6,7 +6,7 @@
 @use 'modules/_comments.scss';
 
 $header-font-family: 'Mate', 'Trirong', serif;
-$content-font-family: 'Mate', 'Trirong', serif;
+$content-font-family: 'Inter', 'Trirong', serif;
 $meta-font-family: 'Inter', sans-serif;
 
 $icon-home: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1080 960 960" width="14" height="14"><path fill="grey" d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>');
@@ -20,14 +20,14 @@ $border-radius-default: 0.4rem;
 $main-font-size: clamp(1rem, 2.4vw, 1rem);
 $menu-font-size: clamp(0.8rem, 2.4vw, 0.95rem);
 $breadcrumbs-font-size: clamp(0.8rem, 2.4vw, 0.95rem);
-$post-date-font-size: clamp(0.9rem, 2.4vw, 1rem);
+$post-date-font-size: clamp(0.8rem, 2.4vw, 0.9rem);
 $copyright-font-size: clamp(0.8rem, 2.4vw, 1rem);
 
 $content-max-width: 1440px;
 
 $article-width: clamp(340px, 85%, 780px);
-$article-font-size: clamp(1.1rem, 2.5vw, 1.2rem);
-$article-line-height: clamp(1.5em, 2.5vw, 1.53em);
+$article-font-size: clamp(1rem, 2.5vw, 1.05rem);
+$article-line-height: clamp(1.5em, 2.5vw, 1.8em);
 
 $blockquote-font-size: 1em;
 $blockquote-callout-font-size: 1em;

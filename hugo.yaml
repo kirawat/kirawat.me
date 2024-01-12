@@ -31,6 +31,8 @@ module:
   mounts:
     - source: obsidian/Commonplace/70 Public
       target: content
+    - source: Static/images
+      target: static/images
 
 services:
   googleAnalytics:
