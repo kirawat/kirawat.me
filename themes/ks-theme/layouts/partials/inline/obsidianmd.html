@@ -2,11 +2,15 @@
   {{- $content := .content -}}
   {{- $pageRelLink := .pageRelLink -}}
 
+  {{- $regexFirstHeader := `<h1.+?</h1>` -}}
   {{- $regexCallout := `<blockquote>\n<p>\[!(.+)\] ?(.+)?\n` -}}
   {{- $regexLinks := `href="([^"]*)` -}}
 
   {{- $callouts := $content | findRE $regexCallout -}}
   {{- $links := $content | findRE $regexLinks -}}
+
+  {{- /* Remove first header */ -}}
+  {{- $content = replaceRE $regexFirstHeader "" $content 1 -}}
 
   {{- /* Convert Callouts */ -}}
   {{- range $callouts -}}
