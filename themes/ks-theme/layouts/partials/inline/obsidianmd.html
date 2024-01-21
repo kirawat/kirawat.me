@@ -41,6 +41,11 @@
       {{- continue -}}
     {{- end -}}
 
+    {{- if hasPrefix $url "index.md#" -}}
+      {{- $url = replace $url "index.md#" "#" -}}
+      {{- $url = replace $url "?" "" -}}
+    {{- end -}}
+
     {{- /* Convert link to a fragment */ -}}
     {{- if hasPrefix $url "#" -}}
       {{- $baseName := path.BaseName $pageRelLink -}}
@@ -56,6 +61,7 @@
     {{- $url = replace $url "%29" "" -}}
     {{- $url = replace $url ".md" "" -}}
     {{- $url = replace $url "#" "/#" -}}
+    {{- $url = replace $url "//" "/" -}}
     {{- if hasPrefix $url "../" -}}
       {{- $url = replace $url "../" "../../" -}}
     {{- else -}}
