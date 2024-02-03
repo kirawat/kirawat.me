@@ -12,6 +12,10 @@
   {{- /* Remove first header */ -}}
   {{- $content = replaceRE $regexFirstHeader "" $content 1 -}}
 
+  {{- /* Set images size */ -}}
+  {{- $content = replaceRE `\salt=""` "" $content -}}
+  {{- $content = replaceRE `\salt="([\d]*)"` " width=\"$1\"" $content -}}
+
   {{- /* Convert Callouts */ -}}
   {{- range $callouts -}}
     {{- $callout := findRESubmatch $regexCallout . -}}

@@ -312,8 +312,12 @@ article {
     font-size: $article-font-size;
     line-height: $article-line-height;
 
-    img {
+    img:not([width]) {
       width: 100%;
+    }
+
+    img {
+      margin: 0 auto;
       display: block;
     }
   }
