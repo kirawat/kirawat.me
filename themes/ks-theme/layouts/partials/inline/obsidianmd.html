@@ -32,7 +32,7 @@
 
   {{- /* Run through all the links in content */ -}}
   {{- range $links -}}
-    {{- $source := . -}}
+    {{- $source := print . `"` -}}
 
     {{- /* Extract only URL from source */ -}}
     {{- $url := substr . 6 -}}
@@ -57,12 +57,13 @@
     {{- end -}}
 
     {{- /* Convert URL */ -}}
-    {{- $url = lower $url -}}
+    {{- $url = urlize $url -}}
     {{- $url = replace $url " - " "-" -}}
     {{- $url = replace $url " " "-" -}}
     {{- $url = replace $url "%20" "-" -}}
     {{- $url = replace $url "%28" "" -}}
     {{- $url = replace $url "%29" "" -}}
+    {{- $url = replace $url ".md#" "/#" -}}
     {{- $url = replace $url ".md" "" -}}
     {{- $url = replace $url "#" "/#" -}}
     {{- $url = replace $url "//" "/" -}}
@@ -71,7 +72,7 @@
     {{- else -}}
       {{- $url = print "../" $url -}}
     {{- end -}}
-    {{- $link := print `href="` $url -}}
+    {{- $link := print `href="` $url `"` -}}
 
     {{- /* Replace link in content --> */ -}}
     {{- $content = replace $content $source $link -}}
