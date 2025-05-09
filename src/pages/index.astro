@@ -10,6 +10,10 @@ const wordsList: { label: string; }[] = [
 	{ label: 'coder' },
 	{ label: 'filmmaker' },
 ];
+
+// Prepare the list for display, duplicating the first item at the end
+// for seamless animation.
+const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
 ---
 
 <BaseLayout>
@@ -21,14 +25,9 @@ const wordsList: { label: string; }[] = [
 		<div class="dynamic-words-viewport">
 			<ul class="words-list">
 				{
-					wordsList.map(({ label }) => (
+					wordsToDisplay.map(({ label }) => (
 						<li>{label}.</li>
 					))
-				}
-				{
-					wordsList.length > 0 && (
-						<li>{wordsList[0].label}.</li>
-					)
 				}
 			</ul>
 		</div>
