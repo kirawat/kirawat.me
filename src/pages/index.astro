@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const myName = 'Kirawat Sahasewiyon';
+
+const wordsList: { label: string; }[] = [
+	{ label: 'dreamer' },
+	{ label: 'thinker' },
+	{ label: 'gamer' },
+	{ label: 'coder' },
+	{ label: 'filmmaker' },
+];
+---
+
+<BaseLayout>
+	<div class="typewriter-container">
+		<span id="typed-output" data-text={`Hi, my name is ${myName}.`}></span>
+	</div>
+	<div class="fliping-text-container">
+		<span class="static-prefix">I'm a </span>
+		<div class="dynamic-words-viewport">
+			<ul class="words-list">
+				{
+					wordsList.map(({ label }) => (
+						<li>{label}.</li>
+					))
+				}
+				{
+					wordsList.length > 0 && (
+						<li>{wordsList[0].label}.</li>
+					)
+				}
+			</ul>
+		</div>
+	</div>
+</BaseLayout>
+
+<style lang="scss">
+	.typewriter-container {
+		#typed-output {
+			display: inline-block;
+			position: relative;
+			font-size: 3em;
+			font-weight: 600;
+
+			&::after {
+				content: '';
+				display: inline-block;
+
+				// Thickness of cursor.
+				width: 3px;
+				height: 0.85em;
+
+				// Cursor color.
+				background-color: var(--accent-regular);
+
+				// Distance of the cursor from the text.
+				margin-left: 2px;
+
+				// Aligns the cursor with the text.
+				vertical-align: -0.1em;
+
+				// Blinking animation.
+				animation: blink-cursor 0.8s steps(2, start) infinite;
+			}
+		}
+	}
+
+	/// Keyframes for the cursor's blinking animation.
+	@keyframes blink-cursor {
+		// First step of the animation (cursor visible).
+		from {
+			opacity: 1;
+		}
+		// Second step of the animation (cursor invisible).
+		to {
+			opacity: 0;
+		}
+	}
+
+	.fliping-text-container {
+		display: flex;
+		font-size: 2.5em;
+		
+		.static-prefix {
+			margin-right: 0.3em;
+			white-space: nowrap;
+		}
+
+		.dynamic-words-viewport {
+			// Defines the visible height for one word. Adjust based on font.
+			--word-actual-line-height: 1.5em;
+
+			height: var(--word-actual-line-height);
+			overflow: hidden;
+			display: inline-block;
+			position: relative;
+			vertical-align: baseline;
+			text-align: left;
+
+			.words-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				color: var(--accent-regular);
+
+				// Total number of words in the list.
+				--number-of-words: 5;
+
+				// Time for each word (hold + slide).
+				--time-per-word: 2s;
+
+				// Total time for one full loop (e.g., 2s per word).
+				--animation-duration-total: calc(var(--number-of-words) * var(--time-per-word));
+
+				// Hint to the browser that transform will be animated.
+				will-change: transform;
+
+				// Forces hardware acceleration.
+				transform: translateZ(0);
+
+				// Prevent flickering and improve rendering quality on transformed elements.
+				backface-visibility: hidden;
+
+				animation: flip-vertical var(--animation-duration-total) ease-in-out infinite;
+
+				& li {
+					height: var(--word-actual-line-height);
+					line-height: var(--word-actual-line-height);
+					display: block;
+				}
+			}
+		}
+	}
+
+	@keyframes flip-vertical {
+		0%, 16%  { transform: translateY(calc(0 * var(--word-actual-line-height) * -1)); }
+		20%, 36% { transform: translateY(calc(1 * var(--word-actual-line-height) * -1)); }
+		40%, 56% { transform: translateY(calc(2 * var(--word-actual-line-height) * -1)); }
+		60%, 76% { transform: translateY(calc(3 * var(--word-actual-line-height) * -1)); }
+		80%, 96% { transform: translateY(calc(4 * var(--word-actual-line-height) * -1)); }
+		100%     { transform: translateY(calc(var(--number-of-words) * var(--word-actual-line-height) * -1)); }
+	}
+</style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const typedOutputElement = document.getElementById('typed-output');
+
+		// Stop script execution if the `typed-output` element isn't found.
+		if (!typedOutputElement) {
+			return;
+		}
+
+		// Retrieve the text to type from the `data-text` attribute
+		// of the HTML element.
+		const textToType = typedOutputElement.dataset.text;
+
+		// If no text is found in the data-attribute, stop script execution.
+		if (textToType === undefined || textToType === null) {
+			return;
+		}
+
+		// Ensure the element is empty before starting the typing effect.
+		typedOutputElement.textContent = '';
+
+		// Soeed in milliseconds for typing each character.
+		const typingSpeedPerChar = 50;
+
+		/// Delay in milliseconds before typing starts.
+		const initialDisplayDelay = 1000;
+
+		async function startTypingEffect() {
+			const characters = textToType.split('');
+			for (let i = 0; i < characters.length; i++) {
+				typedOutputElement.textContent += characters[i];
+				await new Promise(resolve => setTimeout(resolve, typingSpeedPerChar));
+			}
+		}
+
+		setTimeout(startTypingEffect, initialDisplayDelay);
+	});
+</script>

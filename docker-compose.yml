@@ -1,0 +1,25 @@
+services:
+  astro:
+    # Build the Docker image using the Dockerfile in the current directory.
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kirawat-web
+    # Map port 4321 (container) to the host port specified by ASTRO_PORT (default: 4321).
+    # Access your app via `http://localhost:4321`.
+    ports:
+      - "${ASTRO_PORT:-4321}:4321"
+    volumes:
+      # Mount the project directory on the host (`.`) to `/app` in
+      # the container. Changes made locally will be reflected inside
+      # the container immediately.
+      - .:/app
+      # Mount a volume for `node_modules`. This prevents the `node_modules`
+      # directory installed during the Docker build from being overwritten
+      # by an empty or different `node_modules` directory potentially present
+      # on the host mount.
+      # It's also improves performance on Docker Desktop (Mac/Win).
+      - /app/node_modules
+    # Ensure the container stays running (useful for dev servers).
+    stdin_open: true
+    tty: true

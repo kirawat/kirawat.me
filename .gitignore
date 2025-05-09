@@ -1,20 +1,23 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
+# Astro build/cache artifacts.
+dist/
+.astro/
+
+# Dependency directories.
+node_modules/
+
+# Logs.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables.
+.env
+.env.production
+
+# OS-specific files.
 .DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
+Thumbs.db
 
-# Sass related
-**/resources/*
-
-# Hugo related
-**/content/*
-themes/theme-sample/*
-
-# Obsidian related
-**/obsidian/*
+# JetBrains setting folder.
+.idea/

@@ -1,0 +1,36 @@
+---
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+}
+
+const {
+  title = 'Kirawat Sahasewiyon',
+  description,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MainHead title={title} description={description} />
+  </head>
+  <body class="stack">
+    <header>
+      <Nav />
+    </header>
+    <main class="main-content">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style lang="scss">
+  .main-content {
+    padding-inline-start: var(--content-pad-h);
+    padding-inline-end: var(--content-pad-h);
+  }
+</style>
