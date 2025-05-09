@@ -41,6 +41,12 @@ const wordsList: { label: string; }[] = [
 	// Time for each word (hold + slide).
 	$time-per-word: 2s;
 
+	// Defines the visible height for one word. Adjust based on font.
+	$word-actual-line-height: 1.5em;
+
+	// Total time for one full loop (e.g., 2s per word).
+	$animation-duration-total: $number-of-words * $time-per-word;
+
 	.typewriter-container {
 		#typed-output {
 			display: inline-block;
@@ -93,10 +99,7 @@ const wordsList: { label: string; }[] = [
 		}
 
 		.dynamic-words-viewport {
-			// Defines the visible height for one word. Adjust based on font.
-			--word-actual-line-height: 1.5em;
-
-			height: var(--word-actual-line-height);
+			height: $word-actual-line-height;
 			overflow: hidden;
 			display: inline-block;
 			position: relative;
@@ -109,9 +112,6 @@ const wordsList: { label: string; }[] = [
 				margin: 0;
 				color: var(--accent-regular);
 
-				// Total time for one full loop (e.g., 2s per word).
-				--animation-duration-total: calc(#{$number-of-words} * #{$time-per-word});
-
 				// Hint to the browser that transform will be animated.
 				will-change: transform;
 
@@ -121,11 +121,11 @@ const wordsList: { label: string; }[] = [
 				// Prevent flickering and improve rendering quality on transformed elements.
 				backface-visibility: hidden;
 
-				animation: flip-vertical var(--animation-duration-total) ease-in-out infinite;
+				animation: flip-vertical $animation-duration-total ease-in-out infinite;
 
 				& li {
-					height: var(--word-actual-line-height);
-					line-height: var(--word-actual-line-height);
+					height: $word-actual-line-height;
+					line-height: $word-actual-line-height;
 					display: block;
 				}
 			}
@@ -147,22 +147,13 @@ const wordsList: { label: string; }[] = [
 			$endHoldPercentage: $startHoldPercentage + ($percentagePerSlot * 0.8);
 
 			#{$startHoldPercentage}, #{$endHoldPercentage} {
-				transform: translateY(calc(#{$i} * var(--word-actual-line-height) * -1));
+				transform: translateY(calc(#{$i} * #{$word-actual-line-height} * -1));
 			}
 		}
 
 		// The final step ensures the animation loops correctly to the start.
-		100% { transform: translateY(calc(#{$number-of-words} * var(--word-actual-line-height) * -1)); }
+		100% { transform: translateY(calc(#{$number-of-words} * #{$word-actual-line-height} * -1)); }
 	}
-
-/* 	@keyframes flip-vertical {
-		0%, 16%  { transform: translateY(calc(0 * var(--word-actual-line-height) * -1)); }
-		20%, 36% { transform: translateY(calc(1 * var(--word-actual-line-height) * -1)); }
-		40%, 56% { transform: translateY(calc(2 * var(--word-actual-line-height) * -1)); }
-		60%, 76% { transform: translateY(calc(3 * var(--word-actual-line-height) * -1)); }
-		80%, 96% { transform: translateY(calc(4 * var(--word-actual-line-height) * -1)); }
-		100%     { transform: translateY(calc(var(--wordsCount) * var(--word-actual-line-height) * -1)); }
-	} */
 </style>
 
 <script>
