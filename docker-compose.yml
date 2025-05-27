@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: kirawat-web
     # Map port 4321 (container) to the host port specified by ASTRO_PORT (default: 4321).
     # Access your app via `http://localhost:4321`.
     ports:

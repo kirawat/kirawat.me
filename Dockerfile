@@ -4,18 +4,14 @@ FROM node:slim AS base
 # Set the working directory inside the container.
 WORKDIR /app
 
+# These are copied first to leverage Docker's layer caching.
+# If there files haven't changed, Docker can often reuse cached layers
+# for dependency installation.
 COPY package.json ./
 COPY package-lock.json ./
 
-# Install project dependencies using `npm ci` which is generally faster
-# and more reliable for CI/CD and reproducible environments than `npm install`.
-#
-# It installs dependencies *exactly* as specified in `package-lock.json` file.
-# This ensures that you get a consistent and reproducible set of dependencies
-# every time the image is built. If the `package-lock.json` is out of sync
-# with `package.json`, `npm ci` will usually error out, which is a good thing
-# as it forces you to have a consistent dependency definition.
-RUN npm ci
+# Install project dependencies.
+RUN npm install
 
 # Copy the rest of the application code.
 #
