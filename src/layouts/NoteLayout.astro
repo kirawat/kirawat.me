@@ -1,6 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
+import Icon from '../components/Icon.astro';
+
 interface Props {
   title: string;
 }
@@ -9,8 +11,11 @@ const { title } = Astro.props;
 ---
 
 <BaseLayout>
-  <h1>{title}</h1>
-  <main class="content">
+  <header>
+    <a class="back-link" href="/note/"><Icon icon="arrow-left" /> Digital Garden</a>
+    <h1 class="post-title">{title}</h1>
+  </header>
+  <main>
     <article>
       <slot />
     </article>
@@ -18,11 +23,39 @@ const { title } = Astro.props;
 </BaseLayout>
 
 <style lang="scss">
+  $header-min-width: 320px;
+  $header-max-width: 1280px;
+  $header-width: minmax($header-min-width, $header-max-width);
+
   $article-min-width: 320px;
   $article-max-width: 780px;
   $article-width: minmax($article-min-width, $article-max-width);
 
-  main.content {
+  header {
+    display: grid;
+    grid-template-columns: 1fr $header-width 1fr;
+    margin-bottom: 2em;
+
+    .back-link {
+      grid-column: 2;
+      justify-self: start;
+      text-decoration: 1px solid underline transparent;
+      text-underline-offset: 0.25em;
+      transition: text-decoration-color var(--theme-transition);
+
+      &:hover,
+      &:focus {
+        text-decoration-color: currentColor;
+      }
+    }
+
+    .post-title {
+      grid-column: 2;
+      font-size: var(--text-3xl);
+    }
+  }
+
+  main {
     display: grid;
     grid-template-columns: 1fr $article-width 1fr;
 

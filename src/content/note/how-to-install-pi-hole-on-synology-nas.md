@@ -4,6 +4,16 @@ publishDate: 2025-05-27 00:00:00
 draft: true
 ---
 
+If you already own a Synology NAS, deploying [Pi-hole](pi-hole) leverages hardware you already have. Most modern Synology NAS support Docker (now called Container Manager in DSM). This allows for a clean, isolated installation of Pi-hole. Updating and managing the Pi-hole container is generally straightforward.
+
+Synology NSA are designed to be powered on 24/7 for file storage, backups, and other services. This makes them an ideal host for Pi-hole, which functions as a DNS sinkhole and needs to be constantly available to filter network traffic for all connected devices.
+
+Pi-hole is a lightweight application with minimal CPU and RAM requirements, so it typically won't noticeably impact the performance of your NAS's primary functions.
+
+Once Pi-hole is set as the DNS server for your network (configured in your router), it blocks advertisements and tracking domains for *all* devices connected to your network without needing to install ad-blocking software on each individual client. It can also block domains known to serve malware, phishing sites, and other malicious content, adding an extra layer of security to your network.
+
+Thought, my most usage for Pi-hole primarily is for the **DNS caching**. When the devices needs to resolve a domain name (e.g., `www.google.com`) into an IP address, it queries Pi-hole. For cached entries, the DNS response time is significantly faster because Pi-hole responds directly from its local cache rather than making a round trip to an external upstream DNS server (e.g., Google DNS, Cloudflare, etc.). Queries are resolved at the speed of my local network, which is much faster than querying servers across the internet. This reduce the initial delay when loading website and make surfing the web feel snappier.
+
 `docker-compose.yml` file:
 
 ```yaml
