@@ -51,6 +51,7 @@ const { title } = Astro.props;
 
     .post-title {
       grid-column: 2;
+      font-family: var(--font-brand);
       font-size: var(--text-3xl);
     }
   }
@@ -61,9 +62,12 @@ const { title } = Astro.props;
 
     article {
       grid-column: 2;
-      font-size: var(--text-lg);
 
-      & > :global(* + *) {
+      // This CSS rule add vertical spacing between direct child elements
+      // of an element with the class `content`, but without adding space
+      // above the very first child.
+      & > :global(* + *),
+      :global(li) {
         margin-top: 1rem;
       }
     }

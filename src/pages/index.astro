@@ -41,7 +41,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
 	$time-per-word: 2s;
 
 	// Defines the visible height for one word. Adjust based on font.
-	$word-actual-line-height: 1.5em;
+	$word-actual-line-height: 1.7em;
 
 	// Total time for one full loop (e.g., 2s per word).
 	$animation-duration-total: $number-of-words * $time-per-word;
@@ -50,6 +50,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
 		#typed-output {
 			display: inline-block;
 			position: relative;
+			font-family: var(--font-brand);
 			font-size: 3em;
 			font-weight: 600;
 
@@ -180,7 +181,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
 		const typingSpeedPerChar = 50;
 
 		/// Delay in milliseconds before typing starts.
-		const initialDisplayDelay = 1000;
+		const initialDisplayDelay = 500;
 
 		async function startTypingEffect() {
 			const characters = textToType.split('');
