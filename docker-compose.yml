@@ -19,7 +19,10 @@ services:
       # by an empty or different `node_modules` directory potentially present
       # on the host mount.
       # It's also improves performance on Docker Desktop (Mac/Win).
-      - /app/node_modules
+      - data:/app/node_modules
     # Ensure the container stays running (useful for dev servers).
     stdin_open: true
     tty: true
+
+volumes:
+  data: {}
