@@ -1,0 +1,57 @@
+---
+---
+
+<article>
+  <div class="content">
+    <slot />
+  </div>
+</article>
+
+<style lang="scss">
+  $article-min-width: 320px;
+  $article-max-width: 780px;
+  $article-width: minmax($article-min-width, $article-max-width);
+
+  $table-border-color: var(--gray-700);
+  $table-cell-padding: 10px;
+
+  article {
+    display: grid;
+    grid-template-columns: 1fr $article-width 1fr;
+
+    .content {
+      grid-column: 2;
+
+      // This CSS rule add vertical spacing between direct child elements
+      // of an element with the class `content`, but without adding space
+      // above the very first child.
+      & > :global(* + *),
+      :global(li) {
+        margin-top: 1rem;
+      }
+
+      & :global(table) {
+        width: 100%;
+        font-size: var(--text-sm);
+        border: 1px solid $table-border-color;
+        border-collapse: collapse;
+
+        & > :global(thead) > :global(tr) {
+          background: var(--table-header-background);
+
+          & > :global(th) {
+            text-align: center;
+            vertical-align: middle;
+            padding: $table-cell-padding;
+            border: 1px solid $table-border-color;
+          }
+        }
+
+        & > :global(tbody) > :global(tr) > :global(td) {
+          padding: $table-cell-padding;
+          border: 1px solid $table-border-color;
+        }
+      }
+    }
+  }
+</style>
