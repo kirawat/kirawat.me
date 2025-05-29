@@ -8,7 +8,7 @@ If you already own a Synology NAS, deploying [Pi-hole](pi-hole) leverages hardwa
 
 Synology NSA are designed to be powered on 24/7 for file storage, backups, and other services. This makes them an ideal host for Pi-hole, which functions as a DNS sinkhole and needs to be constantly available to filter network traffic for all connected devices.
 
-Pi-hole is a lightweight application with minimal CPU and RAM requirements, so it typically won't noticeably impact the performance of your NAS's primary functions. However, if your usage of NAS is a heavy one, and the tasks occasionally spike up CPU and RAM usage, you might want to consider putting Pi-hole on another device, like Raspberries Pi instead.
+Pi-hole is a lightweight application with minimal CPU and RAM requirements, so it typically won't noticeably impact the performance of your NAS's primary functions. However, if your usage of NAS is a heavy one, and the tasks occasionally spike up CPU and RAM usage, you might want to consider putting Pi-hole on another device, like Raspberry Pi instead.
 
 Once Pi-hole is set as the DNS server for your network (configured in your router), it blocks advertisements and tracking domains for *all* devices connected to your network without needing to install ad-blocking software on each individual client. It can also block domains known to serve malware, phishing sites, and other malicious content, adding an extra layer of security to your network.
 
