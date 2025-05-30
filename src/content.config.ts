@@ -42,9 +42,9 @@ const blog = defineCollection({
   schema: basePostSchema,
 });
 
-const note = defineCollection({
+const notes = defineCollection({
   loader: glob({
-    base: './src/content/note',
+    base: './src/content/notes',
     pattern: ['**/*.{md,mdx}'],
   }),
   schema: z.object({
