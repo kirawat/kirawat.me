@@ -5,6 +5,8 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 // @ts-ignore
 import sitemap from '@astrojs/sitemap';
+// @ts-ignore
+import rehypeAstroRelativeMarkdownLinks from "astro-rehype-relative-markdown-links";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +16,9 @@ export default defineConfig({
         usePolling: true,
       },
     },
+  },
+  markdown: {
+    rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
   },
   integrations: [mdx(), sitemap()],
 });

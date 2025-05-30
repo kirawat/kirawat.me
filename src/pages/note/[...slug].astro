@@ -1,14 +1,14 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
-import NoteLayout from '../layouts/NoteLayout.astro';
+import NoteLayout from '../../layouts/NoteLayout.astro';
 
 interface Props {
-  entry: CollectionEntry<'notes'>;
+  entry: CollectionEntry<'note'>;
 }
 
 export async function getStaticPaths() {
-  const blog = await getCollection('notes');
+  const blog = await getCollection('note');
   return blog.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },

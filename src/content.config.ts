@@ -42,9 +42,9 @@ const blog = defineCollection({
   schema: basePostSchema,
 });
 
-const notes = defineCollection({
+const note = defineCollection({
   loader: glob({
-    base: './src/content/notes',
+    base: './src/content/note',
     pattern: ['**/*.{md,mdx}'],
   }),
   schema: z.object({
@@ -55,5 +55,5 @@ const notes = defineCollection({
 
 export const collections = {
   blog,
-  notes,
+  note,
 }

@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const notes = (await getCollection('notes')).sort(
+const blogPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
@@ -11,9 +11,9 @@ const notes = (await getCollection('notes')).sort(
 <BaseLayout>
   <ul>
     {
-      notes.map((note) => (
+      blogPosts.map((post) => (
         <li>
-          <a href={`../${note.id}`}>{note.data.title}</a>
+          <a href={`/blog/${post.id}`}>{post.data.title}</a>
         </li>
       ))
     }
