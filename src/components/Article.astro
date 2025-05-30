@@ -26,15 +26,27 @@
       // of an element with the class `content`, but without adding space
       // above the very first child.
       & > :global(* + *),
-      :global(li) {
+      & :global(li:has(> p)),
+      & :global(ul > li > ul > li:only-child) {
         margin-top: 1rem;
       }
 
+      & :global(ul > li:has(table) > p) {
+        margin-bottom: 1rem;
+      }
+
+      // Table styling.
       & :global(table) {
         width: 100%;
         font-size: var(--text-sm);
         border: 1px solid $table-border-color;
         border-collapse: collapse;
+
+        & :global(th),
+        & :global(td) {
+          padding: $table-cell-padding;
+          border: 1px solid $table-border-color;
+        }
 
         & > :global(thead) > :global(tr) {
           background: var(--table-header-background);
@@ -42,14 +54,12 @@
           & > :global(th) {
             text-align: center;
             vertical-align: middle;
-            padding: $table-cell-padding;
-            border: 1px solid $table-border-color;
-          }
-        }
 
-        & > :global(tbody) > :global(tr) > :global(td) {
-          padding: $table-cell-padding;
-          border: 1px solid $table-border-color;
+            // Hide empty table headers.
+            &:empty {
+              display:none;
+            }
+          }
         }
       }
     }

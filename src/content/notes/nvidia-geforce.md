@@ -39,7 +39,11 @@ If you have plenty of space on your primary SSD (especially if it's a fast NVMe 
 ## G-Sync Setup Recommendation
 
 1. **NVIDIA Control Panel:** G-Sync = ON
+
 2. **NVIDIA Control Panel:** V-Sync = ON
+
 3. **NVIDIA Control Panel:** Low Latency Mode = On (or Ultra if you meet the criteria above)
+
 4. **NVIDIA Control Panel or In-Game:** Max Frame Rate = Set 3-5 FPS below your monitor's max refresh rate (e.g., 141 FPS for 144Hz monitor, 237 FPS for 240Hz). This ensures G-Sync stays active and avoids V-Sync-related latency at the refresh rate ceiling.
+
 5. **In-Game Settings:** Disable V-Sync (usually), enable NVIDIA Reflex if available (often includes latency reduction similar to Low Latency Mode and can work alongside it).
