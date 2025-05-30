@@ -24,3 +24,4 @@ Input the code to receive the gift: **Menu** -> **Gifts** -> **Gift Code Entry**
 ## Patch Notes
 
 * [Version 1.2.1](patch-note/ver_1_2_1.md) \[2025-05-29\]
+* [Version 1.1.4](patch-note/ver_1_1_4.md) \[2025-05-22\]

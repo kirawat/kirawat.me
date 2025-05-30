@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
-import NoteLayout from '../../layouts/NoteLayout.astro';
+import NotesLayout from '../../layouts/NotesLayout.astro';
 
 interface Props {
   entry: CollectionEntry<'notes'>;
@@ -19,6 +19,6 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<NoteLayout title={entry.data.title}>
+<NotesLayout title={entry.data.title}>
   <Content />
-</NoteLayout>
+</NotesLayout>
