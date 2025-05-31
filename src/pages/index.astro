@@ -137,7 +137,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
 		@for $i from 0 to $number-of-words {
 			// Calculate the percentage of the total animation duration that
 			// each word's "slot" occupies.
-			$percentagePerSlot: 100% / $number-of-words;
+			$percentagePerSlot: calc(100% / $number-of-words);
 
 			// Calculate the start of the "hold" period for the current word.
 			$startHoldPercentage: $i * $percentagePerSlot;
