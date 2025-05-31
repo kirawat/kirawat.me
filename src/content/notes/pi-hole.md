@@ -19,3 +19,7 @@ Pi-hole uses `pihole-FTL` (Faster Than Light), which includes a modified version
 5. **Serving the Requesting Device:** Pi-hole then sends the IP address to the device that originally made the request.
 
 6. **Subsequent Queries (Cache Hit):** Now, if another device on your network (or the same device) requests the *same domain name* while the entry is still valid in Pi-hole's cache (i.e., before its TTL expires), Pi-hole can immediately respond with the IP address from its cache. It doesn't need to go out to the upstream DNS server again.
+
+## See also
+
+* [How to Install Pi-hole on Synology NAS](how-to-install-pi-hole-on-synology-nas.md)

@@ -4,6 +4,57 @@ publishDate: 2025-05-28 00:00:00
 draft: true
 ---
 
+## 3D Settings
+
+Settings are based on Monica J. White's ["How to optimize Nvidia Control Panel settings for gaming and overall performance"](https://www.digitaltrends.com/computing/best-nvdia-control-panel-settings/) on *Digital Trends*.[^1] Originally, this configuration aiming for high frame rates in games, well-suited for competitive games where responsiveness is key, but I have adjusted it to have a good balance between frame rates and image quality.
+
+| Feature                                                     | Setting                                                                              |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Image Scaling                                               | Off                                                                                  |
+| Ambient Occulusion                                          | Performance                                                                          |
+| Anisotropic filtering                                       | Application-controlled                                                               |
+| Antialiasing - FXAA                                         | Off                                                                                  |
+| Antialiasing - Gamma correction                             | On                                                                                   |
+| Antialiasing - Mode                                         | Application-controlled                                                               |
+| Antialiasing - Setting                                      | Application-controlled                                                               |
+| Antialiasing - Transparency                                 | Off                                                                                  |
+| Background Application Max Frame Rate                       | Off                                                                                  |
+| CUDA - GPUs                                                 | All                                                                                  |
+| CUDA - Sysmem Fallback Policy                               | Driver Default                                                                       |
+| DSR - Factors                                               | Off                                                                                  |
+| DSR - Smoothness                                            | Off                                                                                  |
+| [Low Latency Mode](#low-latency-mode)                       | On                                                                                   |
+| Max Frame Rate                                              | Off<br>(For G-Sync Monitor: set it 3-5 FPS below<br>your monitor's max refresh rate) |
+| Monitor Technology                                          | G-SYNC Compatible (if compatible)                                                    |
+| Multi-Frame Sampled AA (MFAA)                               | Off                                                                                  |
+| OpenGL GDI compatibility                                    | Auto                                                                                 |
+| OpenGL rendering GPU                                        | Auto-select                                                                          |
+| Power management mode                                       | Prefer maximum performance                                                           |
+| Preferred refresh rate                                      | Highest available                                                                    |
+| [Shader Cache Size](#shader-cache-size)                     | Driver Default                                                                       |
+| Texture filtering - Anisotropic sample optimization         | On                                                                                   |
+| Texture filtering - Negative LOD bias                       | Allow                                                                                |
+| Texture filtering - Quality                                 | Quality                                                                              |
+| Texture filtering - Trilinear optimization                  | On                                                                                   |
+| Threaded optimization                                       | Auto                                                                                 |
+| Triple buffering                                            | Off                                                                                  |
+| [Vertical sync](#vertical-sync)                             | On                                                                                   |
+| Virtual Reality pre-rendered frames                         | 1                                                                                    |
+| Virtual Reality - Variable Rate Super Sampling              | Off                                                                                  |
+| Vulkan/OpenGL present method                                | Prefer layered on DXGI Swapchain                                                     |
+
+## G-Sync Setup Recommendation
+
+1. **NVIDIA Control Panel:** G-Sync = ON
+
+2. **NVIDIA Control Panel:** V-Sync = ON
+
+3. **NVIDIA Control Panel:** Low Latency Mode = On (or Ultra if you meet the criteria above)
+
+4. **NVIDIA Control Panel or In-Game:** Max Frame Rate = Set 3-5 FPS below your monitor's max refresh rate (e.g., 141 FPS for 144Hz monitor, 237 FPS for 240Hz). This ensures G-Sync stays active and avoids V-Sync-related latency at the refresh rate ceiling.
+
+5. **In-Game Settings:** Disable V-Sync (usually), enable NVIDIA Reflex if available (often includes latency reduction similar to Low Latency Mode and can work alongside it).
+
 ## Low Latency Mode
 
 Low Latency Mode works by reducing the number of frames the CPU prepares ahead of the GPU (the render queue).
@@ -36,14 +87,5 @@ If you have plenty of space on your primary SSD (especially if it's a fast NVMe 
 
 **"Fast Sync"** is only works well when your GPU can consistently produce frame rates *significantly higher* than your monitor's refresh rate (ideally 2x or even 3x the refresh rate). For example, on a 60Hz monitor, you'd want well over 120 FPS for Fast Sync to be effective. If your frame rate drops below your monitor's refresh rate, Fast Sync behaves essentially like V-Sync "Off" in that region - you might see stutter or judder, and it offers no smoothing benefit.
 
-## G-Sync Setup Recommendation
 
-1. **NVIDIA Control Panel:** G-Sync = ON
-
-2. **NVIDIA Control Panel:** V-Sync = ON
-
-3. **NVIDIA Control Panel:** Low Latency Mode = On (or Ultra if you meet the criteria above)
-
-4. **NVIDIA Control Panel or In-Game:** Max Frame Rate = Set 3-5 FPS below your monitor's max refresh rate (e.g., 141 FPS for 144Hz monitor, 237 FPS for 240Hz). This ensures G-Sync stays active and avoids V-Sync-related latency at the refresh rate ceiling.
-
-5. **In-Game Settings:** Disable V-Sync (usually), enable NVIDIA Reflex if available (often includes latency reduction similar to Low Latency Mode and can work alongside it).
+[^1]: White, Monica J. ["How to optimize Nvidia Control Panel settings for gaming and overall performance"](https://www.digitaltrends.com/computing/best-nvdia-control-panel-settings/). *Digital Trends*. [Archived](https://web.archive.org/web/20240723074017/https://www.digitaltrends.com/computing/best-nvdia-control-panel-settings/) from the original on July 23, 2024. Retrieved on October 11, 2023.
