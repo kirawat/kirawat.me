@@ -73,16 +73,16 @@
 	--font-body: 'IBM Plex Sans', var(--font-system);
   --font-brand: 'Rubik', var(--font-system);
 
-	// --- Table ---
-	--table-header-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-
 	// --- Code ---
 	--code-bg: #ffffff;
 
+	// --- Table ---
+	--table-header-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+
 	// --- Scroll Bar ---
-	--scrollbar-rgb: 255, 255, 255;
+	--scrollbar-rgb: 0, 0, 0;
 	--scrollbar-bg: rgba(var(--scrollbar-rgb), 0);
-	--scrollbar-thumb-bg: rgba(var(--scrollbar-rgb), 0.15);
+	--scrollbar-thumb-bg: rgba(var(--scrollbar-rgb), 0.16);
 	--scrollbar-thumb-bg-active: rgba(var(--scrollbar-rgb), 0.25);
 }
 
@@ -122,6 +122,15 @@
 
 	// --- Code ---
 	--code-bg: #24292e;
+
+	// --- Table ---
+	--table-header-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+
+	// --- Scroll Bar ---
+	--scrollbar-rgb: 255, 255, 255;
+	--scrollbar-bg: rgba(var(--scrollbar-rgb), 0);
+	--scrollbar-thumb-bg: rgba(var(--scrollbar-rgb), 0.15);
+	--scrollbar-thumb-bg-active: rgba(var(--scrollbar-rgb), 0.25);
 }
 
 *,
