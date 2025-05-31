@@ -18,7 +18,15 @@ export default defineConfig({
     },
   },
   markdown: {
-    rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+    },
+    rehypePlugins: [
+      rehypeAstroRelativeMarkdownLinks,
+    ],
   },
   integrations: [mdx(), sitemap()],
 });

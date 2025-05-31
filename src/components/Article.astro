@@ -35,7 +35,7 @@
         margin-bottom: 1rem;
       }
 
-      // Table styling.
+      // --- Table styling ---
       & :global(table) {
         width: 100%;
         font-size: var(--text-sm);
@@ -58,6 +58,46 @@
             // Hide empty table headers.
             &:empty {
               display:none;
+            }
+          }
+        }
+      }
+
+      // --- Code Block ---
+      & :global(pre) {
+        position: relative;
+        font-size: var(--text-sm);
+        border-radius: 0.5rem;
+        border: 1px solid var(--gray-800);
+        overflow-x: auto;
+
+        :global(code) {
+          display: block;
+          width: max-content;
+          min-width: 100%;
+          padding: 1rem 1rem 1rem 0rem;
+          counter-reset: step;
+          // Prevent long lines from wrapping and enables horizontal scroll.
+          white-space: pre;
+
+          // Add line number to code block.
+          :global(.line) {
+            position: relative;
+            counter-increment: step;
+
+            &::before {
+              position: sticky;
+              display: inline-block;
+              margin-right: 0.5rem;
+              padding-right: 0.5rem;
+              left: 0;
+              width: 2.3rem;
+              height: 1.5rem;
+              text-align: right;
+              font-size: 0.75rem;
+              color: rgba(155, 138, 148, 0.4);
+              background-color: var(--code-bg);
+              content: counter(step);
             }
           }
         }
