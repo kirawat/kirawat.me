@@ -221,10 +221,11 @@
 
           & :global(.copy-code-button) {
             position: absolute;
-            top: 0.5em;
-            right: 0.5em;
+            top: 0;
+            right: 0;
             margin-top: 2px;
             cursor: pointer;
+            overflow-x: hidden;
             z-index: 1;
 
             background-image: var(--icon-copy);
@@ -236,15 +237,19 @@
             width: 34px;
             height: 34px;
             border: none;
-            padding: 0;
-            font-size: 0;
+            padding: 1px 14px 0 0;
+            font-size: var(--text-xs);
+            text-align: right;
             color: transparent;
-
             opacity: 0.3;
+            transition: width 0.2s ease-out, color 0.1s ease-in;
 
             &:hover,
             &:focus-visible {
+              width: 68px;
+              color: var(--gray-200);
               opacity: 1;
+              transition: width 0.2s ease-out, color 0.2s ease-in;
             }
 
             // Slight press effect.
@@ -253,16 +258,11 @@
             }
 
             &.copied {
+              width: 80px;
+              color: var(--gray-200);
               background-image: var(--icon-copied);
-              margin-right: 50px;
               opacity: 1;
-
-              &::after {
-                content: 'Copied!';
-                font-size: var(--text-xs);
-                color: var(--gray-400);
-                margin-left: 28px;
-              }
+              transition: width 0s linear 0s;
             }
           }
         }
@@ -403,6 +403,9 @@
   function addCopyToClipboardButtons(): void {
     const codeBlocks: NodeListOf<HTMLElement> = document.querySelectorAll('pre');
 
+    const copyText: string = 'Copy';
+    const copiedText: string = 'Copied!';
+
     codeBlocks.forEach((block: HTMLElement) => {
       // Ensure the <pre> block can contain a positioned element.
       if (getComputedStyle(block).position === 'static') {
@@ -411,7 +414,7 @@
 
       const copyButton = document.createElement('button');
       copyButton.className = 'copy-code-button';
-      //copyButton.textContent = 'Copied!';
+      copyButton.textContent = copyText;
       copyButton.setAttribute('aria-label', 'Copy to clipboard');
       copyButton.setAttribute('title', 'Copy to clipboard');
 
@@ -427,9 +430,11 @@
 
         await navigator.clipboard.writeText(codeToCopy);
         copyButton.classList.add('copied');
+        copyButton.textContent = copiedText;
 
         setTimeout(() => {
           copyButton.classList.remove('copied');
+          copyButton.textContent = copyText;
         }, 2000);
       });
     });
