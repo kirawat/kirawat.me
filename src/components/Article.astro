@@ -63,6 +63,12 @@
         }
       }
 
+      // --- Block Quote ---
+      & :global(blockquote) {
+        padding-inline-start: 2rem;
+        border-inline-start: 2px solid var(--accent-regular);
+      }
+
       // --- Code Block ---
       & :global(pre) {
         position: relative;
@@ -102,13 +108,18 @@
           }
         }
       }
-      
+
       // Divider
       :global(hr) {
         margin: 1.5rem 0 1.5rem 0;
         height: 1px;
         background-color: var(--gray-800);
         border: none;
+      }
+
+      // Footer
+      :global(.footnotes > ol > li) {
+        font-size: var(--text-sm);
       }
     }
   }
