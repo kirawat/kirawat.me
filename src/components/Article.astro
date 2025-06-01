@@ -229,7 +229,7 @@
 
             background-image: var(--icon-copy);
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: left;
             background-size: 20px 20px;
             background-color: transparent;
 
@@ -241,7 +241,6 @@
             color: transparent;
 
             opacity: 0.3;
-            transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out;
 
             &:hover,
             &:focus-visible {
@@ -255,7 +254,15 @@
 
             &.copied {
               background-image: var(--icon-copied);
+              margin-right: 50px;
               opacity: 1;
+
+              &::after {
+                content: 'Copied!';
+                font-size: var(--text-xs);
+                color: var(--gray-400);
+                margin-left: 28px;
+              }
             }
           }
         }
@@ -404,6 +411,7 @@
 
       const copyButton = document.createElement('button');
       copyButton.className = 'copy-code-button';
+      //copyButton.textContent = 'Copied!';
       copyButton.setAttribute('aria-label', 'Copy to clipboard');
       copyButton.setAttribute('title', 'Copy to clipboard');
 
