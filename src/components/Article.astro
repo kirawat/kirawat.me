@@ -26,6 +26,7 @@
       // of an element with the class `content`, but without adding space
       // above the very first child.
       & > :global(* + *),
+      & :global(blockquote > * + *),
       & :global(li:has(> p)),
       & :global(ul > li > ul > li:only-child) {
         margin-top: 1rem;
@@ -66,13 +67,18 @@
       // --- Block Quote ---
       & :global(blockquote) {
         padding-inline-start: 2rem;
+        color: var(--gray-400);
         border-inline-start: 2px solid var(--accent-regular);
       }
 
       // --- Code Block ---
+      & :global(pre > code) {
+        font-family: var(--font-code);
+      }
+
       & :global(pre) {
         position: relative;
-        font-size: var(--text-sm);
+        font-size: var(--text-xs);
         border-radius: 0.5rem;
         border: 1px solid var(--gray-800);
         overflow-x: auto;
@@ -82,9 +88,10 @@
           width: max-content;
           min-width: 100%;
           padding: 1rem 1rem 1rem 0rem;
-          counter-reset: step;
+          line-height: var(--code-line-height);
           // Prevent long lines from wrapping and enables horizontal scroll.
           white-space: pre;
+          counter-reset: step;
 
           // Add line number to code block.
           :global(.line) {

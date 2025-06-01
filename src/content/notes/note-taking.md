@@ -54,21 +54,21 @@ The purpose of permanent notes is to synthesise your own thoughts and insights b
 
 ### How These Notes Work Together
 
-1. Fleeting notes are processed and transformed into literature notes or reference notes.
+1. **Fleeting notes** are processed and transformed into **literature notes or reference notes**.
 
-2. Literature and reference notes provide the raw material for creating permanent notes.
+2. **Literature and reference notes** provide the raw material for creating **permanent notes**.
 
-3. Permanent notes become the building blocks of your knowledge base, allowing you to develop original ideas and make connections between different topics.
+3. **Permanent notes** become the building blocks of your knowledge base, allowing you to develop original ideas and make connections between different topics.
 
 ## Note-Taking Style
 
 There are three main note-taking style:
 
-* **[The architect](#architect):** They enjoy planning, designing processes and frameworks, and need a note-taking tool that allows them to easily structure their ideas.
+* **[The architect](#architect)** — They enjoy planning, designing processes and frameworks, and need a note-taking tool that allows them to easily structure their ideas.
 
-* **[The gardener](#gardener):** They enjoy exploring, connecting various thoughts together, and need a note-taking tool that allows them to easily grow their ideas.
+* **[The gardener](#gardener)** — They enjoy exploring, connecting various thoughts together, and need a note-taking tool that allows them to easily grow their ideas.
 
-* **[The librarian](#librarian):** They enjoy collecting, building a catalogue of resources, and need a note-taking tool that allows them to easily retrieve their ideas.
+* **[The librarian](#librarian)** — They enjoy collecting, building a catalogue of resources, and need a note-taking tool that allows them to easily retrieve their ideas.
 
 ### Architect
 
