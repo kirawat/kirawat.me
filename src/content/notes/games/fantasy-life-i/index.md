@@ -4,6 +4,11 @@ publishDate: 2025-05-28 00:00:00
 draft: false
 ---
 
+|             |                                                                                                          |
+| ----------- | -------------------------------------------------------------------------------------------------------- |
+| Platforms   | Nintendo Switch<br>Nintendo Switch 2<br>PlayStation 5<br>Xbox Series X and Series S<br>Microsoft Windows |
+| Engines     | Unreal Engine 5                                                                                          |
+
 ## Launch Command
 
 You can enable resolution adjustment on SteamOS by using this launch command:
