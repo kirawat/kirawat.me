@@ -1,6 +1,7 @@
 ---
 title: "Pi-hole"
-publishDate: 2025-05-27 00:00:00
+publishDate: 2025-05-27 00:00:00 +0700
+modifiedDate: 2025-05-27 00:00:00 +0700
 draft: true
 ---
 

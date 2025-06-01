@@ -52,12 +52,12 @@
           padding: 4px 8px 4px 0;
           left: -1.7rem;
           top: 55%;
-          transform: translateY(-50%);
-          opacity: 0;
-          transition: opacity 0.15s ease-in-out;
           cursor: pointer;
           font-size: 1rem;
           text-decoration: none;
+          opacity: 0;
+          transform: translateY(-50%);
+          transition: opacity 0.14s ease-in-out;
         }
 
         &:hover :global(.link-icon) {
@@ -179,14 +179,14 @@
       // --- Block Quote ---
       & :global(blockquote) {
         padding-inline-start: 1.2rem;
-        color: var(--gray-400);
+        color: var(--blockquote-text-color);
         border-inline-start: 2px solid var(--accent-overlay);
       }
 
       // --- Inline Code ---
       & :global(* > code:not(pre > code)) {
         display: inline-block;
-        padding: 2px 8px;
+        padding: 2px 4px;
         line-height: 1rem;
         font-family: var(--font-code);
         font-size: var(--text-2xs);
@@ -367,6 +367,7 @@
     'plaintext': 'Text',
     'scss': 'SCSS',
     'sql': 'SQL',
+    'toml': 'TOML',
     'typescript': 'TypeScript',
     'yaml': 'YAML',
   }

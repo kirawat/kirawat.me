@@ -1,7 +1,10 @@
 ---
 title: "NVIDIA GeForce"
-publishDate: 2025-05-28 00:00:00 +0000
+publishDate: 2025-05-28 00:00:00 +0700
+modifiedDate: 2025-05-28 00:00:00 +0700
 draft: true
+tags:
+  - "Computer"
 ---
 
 ## 3D Settings
@@ -24,7 +27,7 @@ Settings are based on Monica J. White's ["How to optimize Nvidia Control Panel s
 | DSR - Factors                                               | Off                                                                                  |
 | DSR - Smoothness                                            | Off                                                                                  |
 | [Low Latency Mode](#low-latency-mode)                       | On                                                                                   |
-| Max Frame Rate                                              | Off<br>(For G-Sync Monitor: set it 3-5 FPS below<br>your monitor's max refresh rate) |
+| [Max Frame Rate](#max-frame-rate)                           | Off<br>(For G-Sync Monitor: set it 3-5 FPS below<br>your monitor's max refresh rate) |
 | Monitor Technology                                          | G-SYNC Compatible (if compatible)                                                    |
 | Multi-Frame Sampled AA (MFAA)                               | Off                                                                                  |
 | OpenGL GDI compatibility                                    | Auto                                                                                 |
@@ -49,9 +52,9 @@ Settings are based on Monica J. White's ["How to optimize Nvidia Control Panel s
 
 2. **NVIDIA Control Panel:** V-Sync = ON
 
-3. **NVIDIA Control Panel:** Low Latency Mode = On (or Ultra if you meet the criteria above)
+3. **NVIDIA Control Panel:** Low Latency Mode = On (or Ultra if you meet the [criteria](#low-latency-mode))
 
-4. **NVIDIA Control Panel or In-Game:** Max Frame Rate = Set 3-5 FPS below your monitor's max refresh rate (e.g., 141 FPS for 144Hz monitor, 237 FPS for 240Hz). This ensures G-Sync stays active and avoids V-Sync-related latency at the refresh rate ceiling.
+4. **NVIDIA Control Panel or In-Game:** [Max Frame Rate](#max-frame-rate) = Set 3-5 FPS below your monitor's max refresh rate (e.g., 141 FPS for 144Hz monitor, 237 FPS for 240Hz). This ensures G-Sync stays active and avoids V-Sync-related latency at the refresh rate ceiling.
 
 5. **In-Game Settings:** Disable V-Sync (usually), enable NVIDIA Reflex if available (often includes latency reduction similar to Low Latency Mode and can work alongside it).
 
@@ -70,6 +73,14 @@ If your GPU is the bottleneck (GPU usage is near 95-100%), the impact of "Ultra"
 **"On"** is generally good enough for the vast majority of gaming scenarios. Setting Low Latency Mode to "On" provides a significant reduction in input lag compared to "Off" with minimal to no performance cost. It's a very effective setting and a great starting point.
 
 **"Ultra"** aims to shave off a few extra milliseconds of latency compared to "On". If you play highly competitive, fast-paced games (like esports FPS titles) where every millisecond counts, and you are primarily GPU-bound (so you don't take an FPS hit), and you are sensitive enough to potentially feel the slight difference, it might be worth it to use this mode.
+
+## Max Frame Rate
+
+It's recommended to set the maximum frame rate for a G-Sync monitor to around 3-5 FPS below the monitor's maximum refresh rate primarily to ensure G-Sync remains active and to avoid potential issues that can arise when the frame rate hits or exceeds the monitor's limit.
+
+G-Sync technology works by dynamically adjusting the monitor's refresh rate to match the frame rate of your GPU. This eliminates screen tearing and reduces stutter and input lag. However, G-Sync operates within a specific range, typically from a certain minimum FPS (e.g., 30 FPS) up to the monitor's maximum refresh rate (e.g., 144Hz, 240Hz). If your game's FPS consistently reaches or exceeds the monitor's maximum refresh rate, G-Sync effectively disengages. The monitor then reverts to a fixed refresh rate behavior.
+
+The transition between G-Sync being active and V-Sync taking over (or G-Sync disengaging and screen tearing appearing if V-Sync is off) can sometimes cause a perceptible stutter or judder. Keeping the frame rate within the G-Sync operating range by capping it slightly below the maximum helps to avoid these jarring transitions.
 
 ## Shader Cache Size
 

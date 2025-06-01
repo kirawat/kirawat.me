@@ -1,6 +1,7 @@
 ---
 title: "Fantasy Life i: The Girl Who Steals Time - Patch Notes"
-publishDate: 2025-05-29
+publishDate: 2025-05-29 00:00:00 +0700
+modifiedDate: 2025-05-29 00:00:00 +0700
 draft: false
 ---
 

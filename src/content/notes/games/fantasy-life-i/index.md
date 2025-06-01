@@ -1,6 +1,7 @@
 ---
 title: "Fantasy Life i: The Girl Who Steals Time"
-publishDate: 2025-05-28 00:00:00
+publishDate: 2025-05-28 00:00:00 +0700
+modifiedDate: 2025-05-28 00:00:00 +0700
 draft: false
 ---
 

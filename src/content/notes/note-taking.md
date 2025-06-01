@@ -1,6 +1,7 @@
 ---
 title: "Note-Taking"
-publishDate: 2025-06-01 00:00:00 +0000
+publishDate: 2025-06-01 00:00:00 +0700
+modifiedDate: 2025-06-01 00:00:00 +0700
 draft: false
 ---
 
