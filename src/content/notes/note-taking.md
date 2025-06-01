@@ -64,11 +64,11 @@ The purpose of permanent notes is to synthesise your own thoughts and insights b
 
 There are three main note-taking style:
 
-* **[The architect](#architect)** — They enjoy planning, designing processes and frameworks, and need a note-taking tool that allows them to easily structure their ideas.
+* [The architect](#architect) — They enjoy planning, designing processes and frameworks, and need a note-taking tool that allows them to easily structure their ideas.
 
-* **[The gardener](#gardener)** — They enjoy exploring, connecting various thoughts together, and need a note-taking tool that allows them to easily grow their ideas.
+* [The gardener](#gardener) — They enjoy exploring, connecting various thoughts together, and need a note-taking tool that allows them to easily grow their ideas.
 
-* **[The librarian](#librarian)** — They enjoy collecting, building a catalogue of resources, and need a note-taking tool that allows them to easily retrieve their ideas.
+* [The librarian](#librarian) — They enjoy collecting, building a catalogue of resources, and need a note-taking tool that allows them to easily retrieve their ideas.
 
 ### Architect
 

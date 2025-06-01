@@ -124,7 +124,7 @@ If you're not using Pi-hole as NTP server, you can disable the NTP under **Setti
 
 This indicates that another service is using port 53, which is the standard port for DNS. This prevents Pi-hole's DNS service from starting.
 
-If you're using Pi-hole on Synology NAS, make sure to uninstall **DNS Server** package, then restart Pi-hole.
+If you're using Pi-hole on Synology NAS, make sure to **uninstall DNS Server package**, then restart Pi-hole.
 
 ## External Links
 
