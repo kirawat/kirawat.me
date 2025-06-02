@@ -4,16 +4,21 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev --host",
-    "build": "astro build",
+    "build": "astro build && npm run pagefind",
     "preview": "astro preview --host",
-    "astro": "astro"
+    "astro": "astro",
+    "pagefind": "npx pagefind --site dist"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/sitemap": "^3.3.1",
+    "astro": "^5.8.0",
+    "astro-compress": "^2.3.8",
     "astro-rehype-relative-markdown-links": "^0.18.1",
     "rehype-external-links": "^3.0.0",
-    "astro": "^5.8.0",
     "sass": "^1.87.0"
+  },
+  "devDependencies": {
+    "pagefind": "^1.3.0"
   }
 }

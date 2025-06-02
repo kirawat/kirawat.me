@@ -1,0 +1,163 @@
+---
+---
+
+<div id="searchModalOverlay" class="search-modal-overlay">
+  <div class="search-modal-content">
+    <div id="search"></div>
+  </div>
+</div>
+
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    // Initialize PagefindUI.
+    if (typeof PagefindUI !== 'undefined') {
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+      });
+    } else {
+      console.error("PagefindUI is not defined. Check if /pagefind/pagefind-ui.js loaded correctly.");
+    }
+
+    const openSearchButton = document.getElementById('openSearchButton');
+    const searchModalOverlay = document.getElementById('searchModalOverlay');
+
+    function openSearchModal() {
+      searchModalOverlay.classList.add('active');
+      setTimeout(() => {
+        const pagefindSearchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
+        if (pagefindSearchInput) {
+          pagefindSearchInput.focus();
+        }
+      }, 100);
+    }
+
+    function closeSearchModal() {
+      searchModalOverlay.classList.remove('active');
+    }
+
+    function focusSearchInput() {
+      const searchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
+      if (searchInput) {
+        searchInput.focus();
+      }
+    }
+
+    // Open search modal when clicking on search button.
+    if (openSearchButton) {
+      openSearchButton.addEventListener('click', openSearchModal);
+    }
+
+    // Close search modal when clicking outside of it.
+    if (searchModalOverlay) {
+      searchModalOverlay.addEventListener('click', (event) => {
+        if (event.target === searchModalOverlay) {
+          closeSearchModal();
+        }
+      });
+    }
+
+    // Add keyboard events.
+    document.addEventListener('keydown', (event) => {
+      // Open search modal when press Ctrl+O (Windows/Linux) or Cmd+O (macOS).
+      if ((event.ctrlKey || event.metaKey) && event.key === 'o') {
+        event.preventDefault();
+        if (searchModalOverlay.classList.contains('active')) {
+          focusSearchInput();
+        } else {
+          openSearchModal();
+        }
+      }
+      // Close search modal with Escape key.
+      if (event.key === 'Escape' && searchModalOverlay && searchModalOverlay.classList.contains('active')) {
+        closeSearchModal();
+      }
+    });
+
+    const pagefindClearButton = document.getElementByClassName('pagefind-ui__search-clear');
+    if (pagefindClearButton) {
+      pagefindClearButton.textContent = '&times;';
+    }
+  });
+</script>
+
+<style lang="scss">
+  $transition-duration: 0.2s;
+
+  :global(:root) {
+    --pagefind-ui-text: var(--text-normal);
+    --pagefind-ui-background: #fff;
+    --pagefind-ui-border: var(--accent-dark);
+    --pagefind-ui-font: var(--font-body);
+    --pagefind-ui-border-width: 1px;
+
+    &.theme-dark {
+      --pagefind-ui-background: #17181c;
+      --pagefind-ui-border: var(--gray-700);
+    }
+  }
+
+  :global(.pagefind-ui__search-input) {
+    font-weight: 400 !important;
+
+    &:focus,
+    &:focus-visible {
+      border-color: var(--accent-regular) !important;
+      box-shadow: 0 0 0 1px var(--accent-regular) !important;
+      outline: none !important;
+    }
+  }
+
+  :global(.pagefind-ui__message) {
+    font-weight: 400 !important;
+  }
+
+  :global(.pagefind-ui--reset mark) {
+    color: var(--text-normal);
+    background-color: var(--accent-overlay) !important;
+  }
+
+  .search-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10vh;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition-duration ease, visibility 0s linear $transition-duration;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity $transition-duration ease;
+    }
+  }
+
+  .search-modal-content {
+    background-color: var(--gray-999);
+    color: var(--text-normal);
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+  }
+
+  .search-modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-normal);
+    cursor: pointer;
+  }
+</style>

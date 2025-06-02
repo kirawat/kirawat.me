@@ -1,6 +1,7 @@
 ---
 import { env } from '../consts';
 
+import SearchButton from '../components/SearchButton.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 
 interface Props {
@@ -44,6 +45,7 @@ const isCurrentPage = (href: string) => {
           ))
         }
       </ul>
+    <div class="search-button"><SearchButton /></div>
     <div class="theme-toggle"><ThemeToggle /></div>
   </div>
 </nav>
@@ -89,7 +91,7 @@ const isCurrentPage = (href: string) => {
         line-height: 1.2;
         list-style: none;
         margin: 0;
-        padding: 0 2rem 0.36rem 0;
+        padding: 0 0 0.36rem 0;
 
         .link {
           display: inline-block;
@@ -102,6 +104,11 @@ const isCurrentPage = (href: string) => {
         }
       }
 
+      .search-button {
+        margin-right: 0.36rem;
+      }
+
+      .search-button,
       .theme-toggle {
         display: flex;
         height: calc(var(--icon-size) + 2 * var(--icon-padding));

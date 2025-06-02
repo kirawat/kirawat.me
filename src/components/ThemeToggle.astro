@@ -19,68 +19,57 @@ import Icon from './Icon.astro';
     cursor: pointer;
     padding: 0;
 
-    &[aria-pressed='false'] .icon.light {
-      color: var(--accent-text-over);
-    }
-
     .icon {
       z-index: 1;
       position: relative;
       display: flex;
       width: 2rem;
       height: 2rem;
-      color: var(--accent-overlay);
       font-size: 1rem;
+      color: var(--accent-overlay);
       padding: 0.5rem;
-    }
-  }
 
-  .icon {
-    z-index: 1;
-    position: relative;
-    display: flex;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
-    color: var(--accent-overlay);
-    padding: 0.5rem;
+      &.light {
+        :global(html:not(.theme-dark)) & {
+          color: var(--accent-text-over);
+        }
 
-    &.light {
-      :global(html:not(.theme-dark)) & {
-        color: var(--accent-text-over);
+        &::before {
+          content: '';
+          z-index: -1;
+          position: absolute;
+          inset: 0;
+          background-color: var(--accent-regular);
+          border-radius: 999rem;
+
+          :global(.theme-dark) & {
+            transform: translateX(100%);
+          }
+
+          @media (forced-colors: active) {
+            background-color: SelectedItem;
+          }
+        }
       }
 
-      &::before {
-        content: '';
-        z-index: -1;
-        position: absolute;
-        inset: 0;
-        background-color: var(--accent-regular);
-        border-radius: 999rem;
-
+      &.dark {
         :global(.theme-dark) & {
-          transform: translateX(100%);
+          color: var(--accent-text-over);
         }
+      }
 
-        @media (forced-colors: active) {
-          background-color: SelectedItem;
+      @media (prefers-reduced-motion: no-preference) {
+        &,
+        &.light::before {
+          transition:
+            transform var(--theme-transition),
+            color var(--theme-transition);
         }
       }
     }
 
-    &.dark {
-      :global(.theme-dark) & {
-        color: var(--accent-text-over);
-      }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      &,
-      &.light::before {
-        transition:
-          transform var(--theme-transition),
-          color var(--theme-transition);
-      }
+    &[aria-pressed='false'] .icon.light {
+      color: var(--accent-text-over);
     }
   }
 </style>
