@@ -198,7 +198,7 @@ body {
 	background-color: var(--gray-999);
 	color: var(--text-normal);
 	font-family: var(--font-body);
-	font-size: var(--text-base);
+	font-size: var(--text-md);
   line-height: 1.75;
 	-webkit-font-smoothing: antialiased;
 
@@ -214,6 +214,11 @@ body {
 			color: var(--link-hover-color);
 		}
 	}
+}
+
+// --- Headers ---
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-brand);
 }
 
 // --- Scroll Bar ---

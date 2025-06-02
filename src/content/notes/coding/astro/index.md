@@ -77,3 +77,7 @@ When changes the theme in `astro.config.mjs` the hot reload for content collecti
 
 * [Website](https://astro.build/)
 * [GitHub](https://github.com/withastro/astro)
+
+## Tutorials
+
+* [How to Make External Link in Astro Markdown Open in A New Tab](tutorial/how-to-make-external-link-in-astro-markdown-open-in-a-new-tab.md)

@@ -28,6 +28,7 @@
       & > :global(* + *),
       & :global(blockquote > * + *),
       & :global(li:has(> p)),
+      & :global(li > * + *),
       & :global(ul > li > ul > li:only-child) {
         margin-top: 1rem;
       }
@@ -193,7 +194,7 @@
         padding: 2px 4px;
         line-height: 1rem;
         font-family: var(--font-code);
-        font-size: var(--text-2xs);
+        font-size: var(--text-sm);
         background-color: var(--code-bg);
         border: 1px solid var(--gray-800);
         border-radius: var(--radius-s);
@@ -208,7 +209,7 @@
 
       & :global(pre) {
         position: relative;
-        font-size: var(--text-xs);
+        font-size: var(--text-sm);
         border-radius: 0.5rem;
         border: 1px solid var(--gray-800);
         overflow-x: auto;
@@ -221,6 +222,7 @@
             left: 0;
             padding: 0.5rem 1rem;
             color: var(--gray-400);
+            font-size: var(--text-2xs);
           }
 
           & :global(.copy-code-button) {
@@ -405,38 +407,58 @@
     });
   }
 
+  /**
+   * Finds all `pre` elements in the document and adds a "Copy to clipboard"
+   * button to each. The button, when clicked, copied the content of the
+   * associated code block to the clipboard.
+   */
   function addCopyToClipboardButtons(): void {
+    // Select all `pre` elements in the document.
     const codeBlocks: NodeListOf<HTMLElement> = document.querySelectorAll('pre');
 
+    // Define the text for the copy button in its normal and copied states.
     const copyText: string = 'Copy';
     const copiedText: string = 'Copied!';
 
+    // Iterate over each found 'pre' element.
     codeBlocks.forEach((block: HTMLElement) => {
-      // Ensure the <pre> block can contain a positioned element.
+      // Ensure the <pre> block can contain a positioned element (the copy button).
+      // If its current position is 'static', change it to 'relative'.
       if (getComputedStyle(block).position === 'static') {
         block.style.position = 'relative';
       }
 
+      // Create the copy button element.
       const copyButton = document.createElement('button');
       copyButton.className = 'copy-code-button';
       copyButton.textContent = copyText;
       copyButton.setAttribute('aria-label', 'Copy to clipboard');
       copyButton.setAttribute('title', 'Copy to clipboard');
 
+      // Append the copy button to the current 'pre' block.
       block.appendChild(copyButton);
 
+      // Add an event listener for the 'click' event on the copy button.
       copyButton.addEventListener('click', async () => {
+        // Find the 'code' element within the 'pre' block, if it exists.
         const codeElement = block.querySelector('code');
+        // Determine the text to copy. Prioritize 'code' element's innerText,
+        // otherise use 'pre' block's innerText.
         const codeToCopy = codeElement ? codeElement.innerText : block.innerText;
 
+        // If there's no text to copy, do nothing.
         if (!codeToCopy) {
           return;
         }
 
+        // Asynchronously write the text to the clipboard.
         await navigator.clipboard.writeText(codeToCopy);
+        // Add a 'copied' class for styling (e.g., to show a success state).
         copyButton.classList.add('copied');
+        // Change the button text to indicate success.
         copyButton.textContent = copiedText;
 
+        // After 2 seconds, revert the button to its original state.
         setTimeout(() => {
           copyButton.classList.remove('copied');
           copyButton.textContent = copyText;

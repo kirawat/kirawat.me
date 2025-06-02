@@ -2,6 +2,8 @@
 title: "Upscaling Technology"
 publishDate: 2025-06-02 08:08:00 +0700
 modifiedDate: 2025-06-02 08:08:00 +0700
+tags:
+  - "Technology"
 ---
 
 Upscaling technology is a process used to improve the resolution of images or videos, making them appear sharper and more detailed on higher resolution displays. It does this by taking a lower-resolution image or video and increasing its pixel count, essentially adding new pixels to fill in the gaps and make the image larger.
@@ -78,6 +80,6 @@ Introduced with FSR 3.1 was "Decoupled Frame Generation". This means that frame 
 
 It utilizes the same upscaling algorithm as FSR 1.0, this means if offers similar image quality improvement as FSR 1.0. Although, there are some differences in implementation and compatibility. RSR takes the entire rendered frame, including the game and any overlays (like UI elements), and upscales it to the native resolution of your monitor. Therefore, it might introduce some minor visual artifacts or blurriness compared to FSR, especially in UI elements, as it upscales the entire screen.
 
-[^1]: Evenden, Ian (October 6, 2023). ["How to use DLSS Swapper: a handy frame rate boosting tool if you know what you're doing"](https://www.pcgamer.com/how-to-use-dlss-swapper/) *PC Gamer*. Retrieved on October 10, 2023.
+[^1]: Evenden, Ian (October 6, 2023). ["How to use DLSS Swapper: a handy frame rate boosting tool if you know what you're doing"](https://www.pcgamer.com/how-to-use-dlss-swapper/) *PC Gamer*. [Archived](https://web.archive.org/web/20250528160959/https://www.pcgamer.com/how-to-use-dlss-swapper/) from the original on May 28, 2025. Retrieved on October 10, 2023.
 
 [^2]: Lin, Henry and Burns, Andrew (January 06, 2025). ["NVIDIA DLSS 4 Introduces Multi Frame Generation & Enhancements For All DLSS Technologies"](https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/) *NVIDIA*. [Archived](https://web.archive.org/web/20250529010021/https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/) from the original on May 29, 2025. Retrieved on June 2, 2025.
