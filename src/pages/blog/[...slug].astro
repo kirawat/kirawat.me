@@ -1,14 +1,19 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
-import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import Article from '../../components/Article.astro';
+import Icon from '../../components/Icon.astro';
 
 interface Props {
   entry: CollectionEntry<'blog'>;
 }
 
 export async function getStaticPaths() {
-  const blog = await getCollection('blog');
+  const blog = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
   return blog.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
@@ -19,6 +24,45 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<BlogPostLayout title={entry.data.title}>
-  <Content />
-</BlogPostLayout>
+<BaseLayout>
+  <header>
+    <a class="back-link" href="/blog/"><Icon icon="arrow-left" /> Blog</a>
+    <h1 class="post-title">{entry.data.title}</h1>
+  </header>
+  <main data-pagefind-body>
+    <Article>
+      <Content />
+    </Article>
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  $header-min-width: 320px;
+  $header-max-width: 1280px;
+  $header-width: minmax($header-min-width, $header-max-width);
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr $header-width 1fr;
+    margin-bottom: 2em;
+
+    .back-link {
+      grid-column: 2;
+      justify-self: start;
+      text-decoration: 1px solid underline transparent;
+      text-underline-offset: 0.25em;
+      transition: text-decoration-color var(--theme-transition);
+
+      &:hover,
+      &:focus {
+        text-decoration-color: currentColor;
+      }
+    }
+
+    .post-title {
+      grid-column: 2;
+      font-family: var(--font-brand);
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

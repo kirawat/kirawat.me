@@ -3,7 +3,11 @@ import { getCollection } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const blogPosts = (await getCollection('blog')).sort(
+const blogPosts = (await getCollection('blog', ({ data }) => {
+  // In production (PROD), only include posts where draft is not true.
+  // In development (DEV), include all posts.
+  return import.meta.env.PROD ? data.draft !== true : true;
+})).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
