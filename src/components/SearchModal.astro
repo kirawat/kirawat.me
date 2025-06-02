@@ -30,10 +30,18 @@
           pagefindSearchInput.focus();
         }
       }, 100);
+
+      // Prevent page scroll.
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
 
     function closeSearchModal() {
       searchModalOverlay.classList.remove('active');
+
+      // Restore page scroll.
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
 
     function focusSearchInput() {
@@ -74,16 +82,19 @@
       }
     });
 
-    const pagefindClearButton = document.getElementByClassName('pagefind-ui__search-clear');
-    if (pagefindClearButton) {
-      pagefindClearButton.textContent = '&times;';
+    // Change the content of clear button to '✕'.
+    const clearButton = document.querySelector('.pagefind-ui__search-clear');;
+    if (clearButton) {
+      clearButton.textContent = '✕';
     }
   });
 </script>
 
 <style lang="scss">
   $transition-duration: 0.2s;
+  $modal-padding: 20px;
 
+  // Global Pagefind UI variable overrides.
   :global(:root) {
     --pagefind-ui-text: var(--text-normal);
     --pagefind-ui-background: #fff;
@@ -91,73 +102,108 @@
     --pagefind-ui-font: var(--font-body);
     --pagefind-ui-border-width: 1px;
 
+    // Dark theme overrides.
     &.theme-dark {
       --pagefind-ui-background: #17181c;
       --pagefind-ui-border: var(--gray-700);
     }
   }
 
-  :global(.pagefind-ui__search-input) {
-    font-weight: 400 !important;
-
-    &:focus,
-    &:focus-visible {
-      border-color: var(--accent-regular) !important;
-      box-shadow: 0 0 0 1px var(--accent-regular) !important;
-      outline: none !important;
-    }
-  }
-
-  :global(.pagefind-ui__message) {
-    font-weight: 400 !important;
-  }
-
-  :global(.pagefind-ui--reset mark) {
-    color: var(--text-normal);
-    background-color: var(--accent-overlay) !important;
-  }
-
+  // -- Modal Overlay ---
   .search-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
     width: 100%;
     height: 100%;
+    padding-top: 10vh;
     background-color: rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 10vh;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity $transition-duration ease, visibility 0s linear $transition-duration;
+    
+    // Transitions
+    transition-property: opacity, visibility;
+    transition-duration: $transition-duration, 0s;
+    transition-timing-function: ease, linear;
+    transition-delay: 0s, $transition-duration;
 
     &.active {
       opacity: 1;
       visibility: visible;
-      transition: opacity $transition-duration ease;
+      transition-delay: 0s, 0s;
     }
   }
 
+  // --- Modal Content Area ---
   .search-modal-content {
-    background-color: var(--gray-999);
-    color: var(--text-normal);
-    padding: 20px;
-    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     width: 90%;
     max-width: 700px;
-    position: relative;
-  }
+    max-height: calc(100vh - 20vh - (2 * #{$modal-padding}));
+    margin: 0 auto;
+    padding: $modal-padding;
+    border-radius: 8px;
+    box-sizing: border-box;
 
-  .search-modal-close-button {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 24px;
+    // Appearance
+    background-color: var(--gray-999);
     color: var(--text-normal);
-    cursor: pointer;
+    
+    // --- Pagefind UI Elements within Modal Content ---
+
+    // Pagefind Search Input
+    & :global(.pagefind-ui__search-input) {
+      width: 100%;
+      font-weight: 400 !important;
+      box-sizing: border-box;
+      z-index: 1;
+
+      &:focus,
+      &:focus-visible {
+        border-color: var(--accent-regular) !important;
+        box-shadow: 0 0 0 1px var(--accent-regular) !important;
+        outline: none !important;
+      }
+    }
+
+    // Pagefind Results Area
+    & :global(.pagefind-ui__results-area) {
+      // Box Model - "Full Bleed" into parent's padding.
+      margin-left: -$modal-padding;
+      margin-right: -$modal-padding;
+      padding-left: $modal-padding;
+      padding-right: $modal-padding;
+      padding-bottom: $modal-padding;
+
+      min-height: 0;
+      max-height: calc(100vh - 20vh - 130px);
+      overflow-y: auto;
+
+      // Pagefind Message within Results Area
+      & :global(.pagefind-ui__message) {
+        position: sticky;
+        top: 0;
+        background-color: var(--gray-999);
+        font-weight: 400 !important;
+        z-index: 1;
+      }
+
+      // Pagefind Highlighted Text (mark)
+      & :global(mark) {
+        padding: 0.1em 0.2em;
+        border-radius: 3px;
+        color: var(--text-normal) !important;
+        background-color: var(--accent-overlay) !important;
+      }
+    }
   }
 </style>
