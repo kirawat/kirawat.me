@@ -7,6 +7,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 // @ts-ignore
 import rehypeAstroRelativeMarkdownLinks from "astro-rehype-relative-markdown-links";
+// @ts-ignore
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +28,13 @@ export default defineConfig({
     },
     rehypePlugins: [
       rehypeAstroRelativeMarkdownLinks,
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: 'nofollow noopener noreferrer',
+        },
+      ],
     ],
   },
   integrations: [mdx(), sitemap()],

@@ -2,7 +2,6 @@
 title: "ROG Ally"
 publishDate: 2025-06-02 07:06:00 +0700
 modifiedDate: 2025-06-02 07:06:00 +0700
-draft: false
 ---
 
 ## Fine-Tuning for Optimal Performance
@@ -25,7 +24,7 @@ ROG Ally came with a free full game called "Moving Out" preinstalled. To remove 
 
 FSR (FidelityFX Super Resolution) will function on the ROG Ally if the specific game you're playing has FSR integrated into its graphics settings. You'll typically find it as a toggle with quality levels like "Ultra Quality", "Quality", "Balanced", and "Performance".
 
-FSR works by rendering the game at a lower internal resolution and then using algorithms to upscale it to your display's native resolution. This increases performance (frames per second) while trying to maintain image quality.
+FSR works by rendering the game at a lower internal resolution and then using algorithms to [upscale](upscaling-technology.md) it to your display's native resolution. This increases performance (frames per second) while trying to maintain image quality.
 
 ### RSR (Radeon Super Resolution)
 
