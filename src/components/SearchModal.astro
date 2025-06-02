@@ -19,11 +19,15 @@
       console.error("PagefindUI is not defined. Check if /pagefind/pagefind-ui.js loaded correctly.");
     }
 
+    // Set to 'true' to prevent page scroll when search input is visible.
+    const preventPageScroll = false;
+
     const openSearchButton = document.getElementById('openSearchButton');
     const searchModalOverlay = document.getElementById('searchModalOverlay');
 
     function openSearchModal() {
       searchModalOverlay.classList.add('active');
+
       setTimeout(() => {
         const pagefindSearchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
         if (pagefindSearchInput) {
@@ -32,16 +36,20 @@
       }, 100);
 
       // Prevent page scroll.
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
+      if (preventPageScroll) {
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
     }
 
     function closeSearchModal() {
       searchModalOverlay.classList.remove('active');
 
       // Restore page scroll.
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
+      if (preventPageScroll) {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
     }
 
     function focusSearchInput() {
@@ -67,8 +75,8 @@
 
     // Add keyboard events.
     document.addEventListener('keydown', (event) => {
-      // Open search modal when press Ctrl+O (Windows/Linux) or Cmd+O (macOS).
-      if ((event.ctrlKey || event.metaKey) && event.key === 'o') {
+      // Open search modal when press Ctrl+K (Windows/Linux) or Cmd+K (macOS).
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         event.preventDefault();
         if (searchModalOverlay.classList.contains('active')) {
           focusSearchInput();
@@ -91,7 +99,8 @@
 </script>
 
 <style lang="scss">
-  $transition-duration: 0.2s;
+  $transition-duration: 0.25s;
+  $overlay-blur: 6px;
   $modal-padding: 20px;
 
   // Global Pagefind UI variable overrides.
@@ -118,7 +127,7 @@
     width: 100%;
     height: 100%;
     padding-top: 10vh;
-    background-color: rgba(0, 0, 0, 0.7);
+    
     box-sizing: border-box;
     opacity: 0;
     visibility: hidden;
@@ -127,6 +136,10 @@
     justify-content: center;
     align-items: flex-start;
     
+    background-color: rgba(20, 20, 20, 0.3);
+    backdrop-filter: blur($overlay-blur);
+    -webkit-backdrop-filter: blur($overlay-blur);
+
     // Transitions
     transition-property: opacity, visibility;
     transition-duration: $transition-duration, 0s;
@@ -187,6 +200,7 @@
       min-height: 0;
       max-height: calc(100vh - 20vh - 130px);
       overflow-y: auto;
+      overscroll-behavior: contain;
 
       // Pagefind Message within Results Area
       & :global(.pagefind-ui__message) {
