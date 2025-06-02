@@ -136,19 +136,20 @@
       & :global(a) {
         // Add external link icon.
         &[href^="http"]:not([href^="{{ (urls.Parse .Page.Permalink).Scheme }}://{{ (urls.Parse .Page.Permalink).Host }}"]):not(.no-external-icon)::after {
-          content: var(--external-link-icon);
+          content: '';
           display: inline-block;
-          padding-left: 2px;
-          padding-bottom: 16px;
-          height: 1rem;
-          line-height: 1;
-          text-transform: none;
-          letter-spacing: normal;
-          word-wrap: normal;
-          white-space: nowrap;
-          direction: ltr;
-          font-feature-settings: 'liga';
-          vertical-align: text-bottom;
+
+          background-image: var(--external-link-icon);
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+
+          width: var(--text-base);
+          height: var(--text-base);
+
+          vertical-align: middle;
+          margin-left: 2px;
+          margin-bottom: 4px;
         }
       }
 
