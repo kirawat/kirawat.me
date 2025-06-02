@@ -26,11 +26,17 @@
     const searchModalOverlay = document.getElementById('searchModalOverlay');
 
     function openSearchModal() {
+      clearSearchInput();
       searchModalOverlay.classList.add('active');
-
+      
+      // Focus search input.
       setTimeout(() => {
         const pagefindSearchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
         if (pagefindSearchInput) {
+          // Ensure it's empty.
+          if (pagefindSearchInput.value !== '') {
+            pagefindSearchInput.value = '';
+          }
           pagefindSearchInput.focus();
         }
       }, 100);
@@ -44,11 +50,22 @@
 
     function closeSearchModal() {
       searchModalOverlay.classList.remove('active');
-
+      
       // Restore page scroll.
       if (preventPageScroll) {
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
+      }
+    }
+
+    function clearSearchInput() {
+      const pagefindSearchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
+      const pagefindClearButton = searchModalOverlay.querySelector('.pagefind-ui__search-clear');
+
+      if (pagefindClearButton) {
+        pagefindClearButton.click();
+      } else if (pagefindSearchInput) {
+        pagefindSearchInput.value = '';
       }
     }
 
@@ -94,6 +111,8 @@
     const clearButton = document.querySelector('.pagefind-ui__search-clear');;
     if (clearButton) {
       clearButton.textContent = '✕';
+      clearButton.setAttribute('aria-label', 'Clear');
+      clearButton.setAttribute('title', 'Clear');
     }
   });
 </script>
@@ -101,13 +120,13 @@
 <style lang="scss">
   $transition-duration: 0.25s;
   $overlay-blur: 6px;
-  $modal-padding: 20px;
+  $modal-padding: 10px;
 
   // Global Pagefind UI variable overrides.
   :global(:root) {
     --pagefind-ui-text: var(--text-normal);
     --pagefind-ui-background: #fff;
-    --pagefind-ui-border: var(--accent-dark);
+    --pagefind-ui-border: var(--gray-700);
     --pagefind-ui-font: var(--font-body);
     --pagefind-ui-border-width: 1px;
 
@@ -176,16 +195,19 @@
     // Pagefind Search Input
     & :global(.pagefind-ui__search-input) {
       width: 100%;
-      font-weight: 400 !important;
+      font-weight: 400;
       box-sizing: border-box;
+      border: 0;
+      border-color: transparent;
+      box-shadow: 0 0 0 0 transparent;
+      outline: none;
       z-index: 1;
+    }
 
-      &:focus,
-      &:focus-visible {
-        border-color: var(--accent-regular) !important;
-        box-shadow: 0 0 0 1px var(--accent-regular) !important;
-        outline: none !important;
-      }
+    // Pagefind Clear Button
+    & :global(.pagefind-ui__search-clear) {
+      font-size: var(--text-base);
+      z-index: 1;
     }
 
     // Pagefind Results Area
@@ -206,17 +228,36 @@
       & :global(.pagefind-ui__message) {
         position: sticky;
         top: 0;
+        border-top: 1px solid var(--pagefind-ui-border);
+        border-bottom: 1px solid var(--pagefind-ui-border);
         background-color: var(--gray-999);
-        font-weight: 400 !important;
+        font-weight: 400;
         z-index: 1;
       }
 
       // Pagefind Highlighted Text (mark)
       & :global(mark) {
-        padding: 0.1em 0.2em;
-        border-radius: 3px;
-        color: var(--text-normal) !important;
-        background-color: var(--accent-overlay) !important;
+        border-bottom: 1px double var(--accent-regular);
+        color: var(--text-normal);
+        background-color: transparent;
+      }
+
+      & :global(.pagefind-ui__results > li:first-child) {
+        border-top: 0;
+      }
+
+      & :global(.pagefind-ui__button) {
+        color: var(--accent-text-over);
+        font-family: var(--font-body);
+        font-weight: var(--text-normal);
+        border: 0;
+        background-color: var(--accent-regular);
+        transition: background-color var(--theme-transition);
+
+        &:hover,
+        &:focus {
+          background-color: var(--accent-light);
+        }
       }
     }
   }
