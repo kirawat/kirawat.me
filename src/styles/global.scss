@@ -23,6 +23,8 @@
 	--accent-subtle-overlay: var(--accent-overlay);
 	--accent-text-over: var(--gray-999);
 
+	--body-bg-color: #ffffff;
+
 	--h2-accent-color: #d2691e;
 	--h3-accent-color: #c0a70c;
 	--h4-color: #f8b755;
@@ -94,7 +96,7 @@
 	--font-code: 'JetBrains Mono', monospace;
 
 	// --- Code ---
-	--code-bg: #ffffff;
+	--code-bg: var(--gray-999);
 	--code-line-height: 1.65rem;
 
 	// --- Blockquote ---
@@ -136,6 +138,8 @@
 	--accent-overlay: hsla(280, 89%, 67%, 0.33);
 	--accent-subtle-overlay: hsla(281, 81%, 36%, 0.33);
 	--accent-text-over: var(--gray-0);
+
+	--body-bg-color: var(--gray-999);
 
 	--text-bold-color: #f8b755;
 
@@ -195,7 +199,7 @@ html.theme-dark {
 }
 
 body {
-	background-color: var(--gray-999);
+	background-color: var(--body-bg-color);
 	color: var(--text-normal);
 	font-family: var(--font-body);
 	font-size: var(--text-md);

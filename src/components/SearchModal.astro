@@ -13,7 +13,8 @@
     if (typeof PagefindUI !== 'undefined') {
       new PagefindUI({
         element: '#search',
-        showSubResults: true,
+        showSubResults: false,
+        showImages: false,
       });
     } else {
       console.error("PagefindUI is not defined. Check if /pagefind/pagefind-ui.js loaded correctly.");
@@ -125,14 +126,14 @@
   // Global Pagefind UI variable overrides.
   :global(:root) {
     --pagefind-ui-text: var(--text-normal);
-    --pagefind-ui-background: #fff;
+    --pagefind-ui-background: var(--body-bg-color);
     --pagefind-ui-border: var(--gray-700);
     --pagefind-ui-font: var(--font-body);
     --pagefind-ui-border-width: 1px;
 
     // Dark theme overrides.
     &.theme-dark {
-      --pagefind-ui-background: #17181c;
+      --pagefind-ui-background: #24292f;
       --pagefind-ui-border: var(--gray-700);
     }
   }
@@ -187,14 +188,18 @@
     box-sizing: border-box;
 
     // Appearance
-    background-color: var(--gray-999);
+    background-color: var(--pagefind-ui-background);
     color: var(--text-normal);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 10px 35px 5px rgba(0, 0, 0, 0.18),
+                0px 9px 15px 0px rgba(0, 0, 0, 0.10);
     
     // --- Pagefind UI Elements within Modal Content ---
 
     // Pagefind Search Input
     & :global(.pagefind-ui__search-input) {
       width: 100%;
+      font-size: var(--text-lg);
       font-weight: 400;
       box-sizing: border-box;
       border: 0;
@@ -215,8 +220,8 @@
       // Box Model - "Full Bleed" into parent's padding.
       margin-left: -$modal-padding;
       margin-right: -$modal-padding;
-      padding-left: $modal-padding;
-      padding-right: $modal-padding;
+      padding-left: calc(2 * $modal-padding);
+      padding-right: calc(2 * $modal-padding);
       padding-bottom: $modal-padding;
 
       min-height: 0;
@@ -230,7 +235,7 @@
         top: 0;
         border-top: 1px solid var(--pagefind-ui-border);
         border-bottom: 1px solid var(--pagefind-ui-border);
-        background-color: var(--gray-999);
+        background-color: var(--pagefind-ui-background);
         font-weight: 400;
         z-index: 1;
       }
