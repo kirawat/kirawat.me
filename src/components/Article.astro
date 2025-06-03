@@ -215,6 +215,53 @@
         border: 1px solid var(--gray-800);
         overflow-x: auto;
 
+        & :global(.copy-code-button) {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin-top: 2px;
+          cursor: pointer;
+          overflow-x: hidden;
+          z-index: 3;
+
+          background-image: var(--icon-copy);
+          background-repeat: no-repeat;
+          background-position: left;
+          background-size: 20px 20px;
+          background-color: transparent;
+
+          width: 34px;
+          height: 34px;
+          border: none;
+          padding: 1px 14px 0 0;
+          font-size: var(--text-xs);
+          text-align: right;
+          color: transparent;
+          opacity: 0.3;
+          transition: width 0.2s ease-out, color 0.1s ease-in;
+
+          &:hover,
+          &:focus-visible {
+            width: 68px;
+            color: var(--text-normal);
+            opacity: 1;
+            transition: width 0.2s ease-out, color 0.2s ease-in;
+          }
+
+          // Slight press effect.
+          &:active {
+            transform: scale(0.9);
+          }
+
+          &.copied {
+            width: 80px;
+            color: var(--text-normal);
+            background-image: var(--icon-copied);
+            opacity: 1;
+            transition: width 0s linear 0s;
+          }
+        }
+
         &[data-language] {
           &::before {
             content: var(--language-label, attr(data-language));
@@ -224,53 +271,7 @@
             padding: 0.5rem 1rem;
             color: var(--gray-400);
             font-size: var(--text-2xs);
-          }
-
-          & :global(.copy-code-button) {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin-top: 2px;
-            cursor: pointer;
-            overflow-x: hidden;
-            z-index: 1;
-
-            background-image: var(--icon-copy);
-            background-repeat: no-repeat;
-            background-position: left;
-            background-size: 20px 20px;
-            background-color: transparent;
-
-            width: 34px;
-            height: 34px;
-            border: none;
-            padding: 1px 14px 0 0;
-            font-size: var(--text-xs);
-            text-align: right;
-            color: transparent;
-            opacity: 0.3;
-            transition: width 0.2s ease-out, color 0.1s ease-in;
-
-            &:hover,
-            &:focus-visible {
-              width: 68px;
-              color: var(--text-normal);
-              opacity: 1;
-              transition: width 0.2s ease-out, color 0.2s ease-in;
-            }
-
-            // Slight press effect.
-            &:active {
-              transform: scale(0.9);
-            }
-
-            &.copied {
-              width: 80px;
-              color: var(--text-normal);
-              background-image: var(--icon-copied);
-              opacity: 1;
-              transition: width 0s linear 0s;
-            }
+            z-index: 2;
           }
         }
 
@@ -302,6 +303,7 @@
               color: rgba(155, 138, 148, 0.4);
               background-color: var(--code-bg);
               content: counter(step);
+              z-index: 1;
             }
           }
         }
@@ -436,8 +438,12 @@
       copyButton.setAttribute('aria-label', 'Copy code');
       copyButton.setAttribute('title', 'Copy code');
 
-      // Append the copy button to the current 'pre' block.
-      block.appendChild(copyButton);
+      const codeElement = block.querySelector('code');
+      if (codeElement) {
+        block.insertBefore(copyButton, codeElement);
+      } else {
+        block.appendChild(copyButton);
+      }
 
       // Add an event listener for the 'click' event on the copy button.
       copyButton.addEventListener('click', async () => {
