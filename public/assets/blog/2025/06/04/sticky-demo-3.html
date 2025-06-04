@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF=8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticky Test</title>
+</head>
+<style>
+  pre {
+    position: relative;
+    margin: 0 auto;
+    overflow-y: auto;
+    width: 500px;
+    max-height: 200px;
+    padding: 20px 0;
+    background-color: #fff;
+    border: 1px solid black;
+  }
+
+  pre .sticky-button {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 70px;
+    z-index: 1;
+    margin-bottom: 1rem;
+    background-color: lightgreen;
+    padding: 5px 10px;
+    border: 1px solid darkgreen;
+  }
+
+  pre code {
+    width: 1000px;
+    padding-right: 20px;
+  }
+</style>
+<body>
+  <pre>
+    <button class="sticky-button">Sticky</button>
+    <code>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tellus
+      erat, elementum eu purus ac, gravida dignissim nulla. Proin blandit
+      ipsum vitae odio luctus, a semper enim pulvinar. Pellentesque malesuada
+      eget eros vel sollicitudin. Donec eleifend euismod nulla, at varius
+      mauris vulputate eu. Phasellus leo sem, efficitur nec aliquet ac,
+      placerat vel lacus. Quisque quis nulla non est congue viverra eu ut
+      nisl. Nulla facilisi. Curabitur finibus turpis non nisi finibus, id
+      malesuada massa interdum. Quisque pharetra ac lectus vel congue.
+      Cras dictum ut nibh eget efficitur. Praesent diam nisi, luctus eget
+      dui vitae, rhoncus consectetur nisi.
+    </code>
+  </pre>
+</body>
+</html>

@@ -226,9 +226,10 @@
         }
 
         & :global(.copy-code-button) {
-          position: absolute;
+          position: sticky;
+          box-sizing: border-box;
           top: 0;
-          right: 0;
+          left: calc(100% - 34px);
           margin-top: 2px;
           cursor: pointer;
           overflow-x: hidden;
@@ -248,14 +249,19 @@
           text-align: right;
           color: transparent;
           opacity: 0.3;
-          transition: width 0.2s ease-out, color 0.1s ease-in;
+
+          transition: width 0.2s ease-out,
+                      left 0.2s ease-out,
+                      color 0.2s ease-in,
+                      opacity 0.2s ease-out,
+                      transform 0.2s ease-out;
 
           &:hover,
           &:focus-visible {
             width: 68px;
+            left: calc(100% - 68px);
             color: var(--text-normal);
             opacity: 1;
-            transition: width 0.2s ease-out, color 0.2s ease-in;
           }
 
           // Slight press effect.
@@ -265,10 +271,11 @@
 
           &.copied {
             width: 80px;
+            left: calc(100% - 80px);
             color: var(--text-normal);
             background-image: var(--icon-copied);
             opacity: 1;
-            transition: width 0s linear 0s;
+            transition-duration: 0s;
           }
         }
 
