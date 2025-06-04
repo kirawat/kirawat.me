@@ -131,7 +131,10 @@ def find_and_remove_duplicate_files(directory_path, dry_run=True, remove_both_fi
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
-    description="Removes duplicate files based on 'filename.ext' and 'filename(N).ext' pattern. Defaults to removing only 'filename(N).ext'. Use --all to remove both files in a pair. Defaults to scanning the current directory if no path is provided."
+    description="""Removes duplicate files based on 'filename.ext' and 
+    'filename(N).ext' pattern. Defaults to removing only 'filename(N).ext'. 
+    Use --all to remove both files in a pair. Defaults to scanning the 
+    current directory if no path is provided."""
   )
   parser.add_argument(
     "directory",

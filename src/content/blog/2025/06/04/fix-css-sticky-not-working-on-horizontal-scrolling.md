@@ -95,12 +95,14 @@ Since `position: sticky; left: <value>;` was working reliably, I leveraged this 
 pre .sticky-button {
   position: sticky;
   top: 0;
-  left: calc(100% - 70px); /* calc(100% - BUTTON_WIDTH) */
+  left: calc(100% - (70px + 10px)); /* calc(100% - (BUTTON_WIDTH + PADDING_RIGHT)) */
   width: 70px;
   /* ... other styles ... */
 }
 ```
 
-This positions the *left* edge of the button. `100%` refers to the width of the `<pre>` element's visible scrollport. By subtracting the button's own `width` from `100%`, it calculate the `left` value that makes the button's right edge align with the right edge of the `<pre>` scrollport.
+This positions the *left* edge of the button. `100%` refers to the width of the `<pre>` element's visible scrollport. By subtracting the button's own `width` + padding right width (10px) from `100%`, it calculate the `left` value that makes the button's right edge align with the right edge of the `<pre>` scrollport.
+
+<iframe src="/assets/blog/2025/06/04/sticky-demo-4.html" style="width: 100%; border: none;"></iframe>
 
 I'm not really sure why `right: 0;` doesn't work. Some day I may find the answer, but for now, the workaround is working fine.
