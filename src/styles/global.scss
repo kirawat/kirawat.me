@@ -200,6 +200,8 @@ html.theme-dark {
 
 body {
 	background-color: var(--body-bg-color);
+	background-image: radial-gradient(circle 200vmin at 120% -12%, var(--accent-regular), transparent);
+	background-repeat: no-repeat;
 	color: var(--text-normal);
 	font-family: var(--font-body);
 	font-size: var(--text-md);
