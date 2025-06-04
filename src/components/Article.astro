@@ -215,6 +215,16 @@
         border: 1px solid var(--gray-800);
         overflow-x: auto;
 
+        &::-webkit-scrollbar-thumb {
+          background-color: transparent;
+        }
+
+        &:hover {
+          &::-webkit-scrollbar-thumb {
+            background-color: var(--scrollbar-thumb-bg);
+          }
+        }
+
         & :global(.copy-code-button) {
           position: absolute;
           top: 0;
