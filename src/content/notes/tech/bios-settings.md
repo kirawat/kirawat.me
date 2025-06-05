@@ -1,8 +1,8 @@
 ---
-title: "BIOS Settings"
-publishDate: 2025-06-01 22:57:00 +0700
-modifiedDate: 2025-06-01 22:57:00 +0700
-draft: false
+name: "BIOS Settings"
+dateCreated: 2025-06-01 22:57:00 +0700
+datePublished: 2025-06-01 22:57:00 +0700
+dateModified: 2025-06-01 22:57:00 +0700
 tags:
   - "Computer"
 ---

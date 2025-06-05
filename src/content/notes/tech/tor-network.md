@@ -1,7 +1,8 @@
 ---
-title: "Tor Network"
-publishDate: 2025-06-04 12:01:00 +0700
-modifiedDate: 2025-06-04 12:01:00 +0700
+name: "Tor Network"
+dateCreated: 2025-06-04 12:01:00 +0700
+datePublished: 2025-06-04 12:01:00 +0700
+dateModified: 2025-06-04 12:01:00 +0700
 ---
 
 ## Avoid using VPN and Tor Together

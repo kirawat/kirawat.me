@@ -25,17 +25,17 @@ const { Content } = await render(entry);
 ---
 
 <BaseLayout>
-  <header>
-    <div class="header-container">
-      <div class="post-meta-container">
-        <div class="post-meta">
-          <a class="back-link" href="/notes/"><Icon icon="arrow-left" /> Notes</a>
-          <h1 class="post-title">{entry.data.title}</h1>
+  <main data-pagefind-body itemscope itemtype="https://schema.org/Blog">
+    <header>
+      <div class="header-container">
+        <div class="post-meta-container">
+          <div class="post-meta">
+            <a class="back-link" href="/notes/"><Icon icon="arrow-left" /> Notes</a>
+            <h1 class="post-title" itemprop="name">{entry.data.name}</h1>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
-  <main data-pagefind-body>
+    </header>
     <Article>
       <Content />
     </Article>

@@ -1,7 +1,8 @@
 ---
-title: "Evergreen Note"
-publishDate: 2025-06-04 11:18:00 +0700
-modifiedDate: 2025-06-04 11:18:00 +0700
+name: "Evergreen Note"
+dateCreated: 2025-06-04 11:18:00 +0700
+datePublished: 2025-06-04 11:18:00 +0700
+dateModified: 2025-06-04 11:18:00 +0700
 ---
 
 ## Citation

@@ -1,8 +1,8 @@
 ---
-title: "Blue Seal Ice Cream"
-publishDate: 2025-06-04 02:17 +0700
-modifiedDate: 2025-06-04 02:17 +0700
-draft: false
+name: "Blue Seal Ice Cream"
+dateCreated: 2025-06-04 02:17:00 +0700
+datePublished: 2025-06-04 02:17:00 +0700
+dateModified: 2025-06-04 02:17:00 +0700
 ---
 
 ## History

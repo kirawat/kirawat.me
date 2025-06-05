@@ -1,7 +1,9 @@
 ---
-title: "My Little Corner in the World Wide Web"
-publishDate: 2025-06-01 00:00:00 +0700
-modifiedDate: 2025-06-01 00:00:00 +0700
+name: "My Little Corner in the World Wide Web"
+author: "Kirawat Sahasewiyon"
+dateCreated: 2025-06-01 00:00:00 +0700
+datePublished: 2025-06-01 00:00:00 +0700
+dateModified: 2025-06-01 00:00:00 +0700
 draft: true
 ---
 

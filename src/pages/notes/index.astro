@@ -8,7 +8,7 @@ const notes = (await getCollection('notes', ({ data }) => {
   // In development (DEV), include all posts.
   return import.meta.env.PROD ? data.draft !== true : true;
 })).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+  (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
 );
 ---
 
@@ -17,7 +17,7 @@ const notes = (await getCollection('notes', ({ data }) => {
     {
       notes.map((note) => (
         <li>
-          <a href={`/notes/${note.id}`}>{note.data.title}</a>
+          <a href={`/notes/${note.id}`}>{note.data.name}</a>
         </li>
       ))
     }

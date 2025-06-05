@@ -1,7 +1,8 @@
 ---
-title: "Pi-hole"
-publishDate: 2025-05-27 00:00:00 +0700
-modifiedDate: 2025-05-27 00:00:00 +0700
+name: "Pi-hole"
+dateCreated: 2025-05-27 00:00:00 +0700
+datePublished: 2025-05-27 00:00:00 +0700
+dateModified: 2025-05-27 00:00:00 +0700
 draft: true
 ---
 

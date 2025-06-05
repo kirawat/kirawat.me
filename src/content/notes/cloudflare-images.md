@@ -1,7 +1,8 @@
 ---
-title: "Cloudflare Images"
-publishDate: 2025-06-05 11:31:00 +0700
-modifiedDate: 2025-06-05 11:31:00 +0700
+name: "Cloudflare Images"
+dateCreated: 2025-06-05 11:31:00 +0700
+datePublished: 2025-06-05 11:31:00 +0700
+dateModified: 2025-06-05 11:31:00 +0700
 ---
 
 [Cloudflare Images](https://www.cloudflare.com/developer-platform/products/cloudflare-images/) is a service provides a platform for storing, optimizing, transforming, and delivring images.

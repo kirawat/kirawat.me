@@ -16,7 +16,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/Website">
   <head>
     <MainHead title={title} description={description} />
   </head>
@@ -24,16 +24,16 @@ const {
     <header>
       <Nav />
     </header>
-    <main class="main-content">
+    <div class="content-container">
       <slot />
-    </main>
+    </div>
     <Footer />
     <SearchModal />
   </body>
 </html>
 
 <style lang="scss">
-  .main-content {
+  .content-container {
     padding-inline-start: var(--content-pad-h);
     padding-inline-end: var(--content-pad-h);
   }

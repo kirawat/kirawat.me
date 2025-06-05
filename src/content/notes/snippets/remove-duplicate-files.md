@@ -1,8 +1,8 @@
 ---
-title: "Remove Duplicate Files"
-publishDate: 2025-05-29 00:00:00 +0700
-modifiedDate: 2025-05-29 00:00:00 +0700
-draft: true
+name: "Remove Duplicate Files"
+dateCreated: 2025-05-29 00:00:00 +0700
+datePublished: 2025-05-29 00:00:00 +0700
+dateModifined: 2025-05-29 00:00:00 +0700
 ---
 
 ```python

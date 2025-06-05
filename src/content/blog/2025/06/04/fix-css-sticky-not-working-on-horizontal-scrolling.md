@@ -1,7 +1,9 @@
 ---
-title: "Fix CSS Sticky Not Working on Horizontal Scrolling"
-publishDate: 2025-06-04 15:58:00 +0700
-modifiedDate: 2025-06-04 15:58:00 +0700
+name: "Fix CSS Sticky Not Working on Horizontal Scrolling"
+author: "Kirawat Sahasewiyon"
+dateCreated: 2025-06-04 15:58:00 +0700
+datePublished: 2025-06-04 15:58:00 +0700
+dateModified: 2025-06-04 15:58:00 +0700
 ---
 
 I found an odd case of `sticky` doesn't work as intended on the horizontal scrolling. I wanted a "Sticky" button to stick to the top-right corner inside a `<pre>` element that was horizontally scrollable.

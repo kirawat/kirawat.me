@@ -1,8 +1,8 @@
 ---
-title: "Astro Web Framework"
-publishDate: 2025-05-31 00:00:00 +0700
-modifiedDate: 2025-06-01 13:26:00 +0700
-draft: true
+name: "Astro Web Framework"
+dateCreated: 2025-05-31 00:00:00 +0700
+datePublished: 2025-05-31 00:00:00 +0700
+dateModified: 2025-06-01 13:26:00 +0700
 tags:
   - "Web Development"
 ---

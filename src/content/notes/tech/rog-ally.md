@@ -1,7 +1,8 @@
 ---
-title: "ROG Ally"
-publishDate: 2025-06-02 07:06:00 +0700
-modifiedDate: 2025-06-02 07:06:00 +0700
+name: "ROG Ally"
+dateCreated: 2025-06-02 07:06:00 +0700
+datePublished: 2025-06-02 07:06:00 +0700
+dateModified: 2025-06-02 07:06:00 +0700
 ---
 
 ## Fine-Tuning for Optimal Performance

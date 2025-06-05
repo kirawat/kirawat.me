@@ -1,8 +1,8 @@
 ---
-title: "Note-Taking"
-publishDate: 2025-06-01 00:00:00 +0700
-modifiedDate: 2025-06-01 00:00:00 +0700
-draft: false
+name: "Note-Taking"
+dateCreated: 2023-06-01 00:00:00 +0700
+datePublished: 2025-06-01 00:00:00 +0700
+dateModified: 2025-06-01 00:00:00 +0700
 ---
 
 ## Types of Notes

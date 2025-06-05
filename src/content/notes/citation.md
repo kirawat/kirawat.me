@@ -1,7 +1,8 @@
 ---
-title: "Citation"
-publishDate: 2025-06-04 10:57:00 +0700
-modifiedDate: 2025-06-04 10:57:00 +0700
+name: "Citation"
+dateCreated: 2025-06-04 10:57:00 +0700
+datePublished: 2025-06-04 10:57:00 +0700
+dateModified: 2025-06-04 10:57:00 +0700
 ---
 
 ## Styles

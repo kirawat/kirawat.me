@@ -1,7 +1,8 @@
 ---
-title: "How to Make External Link in Astro Markdown Open in a New Tab"
-publishDate: 2025-06-02 09:39:00 +0700
-modifiedDate: 2025-06-02 09:39:00 +0700
+name: "How to Make External Link in Astro Markdown Open in a New Tab"
+dateCreated: 2025-06-02 09:39:00 +0700
+datePublished: 2025-06-02 09:39:00 +0700
+dateModified: 2025-06-02 09:39:00 +0700
 tags:
   - "Tutorial"
 ---

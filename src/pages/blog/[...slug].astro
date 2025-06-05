@@ -25,11 +25,11 @@ const { Content } = await render(entry);
 ---
 
 <BaseLayout>
-  <header>
-    <a class="back-link" href="/blog/"><Icon icon="arrow-left" /> Blog</a>
-    <h1 class="post-title">{entry.data.title}</h1>
-  </header>
-  <main data-pagefind-body>
+  <main data-pagefind-body itemscope itemtype="https://schema.org/Blog">
+    <header>
+      <a class="back-link" href="/blog/"><Icon icon="arrow-left" /> Blog</a>
+      <h1 class="post-title">{entry.data.name}</h1>
+    </header>
     <Article>
       <Content />
     </Article>

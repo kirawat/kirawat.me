@@ -3,7 +3,7 @@ import { defineCollection, z } from 'astro:content';
 
 const basePostSchema = z.object({
   /** The title of the current page. Required. */
-  title: z.string(),
+  name: z.string(),
 
   /**
    * A short description of the current page's content.
@@ -13,8 +13,9 @@ const basePostSchema = z.object({
    * of the page in a clear and engaging way.
    */
   description: z.string().optional(),
-  publishDate: z.coerce.date(),
-  modifiedDate: z.coerce.date().optional(),
+  dateCreated: z.coerce.date(),
+  dateModified: z.coerce.date().optional(),
+  datePublished: z.coerce.date().optional(),
   tags: z.array(z.string()).optional(),
 
   /**

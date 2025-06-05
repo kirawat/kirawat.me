@@ -1,7 +1,8 @@
 ---
-title: "Vibe Coding"
-publishDate: 2025-06-04 10:29:00 +0700
-modifiedDate: 2025-06-04 10:29:00 +0700
+name: "Vibe Coding"
+dateCreated: 2025-06-04 10:29:00 +0700
+datePublished: 2025-06-04 10:29:00 +0700
+dateModified: 2025-06-04 10:29:00 +0700
 ---
 
 Excerpt from [Andrej Karpathy (@karpathy) from X](https://x.com/karpathy/status/1886192184808149383?lang=en)[^1]:

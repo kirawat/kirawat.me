@@ -1,7 +1,8 @@
 ---
-title: "Upscaling Technology"
-publishDate: 2025-06-02 08:08:00 +0700
-modifiedDate: 2025-06-02 08:08:00 +0700
+name: "Upscaling Technology"
+dateCreated: 2025-06-02 08:08:00 +0700
+datePublished: 2025-06-02 08:08:00 +0700
+dateModified: 2025-06-02 08:08:00 +0700
 tags:
   - "Technology"
 ---
