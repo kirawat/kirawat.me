@@ -105,4 +105,4 @@ This positions the *left* edge of the button. `100%` refers to the width of the 
 
 <iframe src="/assets/blog/2025/06/04/sticky-demo-4.html" style="width: 100%; border: none;"></iframe>
 
-I'm not really sure why `right: 0;` doesn't work. Some day I may find the answer, but for now, the workaround is working fine.
+I'm not really sure why `right: 0;` doesn't work. It's not just on one specific browser either (Chrome, Edge, Safari), so a browser's bug is ruled out. Some day I may find the answer, but for now, the workaround is working fine.
