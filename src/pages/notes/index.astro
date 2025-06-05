@@ -8,7 +8,24 @@ const notes = (await getCollection('notes', ({ data }) => {
   // In development (DEV), include all posts.
   return import.meta.env.PROD ? data.draft !== true : true;
 })).sort(
-  (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
+  (a, b) => {
+    // The sort priority is:
+    // 1. dateModified (if it exists).
+    // 2. datePublished (if it exists).
+    // 3. dateCreated (as the final fallback).
+
+    const effectiveDateA = a.data.dateModified || a.data.datePublished || a.data.dateCreated;
+    const effectiveDateB = b.data.dateModified || b.data.datePublished || a.data.dateCreated;
+
+    // Convert the effective dates to numerical timestaps for comparison.
+    const timeA = effectiveDateA.valueOf();
+    const timeB = effectiveDateB.valueOf();
+
+    // Sort in descending order (newest items will appear first).
+    // If `timeB` is more recent (larger timestamp) than `timeA`, this
+    // returns a positive number, which means 'b' will be sorted before 'a'.
+    return timeB - timeA;
+  } ,
 );
 ---
 
