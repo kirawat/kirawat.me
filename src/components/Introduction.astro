@@ -1,0 +1,205 @@
+---
+import '../styles/main.scss';
+
+const hello = 'Hi, my name is Kirawat Sahasewiyon.';
+
+const wordsList: { label: string; }[] = [
+  { label: 'thinker' },
+  { label: 'coder' },
+  { label: 'dreamer' },
+  { label: 'foodie' },
+  { label: 'gamer' },
+  { label: 'filmmaker' },
+];
+
+// Prepare the list for display.
+// Duplicating the first item at the end for seamless animation.
+const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
+---
+
+<section class="introduction">
+  <h1 id="typed-output" data-text={hello}></h1>
+  <div class="flipping-text">
+    <span class="static-prefix">I'm a </span>
+    <div class="dynamic-words-viewport">
+      <ul class="words-list">
+        {
+          wordsToDisplay.map(({ label }) => (
+            <li>{label}.</li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/abstracts/variables' as variables;
+
+  // This should be kept in sync if wordsList changes.
+  $word-count: 6;
+
+  // Time for each word (hold + slide).
+  $time-per-word: 2s;
+
+  // Defines the visibile height for one word. Adjust based on font.
+  $word-actual-line-height: 1.75em;
+
+  // Total time for one full loop (e.g., 2s per word).
+  $animation-duration-total: $word-count * $time-per-word;
+
+  section.introduction {
+    padding-left: #{variables.$content-padding-h};
+    padding-right: #{variables.$content-padding-h};
+
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+
+    #typed-output {
+      display: inline-block;
+      position: relative;
+
+      font-family: var(--font-brand);
+      font-size: 3em;
+      font-weight: 400;
+      color: var(--text-color);
+
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        right: -7px;
+        bottom: 0.5em;
+
+        // Thickness of cursor.
+        width: 3px;
+        height: 2.5rem;
+
+        // Cursor color.
+        background-color: var(--primary-color);
+
+        // Blinking animation.
+        animation: blink-cursor 0.8s steps(2, start) infinite;
+      }
+    }
+
+    .flipping-text {
+      display: flex;
+      align-items: baseline;
+      font-size: 2.5rem;
+
+      .static-prefix {
+        margin-right: 0.3em;
+        white-space: nowrap;
+      }
+
+      .dynamic-words-viewport {
+        display: inline-block;
+        position: relative;
+        height: $word-actual-line-height;
+        overflow: hidden;
+
+        .words-list {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          color: var(--primary-color);
+          
+          // Hint to the browser that transform will be animated.
+          will-change: transform;
+
+          // Forces hardware acceleration.
+          //transform: translateZ(0);
+
+          // Prevent flickering and improve rendering quality on transformed elements.
+          //backface-visibility: hidden;
+
+          animation: flip-vertical $animation-duration-total ease-in-out infinite;
+
+          li {
+            height: $word-actual-line-height;
+            line-height: $word-actual-line-height;
+          }
+        }
+      }
+    }
+  }
+
+  // Keyframes for the cursor's blinking animation.
+  @keyframes blink-cursor {
+    // First step of the animation (cursor visible).
+    from {
+      opacity: 1;
+    }
+    // Second step of the animation (cursor invisible).
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes flip-vertical {
+    // Loop to generate keyframe steps for each word.
+    @for $i from 0 to $word-count {
+      // Calculate the percentage of the total animation duration that
+      // each word's "slot" occupies.
+      $percentagePerSlot: calc(100% / $word-count);
+
+      // Calculate the start of the "hold" period for the current word.
+      $startHoldPercentage: calc($i * $percentagePerSlot);
+
+      // Calculate the end of the "hold" period.
+      // 80% of the slot's duration is for holding the word.
+      $endHoldPercentage: calc($startHoldPercentage + ($percentagePerSlot * 0.8));
+
+      #{$startHoldPercentage}, #{$endHoldPercentage} {
+        transform: translateY(calc(#{$i} * #{$word-actual-line-height} * -1));
+      }
+    }
+
+    // The final step ensures the animation loops correctly to the start.
+    100% {
+      transform: translateY(calc(#{$word-count} * #{$word-actual-line-height} * -1));
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const typedOutputElement = document.getElementById('typed-output');
+
+    // Stop script execution if the `typed-output` element isn't found.
+    if (!typedOutputElement) {
+      return;
+    }
+
+    // Retrieve the text to type from the `data-text` attribute.
+    const textToType = typedOutputElement.dataset.text;
+
+    // If no text is found in the data-attribute, stop script execution.
+    if (!textToType) {
+      return;
+    }
+
+    // Ensure the element is empty before starting the typing effect.
+    typedOutputElement.textContent = '';
+
+    // Speed in milliseconds for typing each character.
+    const typingSpeedPerChar = 50;
+
+    // Delay in milliseconds before typing starts.
+    const initialDisplayDelay = 300;
+
+    async function startTypingEffect() {
+      const characters = textToType!.split('');
+      for (let i = 0; i < characters.length; i++) {
+        typedOutputElement!.textContent += characters[i];
+        await new Promise(resolve => setTimeout(resolve, typingSpeedPerChar));
+      }
+    }
+
+    setTimeout(startTypingEffect, initialDisplayDelay);
+  });
+</script>

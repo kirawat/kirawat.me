@@ -153,35 +153,6 @@
         }
       }
 
-      // --- Table styling ---
-      & :global(table) {
-        margin-top: 2rem;
-        width: 100%;
-        font-size: var(--text-sm);
-        border: 1px solid $table-border-color;
-        border-collapse: collapse;
-
-        & :global(th),
-        & :global(td) {
-          padding: $table-cell-padding;
-          border: 1px solid $table-border-color;
-        }
-
-        & > :global(thead) > :global(tr) {
-          background: var(--table-header-background);
-
-          & > :global(th) {
-            text-align: center;
-            vertical-align: middle;
-
-            // Hide empty table headers.
-            &:empty {
-              display:none;
-            }
-          }
-        }
-      }
-
       // --- Block Quote ---
       & :global(blockquote) {
         padding-inline-start: 1.2rem;
@@ -323,56 +294,6 @@
               z-index: 1;
             }
           }
-        }
-      }
-
-      // --- Divider ---
-      :global(hr) {
-        margin: 1.5rem 0 1.5rem 0;
-        height: 1px;
-        background-color: var(--gray-800);
-        border: none;
-      }
-
-      // --- Footnotes ---
-      :global(.footnotes) {
-        margin-top: 2.5rem;
-
-        & :global(ol) {
-          padding-left: 1rem;
-
-          & > :global(li) {
-            font-size: var(--text-sm);
-
-            :global(a.data-footnote-backref) {
-              color: var(--gray-600);
-              font-size: var(--text-xs);
-              text-decoration: none;
-
-              &:hover {
-                color: var(--gray-300);
-              }
-            }
-          }
-        }
-      }
-
-      // --- Footnote References ---
-      & :global(sup > a) {
-        padding: 0 2px;
-        font-size: var(--text-2xs);
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-
-        &::before {
-          content: '[';
-        }
-
-        &::after {
-          content: ']';
         }
       }
     }

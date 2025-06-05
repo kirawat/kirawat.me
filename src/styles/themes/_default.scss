@@ -1,0 +1,44 @@
+@use '../abstracts/variables' as variables;
+
+:root {
+  // -- Accent Colors ---
+  --primary-color: #{variables.$primary-color};
+
+  // -- Body Colors ---
+  --body-bg-color: #{variables.$body-bg-color};
+
+  // --- Header Colors ---
+	--h2-accent-color: #{variables.$h2-accent-color};
+	--h3-accent-color: #{variables.$h3-accent-color};
+	--h4-color: #{variables.$h4-color};
+
+  // --- Text Colors ---
+  --text-color: #{variables.$text-color};
+  --text-bold-color: #{variables.$text-bold-color};
+  --text-copyright-color: #(variables.$text-copyright-color);
+
+  // --- Link Colors ---
+  --link-color: #{variables.$link-color};
+  --link-hover-color: #{variables.$link-hover-color};
+
+  // -- Scrollbar Colors ---
+  --scrollbar-rgb: 0, 0, 0;
+  --scrollbar-track-color: transparent;
+  --scrollbar-thumb-color: rgba(var(--scrollbar-rgb), 0.16);
+  --scrollbar-thumb-active-color: rgba(var(--scrollbar-rgb), 0.25);
+
+  // -- Fonts ---
+  --font-system: #{variables.$font-system};
+  --font-brand: #{variables.$font-brand}, var(--font-system);
+  --font-body: #{variables.$font-body}, var(--font-system);
+  --font-mono: #{variables.$font-mono};
+
+  // -- Table --
+  --table-header-bg: #{variables.$table-header-background};
+
+  // --- Icons ---
+  --icon-header-link: #{variables.$icon-hash};
+  --icon-external-link: #{variables.$icon-external-link};
+  --icon-copy: #{variables.$icon-copy};
+  --icon-copied: #{variables.$icon-tick};
+}

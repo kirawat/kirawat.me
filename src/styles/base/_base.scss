@@ -1,0 +1,141 @@
+@use './../abstracts/variables' as variables;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 100vw;
+  min-height: 100vw;
+  overflow-x: hidden;
+}
+
+html.theme-dark {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+// --- Body ---
+body {
+  background-color: var(--body-bg-color);
+  background-image: radial-gradient(circle 100vw at 170% -10%, var(--primary-color), transparent);
+  background-repeat: no-repeat;
+}
+
+// --- Links ---
+a {
+  color: var(--link-color);
+
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+// --- Footnote Reference ---
+article p > sup > a {
+  padding: 0 2px;
+  font-size: #{variables.$text-size-2xs};
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &::before {
+    content: '[';
+  }
+
+  &::after {
+    content: ']';
+  }
+}
+
+// --- Footnotes ---
+.footnotes {
+  margin-top: 2.5rem;
+
+  ol {
+    padding-left: 1rem;
+
+    li {
+      font-size: #{variables.$text-size-sm};
+
+      a.data-footnote-backref {
+        color: #{variables.$gray-600};
+        font-size: #{variables.$text-size-xs};
+        text-decoration: none;
+
+        &:hover {
+          color: #{variables.$gray-300};
+        }
+      }
+    }
+  }
+}
+
+// --- Table ---
+table {
+  margin-top: 2rem;
+  width: 100%;
+  font-size: #{variables.$text-size-sm};
+  border: 1px solid #{variables.$gray-700};
+  border-collapse: collapse;
+
+  th, td {
+    padding: #{variables.$table-cell-padding};
+    border: 1px solid #{variables.$table-border-color};
+  }
+
+  thead > tr {
+    background: var(--table-header-bg);
+
+    & > th {
+      text-align: center;
+      vertical-align: middle;
+
+      // Hide empty table headers.
+      &:empty {
+        display: none;
+      }
+    }
+  }
+}
+
+// --- Divider ---
+hr {
+  margin: 1.5rem 0 1.5rem 0;
+  height: 1px;
+  background-color: #{variables.$gray-800};
+  border: none;
+}
+
+// --- Scroll Bar ---
+::-webkit-scrollbar {
+  width: 14px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  background-color: var(--scrollbar-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 45px;
+  background-color: var(--scrollbar-thumb-color);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-width: 3px 3px 3px 3px;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-active-color);
+}

@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as variables;
+
+body {
+  font-family: var(--font-body);
+  font-size: #{variables.$text-size-base};
+  line-height: 1.75;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+// --- Headers ---
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-brand);
+}
+
+
+

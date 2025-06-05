@@ -1,40 +1,107 @@
 ---
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
-import SearchModal from '../components/SearchModal.astro';
+import '../styles/main.scss';
+
+import { generateGoogleFontsUrl } from '../utils/font-utils.js';
+
+import Navigator from '../components/Navigator.astro';
+
+interface FontConfig {
+  name: string;
+  weight?: (number | string)[];
+  italics?: (number | string)[];
+}
 
 interface Props {
   title?: string | undefined;
   description?: string | undefined;
+  fontList?: FontConfig[];
+  copyright?: string | undefined;
 }
+
+const defaultFontList = [
+  {
+    name: 'IBM Plex Sans',
+    weights: [400, 600],
+    italics: [400, 500],
+  },
+  {
+    name: 'Rubik',
+    weights: [500],
+    italics: [600],
+  },
+  {
+    name: 'JetBrains Mono',
+    weights: [400, 700],
+    italics: [400, 700],
+  },
+]
+
+const copyrightSymbol = String.fromCodePoint(0x00A9);
+const currentYear = new Date().getFullYear();
 
 const {
   title = 'Kirawat Sahasewiyon',
   description,
+  fontList = defaultFontList,
+  copyright = `${copyrightSymbol} ${currentYear} Kirawat Sahasewiyon`,
 } = Astro.props;
+
+let googleFontsUrl = '';
+if (fontList.length > 0) {
+  googleFontsUrl = generateGoogleFontsUrl(fontList);
+}
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/Website">
-  <head>
-    <MainHead title={title} description={description} />
-  </head>
-  <body class="stack">
-    <header>
-      <Nav />
-    </header>
-    <div class="content-container">
-      <slot />
-    </div>
-    <Footer />
-    <SearchModal />
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" property="og:description" content={description} />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title itemprop="name">{title}</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favorite.svg" />
+  {
+    googleFontsUrl && (
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="stylesheet" href={googleFontsUrl} />
+    )
+  }
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline defer src="/pagefind/pagefind-ui.js" />
+  <script is:inline src="/src/scripts/theme-init.js" />
+
+  <slot name="head" />
+</head>
+<body>
+  <header>
+    <Navigator />
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <p>{copyright}</p>
+  </footer>
+</body>
 </html>
 
 <style lang="scss">
-  .content-container {
-    padding-inline-start: var(--content-pad-h);
-    padding-inline-end: var(--content-pad-h);
+  @use '../styles/abstracts/variables' as variables;
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    margin-top: auto;
+    padding: 3rem 2rem 3rem;
+
+    font-size: #{variables.$text-size-sm};
+    color: var(--text-copyright-color);
+    text-align: center;
   }
 </style>

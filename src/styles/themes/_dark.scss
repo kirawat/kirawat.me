@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as variables;
+
+:root.theme-dark {
+  // -- Body Colors ---
+  --body-bg-color: #{variables.$body-bg-color-dark};
+
+  // --- Text Colors ---
+  --text-color: #{variables.$text-color-dark};
+  --text-bold-color: #{variables.$text-bold-color-dark};
+
+  // --- Link Colors ---
+	--link-color: #{variables.$link-color-dark};
+	--link-hover-color: #{variables.$link-hover-color-dark};
+
+  // -- Scrollbar Colors ---
+  --scrollbar-rgb: 255, 255, 255;
+
+  // -- Table --
+  --table-header-bg: #{variables.$table-header-background-dark};
+
+  // --- Icons ---
+  --icon-header-link: #{variables.$icon-hash-dark};
+  --icon-external-link: #{variables.$icon-external-link-dark};
+  --icon-copy: #{variables.$icon-copy-dark};
+  --icon-copied: #{variables.$icon-tick};
+}

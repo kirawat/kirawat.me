@@ -1,0 +1,96 @@
+// --- Gray Scale ---
+$gray-0: #181c20;
+$gray-100: #191919;
+$gray-200: #303030;
+$gray-300: #474747;
+$gray-400: #5e5e5e;
+$gray-500: #747474;
+$gray-600: #919191;
+$gray-700: #adadad;
+$gray-800: #cacaca;
+$gray-900: #e6e6e6;
+$gray-999: #ffffff;
+
+// --- Cool Gray Scale ---
+$cool-gray-0: #090b11;
+$cool-gray-100: #283044;
+$cool-gray-200: #3d4663;
+$cool-gray-300: #505d84;
+$cool-gray-400: #6474a2;
+$cool-gray-500: #8490b5;
+$cool-gray-600: #a3acc8;
+$cool-gray-700: #c3cadb;
+$cool-gray-800: #e3e6ee;
+$cool-gray-900: #f3f4f7;
+$cool-gray-999: #ffffff;
+
+// --- Accent Colors ---
+$primary-color: #7611a6;
+
+// --- Body Colors ---
+$body-bg-color: $gray-999;
+$body-bg-color-dark: $gray-0;
+
+// --- Header Colors ---
+$h2-accent-color: #d2691e;
+$h3-accent-color: #c0a70c;
+$h4-color: #f8b755;
+
+// --- Text Colors ---
+$text-color: $cool-gray-200;
+$text-color-dark: $gray-800;
+$text-bold-color: $cool-gray-0;
+$text-bold-color-dark: #f8b755;
+$text-copyright-color: $cool-gray-400;
+$text-copyright-color-dark: $cool-gray-400;
+
+// --- Link Colors ---
+$link-color: #1976d2;
+$link-color-dark: #5094c9;
+$link-hover-color: #64b5f6;
+$link-hover-color-dark: #7db0e0;
+
+// --- Text Size ---
+$text-size-2xs: 0.75rem;
+$text-size-xs: 0.8rem;
+$text-size-sm: 0.875rem;
+$text-size-base: 1.08rem;
+$text-size-md: 1.125rem;
+$text-size-lg: 1.12rem;
+$text-size-xl: 1.625rem;
+$text-size-2xl: 2.125rem;
+$text-size-3xl: 2.625rem;
+$text-size-4xl: 3.5rem;
+$text-size-5xl: 4.5rem;
+
+// -- Radius Size ---
+$radius-size-s: 4px;
+$radius-size-m: 8px;
+$radius-size-l: 12px;
+$radius-size-xl: 16px;
+
+// --- Content Padding ---
+$content-padding-h: 5.465rem;
+
+// --- Table ---
+$table-border-color: $gray-700;
+$table-cell-padding: 10px;
+
+// --- Fonts ---
+$font-brand: 'Rubik';
+$font-body: 'IBM Plex Sams';
+$font-mono: 'JetBrains Mono', monospace;
+$font-system:
+  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+  'Open Sans', 'Helvatica Neue', sans-serif;
+
+// --- SVG ---
+$icon-hash: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%236474a2' viewBox='0 0 256 256'><path d='M224,88H175.4l8.47-46.57a8,8,0,0,0-15.74-2.86l-9,49.43H111.4l8.47-46.57a8,8,0,0,0-15.74-2.86L95.14,88H48a8,8,0,0,0,0,16H92.23L83.5,152H32a8,8,0,0,0,0,16H80.6l-8.47,46.57a8,8,0,0,0,6.44,9.3A7.79,7.79,0,0,0,80,224a8,8,0,0,0,7.86-6.57l9-49.43H144.6l-8.47,46.57a8,8,0,0,0,6.44,9.3A7.79,7.79,0,0,0,144,224a8,8,0,0,0,7.86-6.57l9-49.43H208a8,8,0,0,0,0-16H163.77l8.73-48H224a8,8,0,0,0,0-16Zm-76.5,64H99.77l8.73-48h47.73Z'></path></svg>");
+$icon-hash-dark: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%23919191' viewBox='0 0 256 256'><path d='M224,88H175.4l8.47-46.57a8,8,0,0,0-15.74-2.86l-9,49.43H111.4l8.47-46.57a8,8,0,0,0-15.74-2.86L95.14,88H48a8,8,0,0,0,0,16H92.23L83.5,152H32a8,8,0,0,0,0,16H80.6l-8.47,46.57a8,8,0,0,0,6.44,9.3A7.79,7.79,0,0,0,80,224a8,8,0,0,0,7.86-6.57l9-49.43H144.6l-8.47,46.57a8,8,0,0,0,6.44,9.3A7.79,7.79,0,0,0,144,224a8,8,0,0,0,7.86-6.57l9-49.43H208a8,8,0,0,0,0-16H163.77l8.73-48H224a8,8,0,0,0,0-16Zm-76.5,64H99.77l8.73-48h47.73Z'></path></svg>");
+$icon-external-link: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%236474a2' viewBox='0 0 256 256'><path d='M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z'></path></svg>");
+$icon-external-link-dark: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%23747474' viewBox='0 0 256 256'><path d='M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z'></path></svg>");
+$icon-copy: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23000000' viewBox='0 0 256 256'><path d='M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z'></path></svg>");
+$icon-copy-dark: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23e6e6e6' viewBox='0 0 256 256'><path d='M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z'></path></svg>");
+$icon-tick: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23008000' viewBox='0 0 256 256'><path d='M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z'></path></svg>");
+$table-header-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+$table-header-background-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.12' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
