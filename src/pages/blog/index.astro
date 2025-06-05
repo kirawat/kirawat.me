@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { render } from 'astro:content';
 
 const blogPosts = (await getCollection('blog', ({ data }) => {
   // In production (PROD), only include posts where draft is not true.
@@ -27,16 +28,56 @@ const blogPosts = (await getCollection('blog', ({ data }) => {
     return timeB - timeA;
   } ,
 );
+
+const posts = blogPosts.slice(0, 5);
 ---
 
 <BaseLayout>
-  <ul>
+  <section class="content-container">
     {
-      blogPosts.map((post) => (
-        <li>
-          <a href={`/blog/${post.id}`}>{post.data.name}</a>
-        </li>
-      ))
+      posts.map(async (post) => {
+        const { Content } = await render(post);
+        return (
+          <div class="blog-post">
+            <header>
+              <h1 class="post-title">{post.data.name}</h1>
+            </header>
+            <article class="post-content">
+              <Content />
+            </article>
+          </div>
+        );
+      })
     }
-  </ul>
+  </section>
 </BaseLayout>
+
+<style lang="scss">
+  $article-min-width: 320px;
+  $article-max-width: 780px;
+  $article-width: minmax($article-min-width, $article-max-width);
+
+  section.content-container {
+    display: grid;
+    grid-template-columns: 1fr $article-width 1fr;
+
+    .blog-post {
+      grid-column: 2;
+
+      // This CSS rule add vertical spacing between direct child elements
+      // of an element with the class `content`, but without adding space
+      // above the very first child.
+      & > :global(* + *),
+      & :global(blockquote > * + *),
+      & :global(li:has(> p)),
+      & :global(li > * + *),
+      & :global(ul > li > ul > li:only-child) {
+        margin-top: 1rem;
+      }
+
+      & :global(ul > li:has(table) > p) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+</style>
