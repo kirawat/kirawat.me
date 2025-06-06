@@ -10,44 +10,36 @@ import Icon from './Icon.astro';
 </theme-toggle>
 
 <style lang="scss">
-  $theme-transition-duration: 0.2s;
-
   button {
     display: flex;
-    padding: 0;
-
-    background-color: #ffffff;
-    box-shadow: inset 0 0 0 1px var(--primary-color);;
+    background-color: var(--gray-999);
+    box-shadow: inset 0 0 0 1px var(--accent-overlay);
     border: 0;
     border-radius: 999rem;
-
     cursor: pointer;
+    padding: 0;
 
     .icon {
-      display: flex;
-      position: relative;
       z-index: 1;
-
-      padding: 0.5rem;
-
+      position: relative;
+      display: flex;
       width: 2rem;
       height: 2rem;
-
       font-size: 1rem;
+      color: var(--accent-overlay);
+      padding: 0.5rem;
 
       &.light {
         :global(html:not(.theme-dark)) & {
-          color: #ffffff;
+          color: var(--accent-text-over);
         }
 
         &::before {
           content: '';
-
-          position: absolute;
           z-index: -1;
+          position: absolute;
           inset: 0;
-
-          background-color: var(--primary-color);
+          background-color: var(--accent-regular);
           border-radius: 999rem;
 
           :global(.theme-dark) & {
@@ -62,7 +54,7 @@ import Icon from './Icon.astro';
 
       &.dark {
         :global(.theme-dark) & {
-          color: #ffffff;
+          color: var(--accent-text-over);
         }
       }
 
@@ -70,14 +62,14 @@ import Icon from './Icon.astro';
         &,
         &.light::before {
           transition:
-            transform $theme-transition-duration ease-in-out,
-            color $theme-transition-duration ease-in-out;
+            transform var(--theme-transition),
+            color var(--theme-transition);
         }
       }
+    }
 
-      &[aria-pressed='false'] .icon.light {
-        color: red;
-      }
+    &[aria-pressed='false'] .icon.light {
+      color: var(--accent-text-over);
     }
   }
 </style>
@@ -89,16 +81,16 @@ import Icon from './Icon.astro';
 
       const button = this.querySelector('button')!;
 
-      // Set the theme to dark/light mode.
+      /** Set the theme to dark/light mode. */
       const setTheme = (dark: boolean) => {
         document.documentElement.classList[dark ? 'add' : 'remove']('theme-dark');
-        button.setAttribute('aria-pressed', String(!dark));
+        button.setAttribute('aria-pressed', String(dark));
       };
 
       // Toggle the theme when a user clicks the button.
       button.addEventListener('click', () => setTheme(!this.isDark()));
 
-      // Initialize button state to reflex current theme.
+      // Initialize button state to reflect current theme.
       setTheme(this.isDark());
     }
 

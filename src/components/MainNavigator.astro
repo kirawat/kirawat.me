@@ -1,6 +1,9 @@
 ---
 import { env } from '../consts';
 
+import Icon from '../components/Icon.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
 interface Props {
   title?: string;
 }
@@ -27,34 +30,232 @@ const isCurrentPage = (href: string) => {
 ---
 
 <nav>
-  <div class="site-title">
-    <a href="/">{title}</a>
-  </div>
-  <div class="menu">
-    <ul class="menu-items">
-      {
-        textLinks.map(({ label, href }) => (
-          <li>
-            <a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
-              {label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+  <div class="nav-bar">
+    <div class="site-title">
+      <a href="/">{title}</a>
+    </div>
+    <button class="menu-button"><Icon icon="menu" /></button>
   </div>
 </nav>
 
+<div class="mobile-menu">
+  <div class="menu-header">
+    <ThemeToggle />
+    <button class="close-button"><Icon icon="close" /></button>
+  </div>
+  <ul class="menu-items">
+    {
+      textLinks.map(({ label, href }) => (
+        <li>
+          <a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
 <style lang="scss">
   @use '../styles/abstracts/variables' as variables;
+
+  $mobile-header-height: 50px;
+  $transition-duration: 0.2s;
 
   nav {
     position: sticky;
     top: 0;
     z-index: 100;
 
+    height: $mobile-header-height;
+
+    background-color: rgba(variables.$primary-color-darker, 0.7);
+    backdrop-filter: blur(6px);
+    --webkit-backdrop-filter: blur(6px);
+
+    font-family: var(--font-brand);
+    font-weight: 500;
+
+    .nav-bar {
+      display: grid;
+      grid-template-columns: 64px 1fr 64px;
+      position: relative;
+
+      height: 100%;
+
+      justify-content: space-between;
+
+      .site-title {
+        grid-column: 2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          color: #ffffff;
+          text-decoration: none;
+        }
+      }
+
+      .menu-button {
+        grid-column: 3;
+
+        :global(svg) {
+          width: 24px;
+          height: 24px;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+
     background-color: #ffffff;
 
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateX(100%);
+    visibility: hidden;
+
+    transition: transform $transition-duration ease-in-out,
+                visibility $transition-duration;
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      padding: 20px;
+
+      .close-button {
+        :global(svg) {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+
+    .menu-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      justify-content: center;
+      align-items: center;
+
+      line-height: 1.2;
+      list-style: none;
+      padding: 0;
+      text-align: center;
+
+      a {
+        font-size: #{variables.$text-size-xl};
+        text-decoration: none;
+      }
+    }
+
+    .menu-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 2rem 1rem;
+
+      width: 100%;
+
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .menu-button, .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  :global(body.menu-open) .mobile-menu {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  // Prevent the page from scrolling when the menu is open.
+  :global(body.menu-open) {
+    overflow: hidden;
+  }
+
+  @media (min-width: 64em) {
+    nav {
+      position: relative;
+
+      height: 100%;
+
+      background-color: transparent;
+      backdrop-filter: none;
+      --webkit-backdrop-filter: none;
+
+      .nav-bar {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        padding: 3rem 5.5rem;
+
+        //padding-left: #{variables.$content-padding-h};
+        //padding-right: #{variables.$content-padding-h};
+
+        .site-title {
+          justify-content: start;
+          align-items: start;
+
+          a {
+            color: var(--text-color);
+          }
+        }
+      }
+    }
   }
 </style>
+
+<script>
+  const menuButton = document.querySelector('.menu-button');
+  const closeButton = document.querySelector('.close-button');
+  const body = document.body;
+
+  function openMenu() {
+    body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    body.classList.remove('menu-open');
+  }
+
+  if (menuButton) {
+    menuButton.addEventListener('click', openMenu);
+  }
+
+  if (closeButton) {
+    closeButton.addEventListener('click', closeMenu);
+  }
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && body.classList.contains('menu-open')) {
+        closeMenu();
+      }
+    })
+  });
+</script>
