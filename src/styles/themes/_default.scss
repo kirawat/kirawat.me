@@ -1,10 +1,27 @@
 @use '../abstracts/variables' as variables;
 
 :root {
-  // -- Accent Colors ---
+  color-scheme: light;
+
+  // --- Base Colors ---
+  --color-base-000: #090b11;
+  --color-base-100: #283044;
+  --color-base-200: #3d4663;
+  --color-base-300: #505d84;
+  --color-base-400: #6474a2;
+  --color-base-500: #8490b5;
+  --color-base-600: #a3acc8;
+  --color-base-700: #c3cadb;
+  --color-base-800: #e3e6ee;
+  --color-base-900: #f3f4f7;
+  --color-base-999: #ffffff;
+
+  --color-primary: hsla(281, 81%, 36%, 1);
+
+  // --- Accent Colors ---
   --primary-color: #{variables.$primary-color};
 
-  // -- Body Colors ---
+  // --- Body Colors ---
   --body-bg-color: #{variables.$body-bg-color};
 
   // --- Header Colors ---

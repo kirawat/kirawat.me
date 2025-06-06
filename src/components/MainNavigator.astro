@@ -2,6 +2,7 @@
 import { env } from '../consts';
 
 import Icon from '../components/Icon.astro';
+import Search from '../components/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
@@ -47,8 +48,9 @@ const isCurrentPage = (href: string) => {
         })
       }
     </ul>
-    <button class="menu-button"><Icon icon="menu" /></button>
+    <Search />
     <ThemeToggle />
+    <button class="menu-button"><Icon icon="menu" /></button>
   </div>
 </nav>
 
@@ -140,6 +142,7 @@ const isCurrentPage = (href: string) => {
         }
       }
 
+      :global(search-button),
       :global(theme-toggle) {
         display: none;
       }
@@ -290,9 +293,10 @@ const isCurrentPage = (href: string) => {
           }
         }
 
+        :global(search-button),
         :global(theme-toggle) {
           display: inline-block;
-          padding-top: 1.3em;
+          padding-top: 1.4em;
         }
 
         .menu-button {

@@ -1,7 +1,22 @@
 @use '../abstracts/variables' as variables;
 
 :root.theme-dark {
-  // -- Body Colors ---
+  color-scheme: dark;
+
+  // --- Base Colors ---
+  --color-base-000: #ffffff;
+  --color-base-100: #e6e6e6;
+  --color-base-200: #cacaca;
+  --color-base-300: #adadad;
+  --color-base-400: #919191;
+  --color-base-500: #747474;
+  --color-base-600: #5e5e5e;
+  --color-base-700: #474747;
+  --color-base-800: #303030;
+  --color-base-900: #191919;
+  --color-base-999: #000000;
+
+  // --- Body Colors ---
   --body-bg-color: #{variables.$body-bg-color-dark};
 
   // --- Text Colors ---
@@ -12,10 +27,10 @@
 	--link-color: #{variables.$link-color-dark};
 	--link-hover-color: #{variables.$link-hover-color-dark};
 
-  // -- Scrollbar Colors ---
+  // --- Scrollbar Colors ---
   --scrollbar-rgb: 255, 255, 255;
 
-  // -- Table --
+  // --- Table ---
   --table-header-bg: #{variables.$table-header-background-dark};
 
   // --- Icons ---
