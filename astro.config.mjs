@@ -31,6 +31,9 @@ export default defineConfig({
       ],
     ],
   },
+  devToolbar: {
+    enabled: false,
+  },
   integrations: [
     mdx(),
     sitemap(),

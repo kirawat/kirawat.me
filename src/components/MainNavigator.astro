@@ -1,0 +1,60 @@
+---
+import { env } from '../consts';
+
+interface Props {
+  title?: string;
+}
+
+const {
+  title = env.SITE_TITLE,
+} = Astro.props;
+
+// Main Menu Items
+const textLinks: { label: string, href: string }[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Notes', href: '/notes/' },
+  { label: 'About', href: '/about/' },
+];
+
+// Test if a link is pointing to the current page.
+const isCurrentPage = (href: string) => {
+  let pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+  if (pathname.at(0) !== '/') pathname = '/' + pathname;
+  if (pathname.at(-1) !== '/') pathname += '/';
+  return pathname === href || (href !== '/' && pathname.startsWith(href));
+}
+---
+
+<nav>
+  <div class="site-title">
+    <a href="/">{title}</a>
+  </div>
+  <div class="menu">
+    <ul class="menu-items">
+      {
+        textLinks.map(({ label, href }) => (
+          <li>
+            <a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<style lang="scss">
+  @use '../styles/abstracts/variables' as variables;
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background-color: #ffffff;
+
+    border: 1px solid red;
+  }
+</style>
