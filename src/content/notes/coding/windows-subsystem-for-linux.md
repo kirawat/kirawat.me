@@ -33,7 +33,7 @@ It's for developers who need to work with Linux tools and environments while sti
 
 * **Support for Linux GUI Applications (WSLg)**
 
-WSL 2 has the built-in support for graphical Linux applications through a feature called **WSLg**. Without any manual setup, you can install and run Linux GUI apps (like GIMP, Gedit, or even full-fledged IDEs like IntelliJ IDEA) and have them appear on your Windows desktop just like native Windows applications. They can be launched from the Start Menu, pinned to the taskbar, and support copy/paste with Windows apps.
+   WSL 2 has the built-in support for graphical Linux applications through a feature called **WSLg**. Without any manual setup, you can install and run Linux GUI apps (like GIMP, Gedit, or even full-fledged IDEs like IntelliJ IDEA) and have them appear on your Windows desktop just like native Windows applications. They can be launched from the Start Menu, pinned to the taskbar, and support copy/paste with Windows apps.
 
 ## Version History
 
