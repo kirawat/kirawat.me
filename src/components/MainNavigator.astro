@@ -6,7 +6,7 @@ import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
   title?: string;
-}
+};
 
 const {
   title = env.SITE_TITLE,
@@ -26,15 +26,29 @@ const isCurrentPage = (href: string) => {
   if (pathname.at(0) !== '/') pathname = '/' + pathname;
   if (pathname.at(-1) !== '/') pathname += '/';
   return pathname === href || (href !== '/' && pathname.startsWith(href));
-}
+};
 ---
 
 <nav>
-  <div class="nav-bar">
+  <div class="nav-header">
     <div class="site-title">
-      <a href="/">{title}</a>
+      <a href="/" class="no-select">{title}</a>
     </div>
+  </div>
+  <div class="nav-footer">
+    <ul class="menu-items">
+      {
+        textLinks.map(({ label, href }) => {
+          const isCurrent = isCurrentPage(href);
+          const ariaAttribute = isCurrent ? 'page' : null;
+          return (
+            <li><a aria-current={ariaAttribute} class="link" href={href}>{label}</a></li>
+          )
+        })
+      }
+    </ul>
     <button class="menu-button"><Icon icon="menu" /></button>
+    <ThemeToggle />
   </div>
 </nav>
 
@@ -45,13 +59,13 @@ const isCurrentPage = (href: string) => {
   </div>
   <ul class="menu-items">
     {
-      textLinks.map(({ label, href }) => (
-        <li>
-          <a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
-            {label}
-          </a>
-        </li>
-      ))
+      textLinks.map(({ label, href }) => {
+        const isCurrent = isCurrentPage(href);
+        const ariaAttribute = isCurrent ? 'page' : null;
+        return (
+          <li><a aria-current={ariaAttribute} class="link" href={href}>{label}</a></li>
+        )
+      })
     }
   </ul>
 </div>
@@ -62,40 +76,58 @@ const isCurrentPage = (href: string) => {
   $mobile-header-height: 50px;
   $transition-duration: 0.2s;
 
+  :root {
+    --nav-bar-bg-color: rgba(255, 255, 255, 0.45);
+    --nav-bar-border-color: #f0f0f0;
+    --site-title-color: #{variables.$text-color};
+    --menu-button-color: #{variables.$text-color};
+  }
+
+  :root.theme-dark {
+    --nav-bar-bg-color: rgba(255, 255, 255, 0.05);
+    --nav-bar-border-color: #323232;
+    --site-title-color: #{variables.$text-color-dark};
+    --menu-button-color: #{variables.$text-color-dark};
+  }
+
   nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+
     position: sticky;
     top: 0;
     z-index: 100;
 
+    padding: 0 20px;
     height: $mobile-header-height;
 
-    background-color: rgba(variables.$primary-color-darker, 0.7);
+    border-bottom: 1px solid var(--nav-bar-border-color);
+    background-color: var(--nav-bar-bg-color);
     backdrop-filter: blur(6px);
     --webkit-backdrop-filter: blur(6px);
 
     font-family: var(--font-brand);
     font-weight: 500;
 
-    .nav-bar {
-      display: grid;
-      grid-template-columns: 64px 1fr 64px;
-      position: relative;
-
-      height: 100%;
-
-      justify-content: space-between;
-
+    .nav-header {
       .site-title {
-        grid-column: 2;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
+        display: inline-block;
+        
         a {
-          color: #ffffff;
+          color: var(--site-title-color);
           text-decoration: none;
         }
+      }
+    }
+
+    .nav-footer {
+      position: absolute;
+      right: 1em;
+
+      .menu-items {
+        display: none;
       }
 
       .menu-button {
@@ -104,8 +136,12 @@ const isCurrentPage = (href: string) => {
         :global(svg) {
           width: 24px;
           height: 24px;
-          color: #ffffff;
+          color: var(--menu-button-color);
         }
+      }
+
+      :global(theme-toggle) {
+        display: none;
       }
     }
   }
@@ -118,7 +154,7 @@ const isCurrentPage = (href: string) => {
     height: 100%;
     z-index: 2000;
 
-    background-color: #ffffff;
+    background-color: var(--body-bg-color);
 
     display: flex;
     flex-direction: column;
@@ -163,7 +199,7 @@ const isCurrentPage = (href: string) => {
       padding: 0;
       text-align: center;
 
-      a {
+      .link {
         font-size: #{variables.$text-size-xl};
         text-decoration: none;
       }
@@ -189,6 +225,15 @@ const isCurrentPage = (href: string) => {
     cursor: pointer;
   }
 
+  .menu-items {
+    list-style: none;
+
+    .link {
+      display: inline-block;
+      text-decoration: none;
+    }
+  }
+
   :global(body.menu-open) .mobile-menu {
     transform: translateX(0);
     visibility: visible;
@@ -201,21 +246,22 @@ const isCurrentPage = (href: string) => {
 
   @media (min-width: 64em) {
     nav {
+      display: grid;
+      grid-template-columns: auto 1fr;
       position: relative;
 
       height: 100%;
+      padding: 3rem 5.5rem;
 
+      border: 0;
       background-color: transparent;
       backdrop-filter: none;
       --webkit-backdrop-filter: none;
 
-      .nav-bar {
-        grid-template-columns: auto 1fr;
+      .nav-header {
+        grid-column: 1 / 2;
         align-items: center;
-        padding: 3rem 5.5rem;
-
-        //padding-left: #{variables.$content-padding-h};
-        //padding-right: #{variables.$content-padding-h};
+        gap: 1rem;
 
         .site-title {
           justify-content: start;
@@ -224,6 +270,33 @@ const isCurrentPage = (href: string) => {
           a {
             color: var(--text-color);
           }
+        }
+      }
+
+      .nav-footer {
+        grid-column: 2 / 3;
+        display: flex;
+        justify-self: flex-end;
+        gap: 1em;
+
+        .menu-items {
+          display: flex;
+          flex-direction: row;
+          font-size: #{variables.$text-size-base};
+
+          .link {
+            padding: 0.5rem 1rem;
+            border-radius: 999rem;
+          }
+        }
+
+        :global(theme-toggle) {
+          display: inline-block;
+          padding-top: 1.3em;
+        }
+
+        .menu-button {
+          display: none;
         }
       }
     }
