@@ -131,7 +131,6 @@ const isCurrentPage = (href: string) => {
     height: $mobile-header-height;
     padding: 0 20px;
 
-    
     background-color: var(--nav-bar-bg-color);
     border-bottom: 1px solid var(--nav-bar-border-color);
     backdrop-filter: blur(6px);
@@ -190,7 +189,7 @@ const isCurrentPage = (href: string) => {
     width: 100%;
     height: 100%;
     
-    background-color: var(--body-bg-color);
+    background-color: var(--color-body-bg);
 
     transform: translateX(100%);
     transition: transform $transition-duration ease-in-out,
@@ -231,8 +230,13 @@ const isCurrentPage = (href: string) => {
       list-style: none;
 
       .link {
+        color: var(--color-base-300);
         font-size: var.$text-size-xl;
         text-decoration: none;
+
+        &[aria-current] {
+          color: var(--color-base-000);
+        }
       }
     }
 
@@ -276,7 +280,7 @@ const isCurrentPage = (href: string) => {
     overflow: hidden;
   }
 
-  @media (min-width: 64em) {
+  @media (min-width: var.$screen-lg) {
     nav {
       position: relative;
 
@@ -315,12 +319,25 @@ const isCurrentPage = (href: string) => {
         .menu-items {
           display: flex;
           flex-direction: row;
+          gap: 1rem;
 
           font-size: var.$text-size-base;
 
           .link {
             padding: 0.5rem 1rem;
             border-radius: 999rem;
+            color: var(--color-text-normal);
+
+            &:hover,
+            &:focus {
+              color: var(--color-base-100);
+              background-color: var(--color-primary-overlay);
+            }
+
+            &[aria-current='page'] {
+              color: #fff;
+              background-color: var(--color-primary);
+            }
           }
         }
 
