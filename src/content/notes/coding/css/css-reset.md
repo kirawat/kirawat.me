@@ -1,9 +1,13 @@
 ---
-name: "Reset Stylesheet"
+name: "CSS Reset"
 dateCreated: 2025-06-05 19:44:00 +0700
 ---
 
-A reset stylesheet aims to reduce browser inconsistencies in default element styling. There are many comprehensive resets available (like [Meyer's Reset](https://meyerweb.com/eric/tools/css/reset/) or [Normalize.css](https://necolas.github.io/normalize.css/)). Here's a very simplified example to give you the idea. For a real project, you might want to use a more robust solution or tailor this extensively.
+A CSS Reset (or "reset stylesheet") is a collection of CSS rules used by web developers to remove or "reset" the default styling of HTML elements that browsers apply, to reduce browser inconsistencies in default element styling.
+
+Every web browser has its own default stylesheet, known as the "user agent stylesheet". These stylesheets dictate the initial appearance of HTML elements like headings, paragraphs, lists, and forms. However, the styles applied by different browsers are not always identical. For instance, the default margins on a `<h1>` tag or the apperance of `<button>` element might vary between Chrome, Firefox, and Safari. These inconsistencies can lead to a website looking different from one browser to another, causing frustration for developers who strive for a consistent user experience.
+
+There are many comprehensive resets available (like [Meyer's Reset](https://meyerweb.com/eric/tools/css/reset/) or [Normalize.css](https://necolas.github.io/normalize.css/)). Here's a very simplified example to give you the idea. For a real project, you might want to use a more robust solution or tailor this extensively.
 
 ```css
 /*
