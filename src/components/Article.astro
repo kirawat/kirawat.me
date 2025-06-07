@@ -8,440 +8,111 @@
 </article>
 
 <style lang="scss">
-  $article-min-width: 320px;
-  $article-max-width: 780px;
-  $article-width: minmax($article-min-width, $article-max-width);
+  @use '../styles/abstracts/variables' as var;
 
-  $table-border-color: var(--gray-700);
-  $table-cell-padding: 10px;
+  article .content {
+    padding-left: var.$screen-sm-content-padding-h;
+    padding-right: var.$screen-sm-content-padding-h;
 
-  article {
-    display: grid;
-    grid-template-columns: 1fr $article-width 1fr;
+    // Text
 
-    .content {
-      grid-column: 2;
+    :global(b, strong) {
+      color: var(--text-bold-color);
+    }
 
-      // This CSS rule add vertical spacing between direct child elements
-      // of an element with the class `content`, but without adding space
-      // above the very first child.
-      & > :global(* + *),
-      & :global(blockquote > * + *),
-      & :global(li:has(> p)),
-      & :global(li > * + *),
-      & :global(ul > li > ul > li:only-child) {
-        margin-top: 1rem;
-      }
+    // Bulletin
 
-      & :global(ul > li:has(table) > p) {
-        margin-bottom: 1rem;
-      }
+    :global(ul),
+    :global(ol) {
+      padding-left: var.$screen-sm-content-padding-h;
+    }
 
-      // --- Header styling ---
-      & :global(h2, h3) {
-        position: relative;
-        text-indent: 0.7rem;
-        text-transform: unset;
-      }
+    // Inline Code
+    // ======================================================================
+    :global(* > code:not(pre > code)) {
+      padding: 2px 4px;
 
-      // Add link icon to header anchor.
-      & :global(h2),
-      & :global(h3) {
-        & :global(.link-icon) {
-          content: var(--link-icon);
-          position: absolute;
-          padding: 4px 8px 4px 0;
-          left: -1.7rem;
-          top: 55%;
-          cursor: pointer;
-          font-size: 1rem;
-          text-decoration: none;
-          opacity: 0;
-          transform: translateY(-50%);
-          transition: opacity 0.14s ease-in-out;
-        }
+      color: var(--inline-code-text-color);
+      font-family: var.$font-mono;
+      font-size: var.$text-size-sm;
+      background-color: var(--inline-code-bg-color);
+      border: 1px solid var(--color-base-800);
+      border-radius: var.$radius-s;
+      word-break: break-word;
+    }
 
-        &:hover :global(.link-icon) {
-          opacity: 1;
-        }
-      }
+    // Link Inline Code
+    :global(p a:has(code)) {
+      text-decoration-color: var(--inline-code-text-color);
 
-      & :global(h2) {
-        margin-bottom: 1.5rem;
-        font-size: var(--text-xl);
-
-        &:not(:first-child) {
-          margin-top: 2.5rem;
-        }
-
-        &::before {
-          content: " ";
-          display: inline-block;
-          position: absolute;
-          top: 0.6rem;
-          left: 0px;
-          width: 3px;
-          height: 1.8rem;
-          margin-right: 6px;
-          border-radius: var(--radius-m);
-          background-color: var(--h2-accent-color);
-        }
-
-        &::after {
-          content: "";
-          position: absolute;
-          right: 0px;
-          bottom: 0px;
-          width: 100%;
-          height: 1px;
-          opacity: 0.5;
-          background-image: linear-gradient(to left, var(--h2-accent-color), 30%, transparent 70%);
-        }
-
-        & + :global(h3) {
-          margin-top: 0rem;
-        }
-      }
-
-      & :global(h3) {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-size: var(--text-lg);
-
-        &::before {
-          content: " ";
-          display: inline-block;
-          position: absolute;
-          top: 0.6rem;
-          left: 0px;
-          width: 3px;
-          height: var(--text-lg);
-          margin-right: 6px;
-          border-radius: var(--radius-m);
-          background-color: var(--h3-accent-color);
-        }
-      }
-
-      & :global(h4) {
-        margin-top: 2rem;
-      }
-
-      // --- Text styling ---
-      & :global(b, strong) {
-        color: var(--text-bold-color);
-        font-weight: 600;
-      }
-
-      // --- Link styling ---
-      & :global(a) {
-        // Add external link icon.
-        &[href^="http"]:not([href^="{{ (urls.Parse .Page.Permalink).Scheme }}://{{ (urls.Parse .Page.Permalink).Host }}"]):not(.no-external-icon)::after {
-          content: '';
-          display: inline-block;
-
-          background-image: var(--external-link-icon);
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: contain;
-
-          width: var(--text-base);
-          height: var(--text-base);
-
-          vertical-align: middle;
-          margin-left: 2px;
-          margin-bottom: 4px;
-        }
-      }
-
-      // --- Block Quote ---
-      & :global(blockquote) {
-        padding-inline-start: 1.2rem;
-        color: var(--blockquote-text-color);
-        border-inline-start: 2px solid var(--accent-overlay);
-      }
-
-      // --- Inline Code ---
-      & :global(* > code:not(pre > code)) {
-        display: inline-block;
-        padding: 2px 4px;
-        line-height: 1rem;
-        font-family: var(--font-code);
-        font-size: var(--text-sm);
-        background-color: var(--code-bg);
-        border: 1px solid var(--gray-800);
-        border-radius: var(--radius-s);
-        word-break: break-word;
-        transform: translateY(-1px);
-      }
-
-      // --- Code Block ---
-      & :global(pre > code) {
-        font-family: var(--font-code);
-      }
-
-      & :global(pre) {
-        position: relative;
-        font-size: var(--text-sm);
-        border-radius: 0.5rem;
-        border: 1px solid var(--gray-800);
-        overflow-x: auto;
-
-        &::-webkit-scrollbar-thumb {
-          background-color: transparent;
-        }
-
-        &:hover {
-          &::-webkit-scrollbar-thumb {
-            background-color: var(--scrollbar-thumb-bg);
-          }
-        }
-
-        & :global(.copy-code-button) {
-          position: sticky;
-          box-sizing: border-box;
-          top: 0;
-          left: calc(100% - 34px);
-          margin-top: 2px;
-          cursor: pointer;
-          overflow-x: hidden;
-          z-index: 3;
-
-          background-image: var(--icon-copy);
-          background-repeat: no-repeat;
-          background-position: left;
-          background-size: 20px 20px;
-          background-color: transparent;
-
-          width: 34px;
-          height: 34px;
-          border: none;
-          padding: 1px 14px 0 0;
-          font-size: var(--text-xs);
-          text-align: right;
-          color: transparent;
-          opacity: 0.3;
-
-          transition: width 0.2s ease-out,
-                      left 0.2s ease-out,
-                      color 0.2s ease-in,
-                      opacity 0.2s ease-out,
-                      transform 0.2s ease-out;
-
-          &:hover,
-          &:focus-visible {
-            width: 68px;
-            left: calc(100% - 68px);
-            color: var(--text-normal);
-            opacity: 1;
-          }
-
-          // Slight press effect.
-          &:active {
-            transform: scale(0.9);
-          }
-
-          &.copied {
-            width: 80px;
-            left: calc(100% - 80px);
-            color: var(--text-normal);
-            background-image: var(--icon-copied);
-            opacity: 1;
-            transition-duration: 0s;
-          }
-        }
-
-        &[data-language] {
-          &::before {
-            content: var(--language-label, attr(data-language));
-            display: inline-block;
-            position: sticky;
-            left: 0;
-            padding: 0.5rem 1rem;
-            color: var(--gray-400);
-            font-size: var(--text-2xs);
-            z-index: 2;
-          }
-        }
+      &:hover {
+        text-decoration-color: var(--color-link-hover);
 
         :global(code) {
-          display: block;
-          width: max-content;
-          min-width: 100%;
-          padding: 1rem 1rem 1rem 0rem;
-          line-height: var(--code-line-height);
-          border-top: 1px solid var(--gray-800);
-          white-space: pre;
-          counter-reset: step;
+          color: var(--color-link-hover);
+        }
+      }
+    }
 
-          // Add line number to code block.
-          :global(.line) {
-            position: relative;
-            counter-increment: step;
+    // Code Block
+    // ======================================================================
+    :global(pre) {
+      position: relative;
 
-            &::before {
-              position: sticky;
-              display: inline-block;
-              margin-right: 0.5rem;
-              padding-right: 0.5rem;
-              left: 0;
-              width: 2.3rem;
-              height: 1.5rem;
-              text-align: right;
-              font-size: 0.75rem;
-              color: rgba(155, 138, 148, 0.4);
-              background-color: var(--code-bg);
-              content: counter(step);
-              z-index: 1;
-            }
+      font-family: var.$font-mono;
+      font-size: var.$text-size-sm;
+      border: 1px solid var(--color-base-800);
+      border-radius: var.$radius-s;
+
+      overflow-x: auto;
+
+      &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+      }
+
+      &:hover {
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--scrollbar-thumb-color);
+        }
+      }
+
+      :global(code) {
+        display: block;
+
+        width: max-content;
+        min-width: 100%;
+        padding: 1em 1em 1em 0em;
+        
+        line-height: 1.65rem;
+        border-top: 1px solid var(--color-base-800);
+        white-space: pre;
+        counter-reset: step;
+
+        // Add line number to code block.
+        :global(.line) {
+          position: relative;
+          counter-increment: step;
+
+          &::before {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+
+            display: inline-block;
+            margin-right: 0.5rem;
+            padding-right: 0.5rem;
+            width: 2.3rem;
+            height: 1.5rem;
+
+            color: rgba(155, 138, 148, 0.4);
+            background-color: var(--code-bg-color);
+            font-size: var.$text-size-2xs;
+            text-align: right;
+
+            content: counter(step);
           }
         }
       }
     }
   }
 </style>
-
-<script>
-  /**
-   * Defines the mapping for language keys to their display name.
-   * Keys are expected to be lowercase.
-   */
-  const LANGUAGE_MAP: Record<string, string> = {
-    'cpp': 'C++',
-    'csharp': 'C#',
-    'css': 'CSS',
-    'html': 'HTML',
-    'ini': 'INI',
-    'javascript': 'JavaScript',
-    'plaintext': 'Text',
-    'powershell': 'PowerShell',
-    'scss': 'SCSS',
-    'sql': 'SQL',
-    'toml': 'TOML',
-    'typescript': 'TypeScript',
-    'yaml': 'YAML',
-  }
-
-  /**
-   * Sets a CSS custom property on <pre> elements to control the
-   * content of their ::before pseudo-element, based on a language map.
-   */
-  function setupCodeBlockLabels() : void {
-    const codeBlocks: NodeListOf<HTMLElement> = document.querySelectorAll('pre[data-language]');
-
-    codeBlocks.forEach((block: HTMLElement) => {
-      const languageAttrValue = block.getAttribute('data-language');
-
-      // Skip if the attribute is missing or empty.
-      if (!languageAttrValue) {
-        return;
-      }
-
-      const languageKey: string = languageAttrValue.toLowerCase();
-      let displayText: string = languageKey;
-
-      if (LANGUAGE_MAP.hasOwnProperty(languageKey)) {
-        displayText = LANGUAGE_MAP[languageKey]!;
-      } else {
-        // Fallback for unmapped languages: capitalize the first letter.
-        displayText = languageKey.charAt(0).toUpperCase() + languageKey.slice(1);
-      }
-
-      block.style.setProperty('--language-label', `"${displayText}"`);
-    });
-  }
-
-  /**
-   * Finds all `pre` elements in the document and adds a "Copy to clipboard"
-   * button to each. The button, when clicked, copied the content of the
-   * associated code block to the clipboard.
-   */
-  function addCopyToClipboardButtons(): void {
-    // Select all `pre` elements in the document.
-    const codeBlocks: NodeListOf<HTMLElement> = document.querySelectorAll('pre');
-
-    // Define the text for the copy button in its normal and copied states.
-    const copyText: string = 'Copy';
-    const copiedText: string = 'Copied!';
-
-    // Iterate over each found 'pre' element.
-    codeBlocks.forEach((block: HTMLElement) => {
-      // Ensure the <pre> block can contain a positioned element (the copy button).
-      // If its current position is 'static', change it to 'relative'.
-      if (getComputedStyle(block).position === 'static') {
-        block.style.position = 'relative';
-      }
-
-      // Create the copy button element.
-      const copyButton = document.createElement('button');
-      copyButton.className = 'copy-code-button';
-      copyButton.textContent = copyText;
-      copyButton.setAttribute('aria-label', 'Copy code');
-      copyButton.setAttribute('title', 'Copy code');
-
-      const codeElement = block.querySelector('code');
-      if (codeElement) {
-        block.insertBefore(copyButton, codeElement);
-      } else {
-        block.appendChild(copyButton);
-      }
-
-      // Add an event listener for the 'click' event on the copy button.
-      copyButton.addEventListener('click', async () => {
-        // Find the 'code' element within the 'pre' block, if it exists.
-        const codeElement = block.querySelector('code');
-        // Determine the text to copy. Prioritize 'code' element's innerText,
-        // otherise use 'pre' block's innerText.
-        const codeToCopy = codeElement ? codeElement.innerText : block.innerText;
-
-        // If there's no text to copy, do nothing.
-        if (!codeToCopy) {
-          return;
-        }
-
-        // Asynchronously write the text to the clipboard.
-        await navigator.clipboard.writeText(codeToCopy);
-        // Add a 'copied' class for styling (e.g., to show a success state).
-        copyButton.classList.add('copied');
-        // Change the button text to indicate success.
-        copyButton.textContent = copiedText;
-
-        // After 2 seconds, revert the button to its original state.
-        setTimeout(() => {
-          copyButton.classList.remove('copied');
-          copyButton.textContent = copyText;
-        }, 2000);
-      });
-    });
-  }
-
-  /**
-   * Adds a clickable link icon to specified header elements that have an ID.
-   * The icon links to the heading's corresponding section.
-   */
-  function addLinkIconToHeaders() : void {
-    const headings: NodeListOf<Element> = document.querySelectorAll('h2[id], h3[id]');
-
-    headings.forEach((heading: Element) => {
-      const icon = document.createElement('a');
-      icon.classList.add('link-icon');
-      icon.href = `#${heading.id}`;
-      icon.setAttribute('aria-label', 'Link to this section');
-      icon.setAttribute('title', 'Link to this section');
-
-      // Insert the icon at the beginning of the heading.
-      if (heading.firstChild) {
-        heading.insertBefore(icon, heading.firstChild);
-      } else {
-        // Fallback if heading is empty for some reason.
-        heading.appendChild(icon);
-      }
-    });
-  }
-
-  // Setup features once the DOM is fully loaded.
-  document.addEventListener('DOMContentLoaded', () => {
-    addLinkIconToHeaders();
-    addCopyToClipboardButtons();
-    setupCodeBlockLabels();
-  });
-</script>
