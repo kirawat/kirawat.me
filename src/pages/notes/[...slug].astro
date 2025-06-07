@@ -28,11 +28,9 @@ const { Content } = await render(entry);
   <main data-pagefind-body itemscope itemtype="https://schema.org/Blog">
     <header>
       <div class="header-container">
-        <div class="post-meta-container">
-          <div class="post-meta">
-            <a class="back-link" href="/notes/"><Icon icon="arrow-left" /> Notes</a>
-            <h1 class="post-title" itemprop="name">{entry.data.name}</h1>
-          </div>
+        <div class="post-meta">
+          <a class="back-link" href="/notes/"><Icon icon="arrow-left" /> Notes</a>
+          <h1 class="post-title" itemprop="name">{entry.data.name}</h1>
         </div>
       </div>
     </header>
@@ -43,6 +41,37 @@ const { Content } = await render(entry);
 </BaseLayout>
 
 <style lang="scss">
+  @use '../../styles/abstracts/variables' as var;
+
+  .header-container {
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    padding-left: var.$screen-sm-content-padding-h;
+    padding-right: var.$screen-sm-content-padding-h;
+
+    .post-meta {
+      .back-link {
+        font-size: var.$text-size-sm;
+        text-decoration: 1px solid underline transparent;
+        text-underline-offset: 0.25em;
+        transition: text-decoration-color var.$theme-transition;
+
+        &:hover,
+        &:focus {
+          text-decoration-color: currentColor;
+        }
+      }
+
+      .post-title {
+        margin: 0;
+        padding: 0;
+        font-size: var.$text-size-xl;
+      }
+    }
+  }
+</style>
+
+<!-- <style lang="scss">
   $header-min-width: 320px;
   $header-max-width: 1280px;
   $header-width: minmax($header-min-width, $header-max-width);
@@ -100,4 +129,4 @@ const { Content } = await render(entry);
       }
     }
   }
-</style>
+</style> -->
