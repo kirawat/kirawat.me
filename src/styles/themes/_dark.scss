@@ -3,7 +3,9 @@
 :root.theme-dark {
   color-scheme: dark;
 
-  // --- Base Colors ---
+  // Base Colors
+  // ========================================================================
+
   --color-base-000: #ffffff;
   --color-base-100: #e6e6e6;
   --color-base-200: #cacaca;
@@ -16,24 +18,27 @@
   --color-base-900: #191919;
   --color-base-999: #000000;
 
-  // --- Body Colors ---
-  --body-bg-color: #{variables.$body-bg-color-dark};
+  // Colors
+  // ========================================================================
 
-  // --- Text Colors ---
-  --text-color: #{variables.$text-color-dark};
-  --text-bold-color: #{variables.$text-bold-color-dark};
+  // Text
 
-  // --- Link Colors ---
-	--link-color: #{variables.$link-color-dark};
-	--link-hover-color: #{variables.$link-hover-color-dark};
+  --text-bold-color: #f8b755;
 
-  // --- Scrollbar Colors ---
+  // Link
+	--link-color: #5094c9;
+	--link-hover-color: #7db0e0;
+
+  // Scroll Bar
   --scrollbar-rgb: 255, 255, 255;
 
-  // --- Table ---
+  // Elements
+  // ========================================================================
+
+  // Table
   --table-header-bg: #{variables.$table-header-background-dark};
 
-  // --- Icons ---
+  // Icons
   --icon-header-link: #{variables.$icon-hash-dark};
   --icon-external-link: #{variables.$icon-external-link-dark};
   --icon-copy: #{variables.$icon-copy-dark};

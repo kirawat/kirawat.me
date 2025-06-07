@@ -1,4 +1,4 @@
-@use './../abstracts/variables' as variables;
+@use './../abstracts/variables' as var;
 
 *,
 *::after,
@@ -9,7 +9,7 @@
 html,
 body {
   min-width: 100vw;
-  min-height: 100vw;
+  min-height: 100vh;
   overflow-x: clip;
 }
 
@@ -23,28 +23,28 @@ html.theme-dark {
 
 // --- Body ---
 body {
-  background-color: var(--body-bg-color);
-  background-image: radial-gradient(circle 110vw at 165% -5%, var(--primary-color), transparent);
+  background-color: var(--color-body-bg);
+  background-image: radial-gradient(circle 110vw at 165% -5%, var(--color-primary), transparent);
   background-repeat: no-repeat;
 
   @media (min-width: 64em) {
-    background-image: radial-gradient(circle 100vw at 170% -10%, var(--primary-color), transparent);
+    background-image: radial-gradient(circle 100vw at 170% -10%, var(--color-primary), transparent);
   }
 }
 
 // --- Links ---
 a {
-  color: var(--link-color);
+  color: var(--color-link-normal);
 
   &:hover {
-    color: var(--link-hover-color);
+    color: var(--color-link-hover);
   }
 }
 
 // --- Footnote Reference ---
 article p > sup > a {
   padding: 0 2px;
-  font-size: #{variables.$text-size-2xs};
+  font-size: var.$text-size-2xs;
   text-decoration: none;
 
   &:hover {
@@ -68,15 +68,15 @@ article p > sup > a {
     padding-left: 1rem;
 
     li {
-      font-size: #{variables.$text-size-sm};
+      font-size: var.$text-size-sm;
 
       a.data-footnote-backref {
-        color: #{variables.$gray-600};
-        font-size: #{variables.$text-size-xs};
+        color: var(--color-base-600);
+        font-size: var.$text-size-xs;
         text-decoration: none;
 
         &:hover {
-          color: #{variables.$gray-300};
+          color: var(--color-base-300);
         }
       }
     }
@@ -85,15 +85,17 @@ article p > sup > a {
 
 // --- Table ---
 table {
-  margin-top: 2rem;
   width: 100%;
-  font-size: #{variables.$text-size-sm};
-  border: 1px solid #{variables.$gray-700};
+  margin-top: 2rem;
+  
+  border: 1px solid var(--color-base-700);
   border-collapse: collapse;
 
+  font-size: var.$text-size-sm;
+
   th, td {
-    padding: #{variables.$table-cell-padding};
-    border: 1px solid #{variables.$table-border-color};
+    padding: 10px;
+    border: 1px solid var(--color-base-700);;
   }
 
   thead > tr {
@@ -113,9 +115,9 @@ table {
 
 // --- Divider ---
 hr {
-  margin: 1.5rem 0 1.5rem 0;
   height: 1px;
-  background-color: #{variables.$gray-800};
+  margin: 1.5rem 0 1.5rem 0;
+  background-color: var(--color-base-800);
   border: none;
 }
 

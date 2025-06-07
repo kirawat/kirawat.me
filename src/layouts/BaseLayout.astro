@@ -88,7 +88,7 @@ if (fontList.length > 0) {
 </html>
 
 <style lang="scss">
-  @use '../styles/abstracts/variables' as variables;
+  @use '../styles/abstracts/variables' as var;
 
   footer {
     display: flex;
@@ -98,8 +98,8 @@ if (fontList.length > 0) {
     margin-top: auto;
     padding: 3rem 2rem 3rem;
 
-    font-size: #{variables.$text-size-sm};
-    color: var(--text-copyright-color);
+    color: var(--color-base-400);
+    font-size: var.$text-size-sm;
     text-align: center;
   }
 </style>

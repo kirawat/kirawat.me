@@ -11,101 +11,134 @@ import Icon from './Icon.astro';
 
 <search-modal>
   <div id="search-modal-overlay">
-    <div class="search-modal-content">
-      <div id="search"></div>
+    <div class="search-container">
+      <div id="pagefind-search"></div>
     </div>
   </div>
 </search-modal>
 
 <script is:inline>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    // Initialize PagefindUI.
+  window.addEventListener('DOMContentLoaded', () => {
+    // Set to `true` to lock page scroll when modal is open.
+    const preventPageScroll = false;
+
+    const openSearchButton = document.getElementById('open-search-button');
+    const searchModalOverlay = document.getElementById('search-modal-overlay');
+
+    // If essential elements don't exist, stop the script.
+    // This prevents errors if the HTML structure changes.
+    if (!openSearchButton || !searchModalOverlay) {
+      console.error('Search script aborted: Could not find #open-search-button or #search-modal-overlay.');
+      return;
+    }
+
+    let searchInput = null;
+    let clearButton = null;
+
+    // Pagefind Initialization
     if (typeof PagefindUI !== 'undefined') {
       new PagefindUI({
-        element: '#search',
+        element: '#pagefind-search',
         showSubResults: false,
         showImages: false,
+        // This callback runs after Pagefind builds its UI.
+        processTerm: () => {
+          if (!searchInput) {
+            searchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
+            clearButton = searchModalOverlay.querySelector('.pagefind-ui__search-clear');
+
+            // Style the clear button if it exists.
+            /**
+            if (clearButton) {
+              clearButton.textContent = 'X';
+              clearButton.setAttribute('aria-label', 'Clear');
+            }
+            */
+          }
+        }
       });
     }
     else {
       console.error("PagefindUI is not defined. Check if `/pagefind/pagefind-ui.js` loaded correctly.");
     }
 
-    // Set to `true` to prevent page scroll when search input is visible.
-    const preventPageScroll = false;
-
-    const openSearchButton = document.getElementById('open-search-button');
-    const searchModalOverlay = document.getElementById('search-modal-overlay');
-
-    const searchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
-    const clearButton = searchModalOverlay.querySelector('.pagefind-ui__search-clear');
-
-    function clearSearchInput() {
-      if (clearButton) {
-        clearButton.click();
-      }
-      else if (searchInput) {
-        searchInput.value = '';
-      }
-    }
-
-    function openSearchModel() {
-      clearSearchInput();
+    function openModal() {
       searchModalOverlay.classList.add('active');
 
-      // Focus search input.
-      setTimeout(() => {
-        if (searchInput) {
-          // Ensure it's empty.
-          if (searchInput.value !== '') {
-            searchInput.value = '';
-          }
-          searchInput.focus();
-        }
-      }, 100)
-
-      // Prevent page scroll.
       if (preventPageScroll) {
         document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
       }
+
+      // Focus the input after a short delay to allow for the CSS transitions.
+      setTimeout(() => {
+        searchInput?.focus();
+      }, 100);
     }
 
-    function closeSearchModal() {
+    function closeModal() {
       searchModalOverlay.classList.remove('active');
 
-      // Restore page scroll.
       if (preventPageScroll) {
         document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
       }
     }
 
-    // Open search modal when clicking on search button.
-    if (openSearchButton) {
-      openSearchButton.addEventListener('click', openSearchModel);
-    }
+    // Open modal on button click.
+    openSearchButton.addEventListener('click', openModal);
 
-    // Close search modal when clicking outside of it.
-    if (searchModalOverlay) {
-      searchModalOverlay.addEventListener('click', (event) => {
-        if (event.target === searchModalOverlay) {
-          closeSearchModal();
+    // Close modal when clicking on the overlay background.
+    searchModalOverlay.addEventListener('click', (event) => {
+      // Check if the click was on the overlay itself, not child element.
+      if (event.target === searchModalOverlay) {
+        closeModal();
+      }
+    });
+
+    // Handle global keyboard shortcuts.
+    document.addEventListener('keydown', (event) => {
+      const isModalActive = searchModalOverlay.classList.contains('active');
+
+      // Open search modal when press Ctrl+K (Windows/Linux) or Cmd+K (macOS).
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        event.preventDefault();
+        if (isModalActive) {
+          searchInput?.focus();
         }
-      });
-    }
+        else {
+          openModal();
+        }
+      }
+
+      // Close with Escape key.
+      if (event.key === 'Escape' && isModalActive) {
+        closeModal();
+      }
+    });
   });
 </script>
 
 <style lang="scss">
-  @use '../styles/abstracts/variables' as variables;
+  @use '../styles/abstracts/variables' as var;
 
   $transition-duration: 0.25s;
-
   $modal-overlay-blur: 6px;
   $modal-padding: 10px;
 
-  search-button #open-search-button {
+  // Global Pagefind UI variable overrides.
+  :global(:root) {
+    --pagefind-ui-text: var(--color-text-normal);
+    --pagefind-ui-background: var(--body-bg-color);
+    --pagefind-ui-border: var(--color-base-700);
+    --pagefind-ui-font: var(--font-body);
+    --pagefind-ui-border-width: 1px;
+
+    // Dark theme overrides.
+    &.theme-dark {
+      --pagefind-ui-background: #24292f;
+    }
+  }
+
+  #open-search-button {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -114,25 +147,25 @@ import Icon from './Icon.astro';
     width: 180px;
     height: 32px;
 
+    background-color: var(--color-base-999);
     border: 0;
     border-radius: 999rem;
-    background-color: var(--color-base-999);
     box-shadow: inset 0 0 0 1px var(--color-base-500);
 
     color: var(--color-base-400);
 
-    cursor: pointer;
-
     opacity: 0.5;
+    cursor: pointer;
 
     transition:
       box-shadow $transition-duration ease-in,
       opacity $transition-duration ease-in;
 
     .icon {
-      display: inline-block;
       position: relative;
       z-index: 1;
+
+      display: inline-block;
 
       width: 2rem;
       height: 2rem;
@@ -142,7 +175,7 @@ import Icon from './Icon.astro';
     }
 
     .text {
-      font-size: #{variables.$text-size-sm};
+      font-size: var.$text-size-sm;
     }
 
     &:hover {
@@ -155,19 +188,18 @@ import Icon from './Icon.astro';
     }
   }
 
-  search-modal #search-modal-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
+  #search-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
     width: 100%;
     height: 100%;
-
     padding-top: 10vh;
 
     background-color: rgba(20, 20, 20, 0.3);
@@ -186,6 +218,102 @@ import Icon from './Icon.astro';
       opacity: 1;
       visibility: visible;
       transition-delay: 0s, 0s;
+    }
+  }
+
+  .search-container {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    width: 90%;
+    max-width: 700px;
+    max-height: calc(100vh - 20vh - (2 * #{modal-padding}));
+    margin: 0 auto;
+    padding: $modal-padding;
+    box-sizing: border-box;
+    
+    color: var(--color-text-normal);
+    background-color: var(--pagefind-ui-background);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow:
+      0px 10px 35px 5px rgba(0, 0, 0, 0.18),
+      0px 9px 15px 0px rgba(0, 0, 0, 0.10);
+
+    // Pagefind UI Elements
+    // ======================================================================
+
+    // Pagefind Search Input
+    & :global(.pagefind-ui__search-input) {
+      z-index: 1;
+
+      width: 100%;
+
+      box-sizing: border-box;
+
+      font-size: var.$text-size-lg;
+      font-weight: 400;
+      border: 0;
+      border-color: transparent;
+      box-shadow: 0 0 0 0 transparent;
+      outline: none;
+    }
+
+    // Pagefind Clear Button
+    & :global(.pagefind-ui__search-clear) {
+      z-index: 1;
+      font-size: var.$text-size-xs;
+    }
+
+    // Pagefind Results Area
+    & :global(.pagefind-ui__results-area) {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+
+      min-height: 0;
+      max-height: calc(100vh - 20vh - 130px);
+      margin-left: -$modal-padding;
+      margin-right: -$modal-padding;
+      padding-left: calc(2 * $modal-padding);
+      padding-right: calc(2 * $modal-padding);
+      padding-bottom: $modal-padding;
+    }
+
+    // Pagefind Message within Result Area
+    & :global(.pagefind-ui__message) {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+
+      font-weight: 400;
+      background-color: var(--pagefind-ui-background);
+      border-top: 1px solid var(--pagefind-ui-border);
+      border-bottom: 1px solid var(--pagefind-ui-border);
+    }
+
+    // Pagefind Highlighted Text (mark)
+    & :global(marK) {
+      color: var(--color-text-normal);
+      background-color: transparent;
+      border-bottom: 1px double var(--color-primary);
+    }
+
+    // Pagefind "view more result" button
+    & :global(.pagefind-ui__button) {
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 400;
+      background-color: var(--color-primary);
+      border: 0;
+      transition: background-color 0.2s ease-in;
+    }
+
+    // Remove border from the top of the first search result.
+    & :global(.pagefind-ui__results > li:first-child) {
+      border-top: 0;
     }
   }
 </style>

@@ -72,8 +72,38 @@ const isCurrentPage = (href: string) => {
   </ul>
 </div>
 
+<script>
+  window.addEventListener('DOMContentLoaded', (event: Event) => {
+    const menuButton: HTMLElement | null = document.querySelector('.menu-button');
+    const closeButton: HTMLElement | null = document.querySelector('.close-button');
+    const body: HTMLElement = document.body;
+
+    function openMenu(): void {
+      body.classList.add('menu-open');
+    }
+
+    function closeMenu(): void {
+      body.classList.remove('menu-open');
+    }
+
+    if (menuButton) {
+      menuButton.addEventListener('click', openMenu);
+    }
+
+    if (closeButton) {
+      closeButton.addEventListener('click', closeMenu);
+    }
+
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && body.classList.contains('menu-open')) {
+        closeMenu();
+      }
+    })
+  });
+</script>
+
 <style lang="scss">
-  @use '../styles/abstracts/variables' as variables;
+  @use '../styles/abstracts/variables' as var;
 
   $mobile-header-height: 50px;
   $transition-duration: 0.2s;
@@ -81,32 +111,29 @@ const isCurrentPage = (href: string) => {
   :root {
     --nav-bar-bg-color: rgba(255, 255, 255, 0.45);
     --nav-bar-border-color: #f0f0f0;
-    --site-title-color: #{variables.$text-color};
-    --menu-button-color: #{variables.$text-color};
   }
 
   :root.theme-dark {
     --nav-bar-bg-color: rgba(255, 255, 255, 0.05);
     --nav-bar-border-color: #323232;
-    --site-title-color: #{variables.$text-color-dark};
-    --menu-button-color: #{variables.$text-color-dark};
   }
 
   nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     display: flex;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
 
-    position: sticky;
-    top: 0;
-    z-index: 100;
-
-    padding: 0 20px;
     height: $mobile-header-height;
+    padding: 0 20px;
 
-    border-bottom: 1px solid var(--nav-bar-border-color);
+    
     background-color: var(--nav-bar-bg-color);
+    border-bottom: 1px solid var(--nav-bar-border-color);
     backdrop-filter: blur(6px);
     --webkit-backdrop-filter: blur(6px);
 
@@ -118,7 +145,7 @@ const isCurrentPage = (href: string) => {
         display: inline-block;
         
         a {
-          color: var(--site-title-color);
+          color: var(--color-text-normal);
           text-decoration: none;
         }
       }
@@ -153,32 +180,33 @@ const isCurrentPage = (href: string) => {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     z-index: 2000;
-
-    background-color: var(--body-bg-color);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    transform: translateX(100%);
-    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    
+    background-color: var(--body-bg-color);
 
+    transform: translateX(100%);
     transition: transform $transition-duration ease-in-out,
                 visibility $transition-duration;
 
-    .menu-header {
-      display: flex;
-      justify-content: space-between;
+    visibility: hidden;
 
+    .menu-header {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
 
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
       padding: 20px;
 
       .close-button {
@@ -192,18 +220,18 @@ const isCurrentPage = (href: string) => {
     .menu-items {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-
       justify-content: center;
       align-items: center;
+      gap: 2rem;
+      
+      padding: 0;
 
       line-height: 1.2;
-      list-style: none;
-      padding: 0;
       text-align: center;
+      list-style: none;
 
       .link {
-        font-size: #{variables.$text-size-xl};
+        font-size: var.$text-size-xl;
         text-decoration: none;
       }
     }
@@ -212,12 +240,13 @@ const isCurrentPage = (href: string) => {
       position: absolute;
       bottom: 0;
       left: 0;
-      padding: 2rem 1rem;
-
-      width: 100%;
 
       justify-content: center;
       align-items: center;
+
+      width: 100%;
+      padding: 2rem 1rem;
+
       text-align: center;
     }
   }
@@ -249,15 +278,16 @@ const isCurrentPage = (href: string) => {
 
   @media (min-width: 64em) {
     nav {
-      display: grid;
-      grid-template-columns: auto 1fr;
       position: relative;
 
+      display: grid;
+      grid-template-columns: auto 1fr;
+      
       height: 100%;
       padding: 3rem 5.5rem;
 
-      border: 0;
       background-color: transparent;
+      border: 0;
       backdrop-filter: none;
       --webkit-backdrop-filter: none;
 
@@ -277,15 +307,16 @@ const isCurrentPage = (href: string) => {
       }
 
       .nav-footer {
-        grid-column: 2 / 3;
         display: flex;
+        grid-column: 2 / 3;
         justify-self: flex-end;
         gap: 1em;
 
         .menu-items {
           display: flex;
           flex-direction: row;
-          font-size: #{variables.$text-size-base};
+
+          font-size: var.$text-size-base;
 
           .link {
             padding: 0.5rem 1rem;
@@ -306,33 +337,3 @@ const isCurrentPage = (href: string) => {
     }
   }
 </style>
-
-<script>
-  const menuButton = document.querySelector('.menu-button');
-  const closeButton = document.querySelector('.close-button');
-  const body = document.body;
-
-  function openMenu() {
-    body.classList.add('menu-open');
-  }
-
-  function closeMenu() {
-    body.classList.remove('menu-open');
-  }
-
-  if (menuButton) {
-    menuButton.addEventListener('click', openMenu);
-  }
-
-  if (closeButton) {
-    closeButton.addEventListener('click', closeMenu);
-  }
-
-  window.addEventListener('DOMContentLoaded', (event) => {
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && body.classList.contains('menu-open')) {
-        closeMenu();
-      }
-    })
-  });
-</script>

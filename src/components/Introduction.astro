@@ -1,14 +1,12 @@
 ---
-import '../styles/main.scss';
-
 const hello = 'Hi, my name is Kirawat Sahasewiyon.';
 
 const wordsList: { label: string; }[] = [
-  { label: 'thinker' },
   { label: 'coder' },
-  { label: 'dreamer' },
-  { label: 'foodie' },
+  { label: 'thinker' },
   { label: 'gamer' },
+  { label: 'foodie' },
+  { label: 'dreamer' },
   { label: 'filmmaker' },
 ];
 
@@ -32,6 +30,45 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (): void => {
+    const typedOutputElement: HTMLElement | null = document.getElementById('typed-output');
+
+    // Stop script execution if the `typed-output` element isn't found.
+    if (!typedOutputElement) {
+      return;
+    }
+
+    // Retrieve the text to type from the `data-text` attribute.
+    const textToType: string | undefined = typedOutputElement.dataset.text;
+
+    // If no text is found in the data-attribute, stop script execution.
+    if (!textToType) {
+      return;
+    }
+
+    // Ensure the element is empty before starting the typing effect.
+    typedOutputElement.textContent = '';
+
+    // Speed in milliseconds for typing each character.
+    const typingSpeedPerChar: number = 50;
+
+    // Delay in milliseconds before typing starts.
+    const initialDisplayDelay: number = 300;
+
+    async function startTypingEffect(): Promise<void> {
+      const characters = textToType!.split('');
+
+      for (const char of characters) {
+        typedOutputElement!.textContent += char;
+        await new Promise(resolve => setTimeout(resolve, typingSpeedPerChar));
+      }
+    }
+
+    setTimeout(startTypingEffect, initialDisplayDelay);
+  });
+</script>
 
 <style lang="scss">
   @use '../styles/abstracts/variables' as variables;
@@ -60,27 +97,28 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
       display: inline-block;
       position: relative;
 
+      color: var(--color-text-normal);
       font-family: var(--font-brand);
       font-size: 1.1em;
       font-weight: 400;
-      color: var(--text-color);
 
       &::after {
-        content: '';
-        display: inline-block;
         position: absolute;
         right: -7px;
         bottom: 0.4em;
 
+        display: inline-block;
+        
         // Thickness of cursor.
         width: 3px;
         height: 1.3rem;
 
         // Cursor color.
-        background-color: var(--primary-color);
+        background-color: var(--color-primary);
 
         // Blinking animation.
         animation: blink-cursor 0.8s steps(2, start) infinite;
+        content: '';
       }
     }
 
@@ -95,17 +133,16 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
       }
 
       .dynamic-words-viewport {
-        display: inline-block;
         position: relative;
+        display: inline-block;
         height: $word-actual-line-height;
         overflow: hidden;
 
         .words-list {
           margin: 0;
           padding: 0;
+          color: var(--color-primary);
           list-style: none;
-
-          color: var(--primary-color);
           
           // Hint to the browser that transform will be animated.
           will-change: transform;
@@ -190,41 +227,3 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
     }
   }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const typedOutputElement = document.getElementById('typed-output');
-
-    // Stop script execution if the `typed-output` element isn't found.
-    if (!typedOutputElement) {
-      return;
-    }
-
-    // Retrieve the text to type from the `data-text` attribute.
-    const textToType = typedOutputElement.dataset.text;
-
-    // If no text is found in the data-attribute, stop script execution.
-    if (!textToType) {
-      return;
-    }
-
-    // Ensure the element is empty before starting the typing effect.
-    typedOutputElement.textContent = '';
-
-    // Speed in milliseconds for typing each character.
-    const typingSpeedPerChar = 50;
-
-    // Delay in milliseconds before typing starts.
-    const initialDisplayDelay = 300;
-
-    async function startTypingEffect() {
-      const characters = textToType!.split('');
-      for (let i = 0; i < characters.length; i++) {
-        typedOutputElement!.textContent += characters[i];
-        await new Promise(resolve => setTimeout(resolve, typingSpeedPerChar));
-      }
-    }
-
-    setTimeout(startTypingEffect, initialDisplayDelay);
-  });
-</script>
