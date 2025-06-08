@@ -69,6 +69,11 @@ const { Content } = await render(entry);
         line-height: 1.3em;
       }
     }
+
+    @media (min-width: var.$screen-md) {
+      padding-left: var.$screen-md-content-padding-h;
+      padding-right: var.$screen-md-content-padding-h;
+    }
   }
 </style>
 

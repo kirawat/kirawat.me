@@ -73,8 +73,18 @@
 
     // Iterate over each found `pre` element.
     codeBlocks.forEach((block: HTMLElement) => {
+      // Find the `code` element within the `pre` block, if it exists.
+      const codeElement = block.querySelector('code');
+      // Determine the text to copy. This is done before adding the button
+      // to avoid copying the button's own text.
+      const textToCopy = codeElement ? codeElement.innerText : block.innerText;
+
+      // If there's no meaningful text to copy, do not add a button.
+      if (!textToCopy.trim()) {
+        return;
+      }
+
       // Ensure the `<pre>` block can contain a positioned element (the copy button).
-      // If its current position is `static`, change it to `relative`.
       if (getComputedStyle(block).position === 'static') {
         block.style.position = 'relative';
       }
@@ -83,42 +93,63 @@
       const copyButton = document.createElement('button');
       copyButton.className = 'copy-code-button';
       copyButton.textContent = copyText;
-      copyButton.setAttribute('aria-label', 'Copy code');
-      copyButton.setAttribute('title', 'Copy code');
+      copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+      copyButton.setAttribute('title', 'Copy code to clipboard');
 
-      const codeElement = block.querySelector('code');
-      if (codeElement) {
-        block.insertBefore(copyButton, codeElement);
-      }
-      else {
-        block.appendChild(copyButton);
-      }
+      block.insertBefore(copyButton, codeElement);
 
-      // Add an event listener for the 'click' event on the copy button.
-      copyButton.addEventListener('click', async () => {
-        // Find the `code` element within the `pre` block, if it exists.
-        const codeElement = block.querySelector('code');
-        // Determine the text to copy. Prioritize `code` element's innerText,
-        // otherise use `pre` block's innerText.
-        const codeToCopy = codeElement ? codeElement.innerText : block.innerText;
+      // Show a success message on the button.
+      const showSuccess = (): void => {
+        copyButton.textContent = copiedText;
+        copyButton.classList.add('copied');
 
-        // If there's no text to copy, do nothing.
-        if (!codeToCopy) {
-          return;
+        setTimeout(() => {
+          copyButton.textContent = copyText;
+          copyButton.classList.remove('copied');
+        }, 2000);
+      };
+
+      // Fallback function for older browsers.
+      const legacyCopy = (): void => {
+        const textArea = document.createElement('textarea');
+        textArea.value = textToCopy;
+
+        // Make the textarea non-editable and visually hidden.
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        textArea.setAttribute('readonly', '');
+
+        document.body.appendChild(textArea);
+        textArea.select();
+
+        try {
+          const successful = document.execCommand('copy');
+          if (successful) {
+            showSuccess();
+          }
+          else {
+            console.error('Failed to copy text to clipboard.');
+          }
+        } catch (err) {
+          console.error('Failed to copy text to clipboard:', err);
         }
 
-        // Asynchronously write the text to the clipboard.
-        await navigator.clipboard.writeText(codeToCopy);
-        // Add a `copied` class fro styling (e.g., to show a success state).
-        copyButton.classList.add('copied');
-        // Change the button text to indicate success.
-        copyButton.textContent = copiedText;
+        document.body.removeChild(textArea)
+      }
 
-        // After 2 seconds, revert the button to its original state.
-        setTimeout(() => {
-          copyButton.classList.remove('copied');
-          copyButton.textContent = copyText;
-        }, 2000);
+      // Add the 'click' event listener to the button.
+      copyButton.addEventListener('click', () => {
+        // Use the modern Clipboard API if available.
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(textToCopy).then(showSuccess).catch(err => {
+            console.warn('Clipboard API failed. Using fallback method.', err);
+            legacyCopy();
+          });
+        }
+        else {
+          // Fallback for older browsers or insecure contexts.
+          legacyCopy();
+        }
       });
     });
   }
@@ -340,63 +371,6 @@
         }
       }
 
-      :global(.copy-code-button) {
-        position: sticky;
-        top: 0;
-        left: calc(100% - 34px);
-        z-index: 3;
-
-        box-sizing: border-box;
-
-        width: 32px;
-        height: 34px;
-        margin-top: 2px;
-        padding: 1px 14px 0 0;
-        overflow-x: hidden;
-
-        color: transparent;
-        font-size: var.$text-size-sm;
-        text-align: right;
-        background-color: transparent;
-        background-image: var(--icon-copy);
-        background-position: left;
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
-        border: none;
-        opacity: 0.3;
-
-        transition:
-          width 0.2s ease-out,
-          left 0.2s ease-out,
-          color 0.2s ease-in,
-          opacity 0.2s ease-out,
-          transform 0.2s ease-out;
-
-        cursor: pointer;
-
-        &:hover,
-        &:focus-visible {
-          left: calc(100% - 68px);
-          width: 68px;
-          color: var(--text-normal-color);
-          opacity: 1;
-        }
-
-        // Slight press effect.
-        &:active {
-          transform: scale(0.9);
-        }
-
-        &.copied {
-          left: calc(100% - 80px);
-          width: 80px;
-          color: var(--text-normal-color);
-          background-image: var(--icon-copied);
-          opacity: 1;
-          transition-duration: 0s;
-        }
-      }
-
       &[data-language] {
         &::before {
           position: sticky;
@@ -411,6 +385,82 @@
           font-size: var.$text-size-2xs;
 
           content: var(--language-label, attr(data-language));
+        }
+      }
+
+      :global(.copy-code-button) {
+        position: sticky;
+        top: 4px;
+        left: calc(100% - 30px);
+        z-index: 3;
+
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+
+        width: 32px;
+        height: 34px;
+
+        color: transparent;
+        font-size: var.$text-size-sm;
+        text-wrap: nowrap;
+        background-color: transparent;
+        border: none;
+
+        transition:
+          width 0.2s ease-out,
+          left 0.2s ease-out,
+          color 0.2s ease-in,
+          transform 0.2s ease-out;
+
+        cursor: pointer;
+
+        &::before {
+          display: inline-block;
+          flex-shrink: 0;
+
+          width: 20px;
+          height: 20px;
+          margin-right: 4px;
+          
+          background-color: var(--text-normal-color);
+          mask-image: var(--icon-copy);
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          opacity: 0.3;
+
+          transition: opacity 0.2s ease-out;
+
+          content: '';
+        }
+
+        &:hover,
+        &:focus-visible {
+          left: calc(100% - 72px);
+          width: 72px;
+          color: var(--text-normal-color);
+
+          &::before {
+            opacity: 1;
+          }
+        }
+
+        // Slight press effect.
+        &:active {
+          transform: scale(0.9);
+        }
+
+        &.copied {
+          left: calc(100% - 98px);
+          width: 80px;
+          color: var(--text-normal-color);
+          transition-duration: 0s;
+
+          &::before {
+            background-color: #008000;
+            mask-image: var(--icon-copied);
+            opacity: 1;
+          }
         }
       }
 
@@ -457,7 +507,14 @@
       margin-left: -1.25em;
     }
 
+    @media (min-width: var.$screen-md) {
+      padding-left: var.$screen-md-content-padding-h;
+      padding-right: var.$screen-md-content-padding-h;
+    }
+
     @media (min-width: var.$screen-lg) {
+      border: 1px solid blue;
+
       :global(ol li pre) {
         margin-left: 0;
       }

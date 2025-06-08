@@ -32,12 +32,17 @@ $text-size-5xl:  4.5rem;
 // Breakpoints
 // ==========================================================================
 
-$screen-xs:  23.4375em;  // 375px
-$screen-sm:  36em;       // 576px
-$screen-md:  48em;       // 768px
-$screen-lg:  62em;       // 992px
+$screen-xs:  23.4375em;  // 375px (Mobile)
+$screen-sm:  36em;       // 576px (Mobile)
+$screen-md:  48em;       // 768px (Tablet)
+$screen-lg:  62em;       // 992px (Desktop)
 $screen-xl:  75em;       // 1200px
 $screen-xxl: 87.5em;     // 1400px
+
+// --- Content Padding ---
+$screen-sm-content-padding-h: 1em;
+$screen-md-content-padding-h: 4em;
+$content-padding-h: 5.465rem;
 
 // --- Header Colors ---
 $h2-accent-color: #d2691e;
@@ -52,9 +57,7 @@ $radius-m:  8px;
 $radius-l:  12px;
 $radius-xl: 16px;
 
-// --- Content Padding ---
-$screen-sm-content-padding-h: 1em;
-$content-padding-h: 5.465rem;
+
 
 // Transition
 // ==========================================================================
