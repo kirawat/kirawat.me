@@ -192,8 +192,9 @@ const isCurrentPage = (href: string) => {
     background-color: var(--color-body-bg);
 
     transform: translateX(100%);
-    transition: transform $transition-duration ease-in-out,
-                visibility $transition-duration;
+    transition:
+      transform $transition-duration ease-in-out,
+      visibility $transition-duration;
 
     visibility: hidden;
 
@@ -288,7 +289,7 @@ const isCurrentPage = (href: string) => {
       grid-template-columns: auto 1fr;
       
       height: 100%;
-      padding: 3rem 5.5rem;
+      padding: 2rem var.$screen-lg-site-padding-h;
 
       background-color: transparent;
       border: 0;
@@ -351,6 +352,12 @@ const isCurrentPage = (href: string) => {
           display: none;
         }
       }
+    }
+  }
+
+  @media (min-width: var.$screen-xl) {
+    nav {
+      padding: 3rem var.$screen-xl-site-padding-h;
     }
   }
 </style>

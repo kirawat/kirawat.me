@@ -46,8 +46,7 @@ const { Content } = await render(entry);
   .header-container {
     margin-top: 1em;
     margin-bottom: 2.5em;
-    padding-left: var.$screen-sm-content-padding-h;
-    padding-right: var.$screen-sm-content-padding-h;
+    padding: 0 var.$screen-sm-content-padding-h;
 
     .post-meta {
       .back-link {
@@ -72,14 +71,30 @@ const { Content } = await render(entry);
         line-height: 1.3em;
       }
     }
+  }
 
-    @media (min-width: var.$screen-md) {
-      padding-left: var.$screen-md-content-padding-h;
-      padding-right: var.$screen-md-content-padding-h;
+  @media (min-width: var.$screen-md) {
+    .header-container {
+      padding: 0 var.$screen-md-content-padding-h;
 
       .post-meta {
         .post-title {
           margin-top: 0.4em;
+        }
+      }
+    }
+  }
+
+  @media (min-width: var.$screen-lg) {
+    .header-container {
+      display: grid;
+      grid-template-columns: 1fr var.$article-width 1fr;
+
+      .post-meta {
+        grid-column: 2;
+
+        .back-link {
+          font-size: var.$text-size-base;
         }
       }
     }

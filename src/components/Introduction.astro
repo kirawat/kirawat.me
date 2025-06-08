@@ -161,7 +161,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
 
   @media (min-width: var.$screen-md) {
     section.introduction {
-      padding: 2.5em 40px;
+      padding: 2.5em var.$screen-md-site-padding-h;
 
       .typewriter-container {
         #typed-output {
@@ -177,7 +177,23 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
 
   @media (min-width: var.$screen-lg) {
     section.introduction {
-      padding: 6em var.$content-padding-h;
+      padding: 6em var.$screen-lg-site-padding-h;
+
+      .typewriter-container {
+        #typed-output {
+          font-size: 2.2em;
+        }
+      }
+
+      .flipping-text {
+        font-size: 1.8em;
+      }
+    }
+  }
+
+  @media (min-width: var.$screen-xl) {
+    section.introduction {
+      padding: 6em var.$screen-xl-site-padding-h;
 
       .typewriter-container {
         #typed-output {

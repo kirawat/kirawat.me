@@ -4,6 +4,11 @@
 $color-primary:        #7611a6;
 $color-primary-darker: #580c7c;
 
+// Header
+$h2-accent-color: #d2691e;
+$h3-accent-color: #c0a70c;
+$h4-color:        #f8b755;
+
 // Fonts
 // ==========================================================================
 
@@ -35,19 +40,24 @@ $text-size-5xl:  4.5rem;
 $screen-xs:  23.4375em;  // 375px (Mobile)
 $screen-sm:  36em;       // 576px (Mobile)
 $screen-md:  48em;       // 768px (Tablet)
-$screen-lg:  62em;       // 992px (Desktop)
-$screen-xl:  75em;       // 1200px
+$screen-lg:  64em;       // 1024px (Desktop)
+$screen-xl:  80em;       // 1280px (Desktop)
 $screen-xxl: 87.5em;     // 1400px
 
-// --- Content Padding ---
+// Site Padding
+$screen-md-site-padding-h: 2.5em;
+$screen-lg-site-padding-h: 2.5em;
+$screen-xl-site-padding-h: 4.5em;
+
+// Content Padding
 $screen-sm-content-padding-h: 1em;
 $screen-md-content-padding-h: 4em;
-$content-padding-h: 5.465rem;
+$screen-lg-content-padding-h: 2em;
 
-// --- Header Colors ---
-$h2-accent-color: #d2691e;
-$h3-accent-color: #c0a70c;
-$h4-color:        #f8b755;
+// Article Width
+$article-min-width: 320px;
+$article-max-width: 780px;
+$article-width: minmax($article-min-width, $article-max-width);
 
 // Radius Size
 // ===========================================================================
