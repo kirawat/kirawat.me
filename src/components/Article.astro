@@ -507,6 +507,16 @@
         margin-left: -1.25em;
       }
     }
+
+    // Block Quote
+    // ======================================================================
+
+    :global(blockquote) {
+      margin: 0;
+      padding-inline-start: 1.2em;
+      border-inline-start: 2px solid var(--primary-color-overlay);
+      color: var(--text-quote-color);
+    }
   }
 
   @media (min-width: var.$screen-md) {
