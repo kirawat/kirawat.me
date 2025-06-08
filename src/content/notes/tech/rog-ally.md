@@ -51,6 +51,34 @@ HAL stands for Hardware Abstraction Layer. It's the ASUS's Armoury Crate softwar
 
 These updates often address issues or glitches to improve stability and performance, ensure the device works correctly with newer hardware or software versions. While less common, some HAL updates might introduce new features or enhancements to the ROG Ally's functionality.
 
+## Xbox Ally
+
+Microsoft [announced two versions of the Xbox handheld](https://youtu.be/FIVmyOIV1MQ), the Xbox Ally and the Xbox Ally X, at the Xbox Games Showcase 2025.
+
+Xbox Ally X Specs:
+
+|                          |                              |
+| ------------------------ | ---------------------------- |
+| CPU                      | AMD Ryzen AI Z2 Extreme      |
+| CPU Cores (Architecture) | 8 Cores / 16 Threads (Zen 5) |
+| GPU Cores (Architecture) | 16 (RDNA 3.5)                |
+| RAM                      | 24GB                         |
+| SSD                      | 1TB                          |
+| Battery                  | 80Wh                         |
+
+Xbox Ally Specs:
+
+|                          |                              |
+| ------------------------ | ---------------------------- |
+| CPU                      | AMD Ryzen Z2 A               |
+| CPU Cores (Architecture) | 4 Cores / 8 Threads (Zen 2)  |
+| GPU Cores (Architecture) | 8 (RDNA 2)                   |
+| RAM                      | 16GB                         |
+| SSD                      | 512TB                        |
+| Battery                  | 60Wh                         |
+
+From the look of the promotional images, it could have a larger screen and previous models, but it has yet to be revealed.
+
 ## BIOS Update
 
 See: [BIOS & Firmware for ROG Ally RC71L](https://rog.asus.com/gaming-handhelds/rog-ally/rog-ally-2023/helpdesk_bios/)
