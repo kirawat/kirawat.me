@@ -78,6 +78,10 @@ const { Content } = await render(entry);
       padding: 0 var.$screen-md-content-padding-h;
 
       .post-meta {
+        .back-link {
+          font-size: var.$text-size-base;
+        }
+
         .post-title {
           margin-top: 0.4em;
         }
@@ -92,10 +96,6 @@ const { Content } = await render(entry);
 
       .post-meta {
         grid-column: 2;
-
-        .back-link {
-          font-size: var.$text-size-base;
-        }
       }
     }
   }

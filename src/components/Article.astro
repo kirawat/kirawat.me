@@ -391,7 +391,7 @@
         :global(.copy-code-button) {
           position: sticky;
           top: 4px;
-          left: calc(100% - 30px);
+          left: calc(100% - 38px);
           z-index: 3;
 
           display: inline-flex;
@@ -514,8 +514,13 @@
       .content {
         padding: 0 var.$screen-md-content-padding-h;
 
-        :global(ol li pre) {
-          margin-left: 0;
+        :global(ul),
+        :global(ol) {
+          margin-left: 1em;
+
+          & :global(li pre) {
+            margin-left: auto;
+          }
         }
       }
     }
