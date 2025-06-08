@@ -205,6 +205,7 @@
     :global(h2) {
       margin-bottom: 1.5rem;
       font-size: var.$text-size-xl;
+      line-height: 1.45em;
 
       &:not(:first-child) {
         margin-top: 2.5rem;
@@ -354,7 +355,7 @@
         overflow-x: hidden;
 
         color: transparent;
-        font-size: var.$text-size-xs;
+        font-size: var.$text-size-sm;
         text-align: right;
         background-color: transparent;
         background-image: var(--icon-copy);
@@ -420,6 +421,7 @@
         min-width: 100%;
         padding: 1em 1em 1em 0em;
         
+        font-size: var.$text-size-xs;
         line-height: 1.65rem;
         border-top: 1px solid var(--color-base-800);
         white-space: pre;
@@ -443,7 +445,6 @@
 
             color: rgba(155, 138, 148, 0.4);
             background-color: var(--code-bg-color);
-            font-size: var.$text-size-2xs;
             text-align: right;
 
             content: counter(step);
