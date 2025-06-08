@@ -23,19 +23,17 @@
 
   // Accents
 
-  --color-primary: hsla(281, 81%, 36%, 1);
-  --color-primary-overlay: hsla(280, 89%, 67%, 0.33);
-
-  // Text
-
-  --color-text-normal: var(--color-base-200);
-  --color-text-bold: var(--color-base-000);
-  --text-normal-color: var(--color-base-200);
-  --text-bold-color: var(--color-base-000);
+  --primary-color: hsla(281, 81%, 36%, 1);
+  --primary-color-overlay: hsla(280, 89%, 67%, 0.33);
 
   // Body
 
-  --color-body-bg: #fff;
+  --body-bg-color: #fff;
+
+  // Text
+
+  --text-normal-color: var(--color-base-200);
+  --text-bold-color: var(--color-base-000);
 
   // Headers
 

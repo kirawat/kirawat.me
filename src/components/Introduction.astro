@@ -95,7 +95,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
         position: relative;
         display: inline-block;
 
-        color: var(--color-text-normal);
+        color: var(--text-normal-color);
         font-family: var(--font-brand);
         font-size: 1.1em;
         font-weight: 400;
@@ -114,7 +114,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
           margin-left: 4px;
 
           // Cursor color.
-          background-color: var(--color-primary);
+          background-color: var(--primary-color);
 
           // Blinking animation.
           animation: blink-cursor 0.8s steps(2, start) infinite;
@@ -142,7 +142,7 @@ const wordsToDisplay = wordsList.length > 0 ? [...wordsList, wordsList[0]] : [];
         .words-list {
           margin: 0;
           padding: 0;
-          color: var(--color-primary);
+          color: var(--primary-color);
           list-style: none;
           
           // Hint to the browser that transform will be animated.

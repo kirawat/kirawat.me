@@ -1,4 +1,4 @@
-@use '../abstracts/variables' as variables;
+@use '../abstracts/variables' as var;
 
 :root.theme-dark {
   color-scheme: dark;
@@ -21,13 +21,13 @@
   // Colors
   // ========================================================================
 
+  // Body
+
+  --body-bg-color: #181c20;
+
   // Text
 
   --text-bold-color: #f8b755;
-
-  // Body
-
-  --color-body-bg: #181c20;
 
   // Link
 	--link-normal-color: #5094c9;
@@ -44,12 +44,12 @@
   --inline-code-text-color: #da615c;
 
   // Table
-  --table-header-bg: #{variables.$table-header-background-dark};
+  --table-header-bg: #{var.$table-header-background-dark};
 
   // Icons
 
-  --icon-header-link: #{variables.$icon-hash-dark};
-  --icon-external-link: #{variables.$icon-external-link-dark};
-  --icon-copy: #{variables.$icon-copy-dark};
-  --icon-copied: #{variables.$icon-tick};
+  --icon-header-link: #{var.$icon-hash-dark};
+  --icon-external-link: #{var.$icon-external-link-dark};
+  --icon-copy: #{var.$icon-copy-dark};
+  --icon-copied: #{var.$icon-tick};
 }

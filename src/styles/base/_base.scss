@@ -24,11 +24,11 @@ html.theme-dark {
 // --- Body ---
 body {
   background-color: var(--color-body-bg);
-  background-image: radial-gradient(circle 110vw at 165% -5%, var(--color-primary), transparent);
+  background-image: radial-gradient(circle 110vw at 165% -5%, var(--primary-color), transparent);
   background-repeat: no-repeat;
 
   @media (min-width: 64em) {
-    background-image: radial-gradient(circle 100vw at 170% -10%, var(--color-primary), transparent);
+    background-image: radial-gradient(circle 100vw at 170% -10%, var(--primary-color), transparent);
   }
 }
 

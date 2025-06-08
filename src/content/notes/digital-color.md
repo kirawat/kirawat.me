@@ -55,9 +55,9 @@ This is a *human-oriented* model, designed to mimic how we perceive color.
 
     ```css
     :root {
-      --color-primary:   hsl(220, 70%, 55%); /* Blue */
-      --color-secondary: hsl(100, 70%, 55%); /* Green (220 - 120) */
-      --color-tertiary:  hsl(340, 70%, 55%); /* Pink/Red (220 + 120) */
+      --primary-color:   hsl(220, 70%, 55%); /* Blue */
+      --secondary-color: hsl(100, 70%, 55%); /* Green (220 - 120) */
+      --tertiary-color:  hsl(340, 70%, 55%); /* Pink/Red (220 + 120) */
     }
     ```
 

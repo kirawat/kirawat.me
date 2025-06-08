@@ -62,9 +62,13 @@ import Icon from './Icon.astro';
     background-color: rgba(255, 255, 255, 0.05);
     border: 0;
     border-radius: 999rem;
-    box-shadow: inset 0 0 0 1px var(--color-primary-overlay);
-    
+    box-shadow: inset 0 0 0 1px var(--primary-color-overlay);
+    transition: box-shadow $theme-transition-duration ease-in-out;
     cursor: pointer;
+
+    &:hover {
+      box-shadow: inset 0 0 0 1px var(--primary-color);
+    }
 
     .icon {
       position: relative;
@@ -72,6 +76,8 @@ import Icon from './Icon.astro';
 
       display: flex;
       padding: 0.5rem;
+
+      color: var(--color-base-500);
 
       &.light {
         :global(html:not(.theme-dark)) & {
@@ -83,7 +89,7 @@ import Icon from './Icon.astro';
           inset: 0;
           z-index: -1;
 
-          background-color: var(--color-primary);
+          background-color: var(--primary-color);
           border-radius: 999rem;
 
           content: '';
