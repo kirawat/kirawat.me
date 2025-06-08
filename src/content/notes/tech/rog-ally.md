@@ -23,13 +23,13 @@ ROG Ally came with a free full game called "Moving Out" preinstalled. To remove 
 
 ### FSR (FidelityFX Super Resolution)
 
-FSR (FidelityFX Super Resolution) will function on the ROG Ally if the specific game you're playing has FSR integrated into its graphics settings. You'll typically find it as a toggle with quality levels like "Ultra Quality", "Quality", "Balanced", and "Performance".
+[FSR (FidelityFX Super Resolution)](./upscaling-technology.md#fidelityfx-super-resolution-fsr) will function on the ROG Ally if the specific game you're playing has FSR integrated into its graphics settings. You'll typically find it as a toggle with quality levels like "Ultra Quality", "Quality", "Balanced", and "Performance".
 
 FSR works by rendering the game at a lower internal resolution and then using algorithms to [upscale](upscaling-technology.md) it to your display's native resolution. This increases performance (frames per second) while trying to maintain image quality.
 
 ### RSR (Radeon Super Resolution)
 
-The ROG Ally also supports RSR (Radeon Super Resolution). This works similarly to FSR but at a driver level. If a game doesn't have FSR, you can try RSR, but you generally shouldn't use both simultaneously.
+The ROG Ally also supports [RSR (Radeon Super Resolution)](./upscaling-technology.md#radeon-super-resolution-rsr). This works similarly to FSR but at a driver level. If a game doesn't have FSR, you can try RSR, but you generally shouldn't use both simultaneously.
 
 RSR is an AMD technology that functions within the graphics driver, not in games directly. It upscales games that don't have native FSR support, potentially boosting frame rates across many titles. Similar to FSR, RSR renders the game at a lower resolution and then upscales it to the ROG Ally's native resolution (1080p). This results in reduced stress on the Ally's hardware and higher frame rates.
 
