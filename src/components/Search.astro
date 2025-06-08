@@ -41,22 +41,11 @@ import Icon from './Icon.astro';
         element: '#pagefind-search',
         showSubResults: false,
         showImages: false,
-        // This callback runs after Pagefind builds its UI.
-        processTerm: () => {
-          if (!searchInput) {
-            searchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
-            clearButton = searchModalOverlay.querySelector('.pagefind-ui__search-clear');
-
-            // Style the clear button if it exists.
-            /**
-            if (clearButton) {
-              clearButton.textContent = 'X';
-              clearButton.setAttribute('aria-label', 'Clear');
-            }
-            */
-          }
-        }
       });
+
+      // Select the search input right after PagefindUI creates it.
+      searchInput = searchModalOverlay.querySelector('.pagefind-ui__search-input');
+      clearButton = searchModalOverlay.querySelector('.pagefind-ui__search-clear');
     }
     else {
       console.error("PagefindUI is not defined. Check if `/pagefind/pagefind-ui.js` loaded correctly.");
