@@ -26,7 +26,7 @@
   --text-bold-color: #f8b755;
 
   // Link
-	--link-color: #5094c9;
+	--link-normal-color: #5094c9;
 	--link-hover-color: #7db0e0;
 
   // Scroll Bar
@@ -43,6 +43,7 @@
   --table-header-bg: #{variables.$table-header-background-dark};
 
   // Icons
+
   --icon-header-link: #{variables.$icon-hash-dark};
   --icon-external-link: #{variables.$icon-external-link-dark};
   --icon-copy: #{variables.$icon-copy-dark};

@@ -23,10 +23,10 @@ The mobile-first strategy was born out of necessity, driven by several key facto
 
 3. **Recognizing Mobile Constraints as Strengths:** Wroblewski's core insight was to flip this process on its head. He argued that [designers should embrace the constraints of a mobile device](https://www.lukew.com/ff/entry.asp?870) (smaller screen, slower connection, touch interface) as a starting point. This forces a focus on what is truly essential.
 
-  * **Focus on Core Content and Functionality:** With limited space, you have no choice but to prioritize the most important content and user tasks. This leads to a cleaner, more focused product.
+    * **Focus on Core Content and Functionality:** With limited space, you have no choice but to prioritize the most important content and user tasks. This leads to a cleaner, more focused product.
 
-  * **Improved Performance:** Building for mobile first encourages leaner code and optimized assets from the beginning, resulting in faster load times.
+    * **Improved Performance:** Building for mobile first encourages leaner code and optimized assets from the beginning, resulting in faster load times.
 
-  * **Innovation:** Designing for mobile encourages the use of device-specific capabilities like GPS, cameras, and touch gestures, leading to more innovative and context-aware applications.
+    * **Innovation:** Designing for mobile encourages the use of device-specific capabilities like GPS, cameras, and touch gestures, leading to more innovative and context-aware applications.
 
 4. **The Rise of Responsive Web Design:** Around the same time, Ethan Marcotte introduced the concept of Responsive Web Design (RWD) in a 2010 article on *A List Apart*. RWD provided the technical means (using fluid grids and media queries) to make a single website adapt to multiple screen sizes. The "mobile-first" philosophy provided the stretegic "why" and "how" for RWD, as its approach is the most logical and efficient way to implement a responsive design.

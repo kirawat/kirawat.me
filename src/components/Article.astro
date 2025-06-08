@@ -7,6 +7,155 @@
   </div>
 </article>
 
+<script>
+  /*
+   * Defines the mapping for language keys to their display name.
+   * Keys are expected to be lowercase.
+   */
+  const LANGUAGE_MAP: Record<string, string> = {
+    'cpp': 'C++',
+    'csharp': 'C#',
+    'css': 'CSS',
+    'html': 'HTML',
+    'ini': 'INI',
+    'javascript': 'JavaScript',
+    'plaintext': 'Text',
+    'powershell': 'PowerShell',
+    'scss': 'SCSS',
+    'sql': 'SQL',
+    'toml': 'TOML',
+    'typescript': 'TypeScript',
+    'yaml': 'YAML',
+  }
+
+  /*
+   * Sets a CSS custom property on `<pre>` elements to control the
+   * content of their `::before` pseudo-element, based on a language map.
+   */
+  function setupCodeBlockLabels() : void {
+    const codeBlocks: NodeListOf<HTMLElement> = document.querySelectorAll('pre[data-language');
+    
+    codeBlocks.forEach((block: HTMLElement) => {
+      const languageAttrValue = block.getAttribute('data-language');
+
+      // Skip if the attribute is missing or empty.
+      if (!languageAttrValue) {
+        return;
+      }
+
+      const languageKey: string = languageAttrValue.toLowerCase();
+      let displayText: string = languageKey;
+
+      if (LANGUAGE_MAP.hasOwnProperty(languageKey)) {
+        displayText = LANGUAGE_MAP[languageKey]!;
+      }
+      else {
+        // Fallback for unmapped languages: capitalize the first letter.
+        displayText = languageKey.charAt(0).toUpperCase() + languageKey.slice(1);
+      }
+
+      block.style.setProperty('--language-label', `"${displayText}"`);
+    });
+  }
+
+  /*
+   * Finds all `pre` elements in the document and adds a "Copy to clipboard"
+   * button to each. The button, when clicked, copied the content of the
+   * associated code block to the clipboard.
+   */
+  function addCopyToClipboardButtons(): void {
+    // Select all `pre` elements in the document.
+    const codeBlocks: NodeListOf<HTMLElement> = document.querySelectorAll('pre');
+
+    // Define the text for the copy button in its normal and copied states.
+    const copyText: string = 'Copy';
+    const copiedText: string = 'Copied!';
+
+    // Iterate over each found `pre` element.
+    codeBlocks.forEach((block: HTMLElement) => {
+      // Ensure the `<pre>` block can contain a positioned element (the copy button).
+      // If its current position is `static`, change it to `relative`.
+      if (getComputedStyle(block).position === 'static') {
+        block.style.position = 'relative';
+      }
+
+      // Create the copy button element.
+      const copyButton = document.createElement('button');
+      copyButton.className = 'copy-code-button';
+      copyButton.textContent = copyText;
+      copyButton.setAttribute('aria-label', 'Copy code');
+      copyButton.setAttribute('title', 'Copy code');
+
+      const codeElement = block.querySelector('code');
+      if (codeElement) {
+        block.insertBefore(copyButton, codeElement);
+      }
+      else {
+        block.appendChild(copyButton);
+      }
+
+      // Add an event listener for the 'click' event on the copy button.
+      copyButton.addEventListener('click', async () => {
+        // Find the `code` element within the `pre` block, if it exists.
+        const codeElement = block.querySelector('code');
+        // Determine the text to copy. Prioritize `code` element's innerText,
+        // otherise use `pre` block's innerText.
+        const codeToCopy = codeElement ? codeElement.innerText : block.innerText;
+
+        // If there's no text to copy, do nothing.
+        if (!codeToCopy) {
+          return;
+        }
+
+        // Asynchronously write the text to the clipboard.
+        await navigator.clipboard.writeText(codeToCopy);
+        // Add a `copied` class fro styling (e.g., to show a success state).
+        copyButton.classList.add('copied');
+        // Change the button text to indicate success.
+        copyButton.textContent = copiedText;
+
+        // After 2 seconds, revert the button to its original state.
+        setTimeout(() => {
+          copyButton.classList.remove('copied');
+          copyButton.textContent = copyText;
+        }, 2000);
+      });
+    });
+  }
+
+  /*
+   * Adds a clickable link icon to specified header elements that have an ID.
+   * The icon links to the heading's corresponding section.
+   */
+  function addLinkIconToHeaders() : void {
+    const headings: NodeListOf<Element> = document.querySelectorAll('h2[id], h3[id]');
+
+    headings.forEach((heading: Element) => {
+      const icon = document.createElement('a');
+      icon.classList.add('link-icon');
+      icon.href = `#${heading.id}`;
+      icon.setAttribute('aria-label', 'Link to this section');
+      icon.setAttribute('title', 'Link to this section');
+
+      // Inset the icon at the beginning of the heading.
+      if (heading.firstChild) {
+        heading.insertBefore(icon, heading.firstChild);
+      }
+      else {
+        // Fallback if heading is empty for some reason.
+        heading.appendChild(icon);
+      }
+    });
+  }
+
+  // Setup features once the DOM is fully loeaded.
+  document.addEventListener('DOMContentLoaded', () => {
+    addLinkIconToHeaders();
+    addCopyToClipboardButtons();
+    setupCodeBlockLabels();
+  });
+</script>
+
 <style lang="scss">
   @use '../styles/abstracts/variables' as var;
 
@@ -14,13 +163,127 @@
     padding-left: var.$screen-sm-content-padding-h;
     padding-right: var.$screen-sm-content-padding-h;
 
+    // Headers
+    // ======================================================================
+
+    :global(h2),
+    :global(h3) {
+      position: relative;
+      text-indent: 0.7rem;
+      text-transform: unset;
+      transform: translateX(0);
+      transition: 0.2s ease-in-out;
+
+      // Add link icon to header anchor.
+      :global(.link-icon) {
+        position: absolute;
+        left: -1.7rem;
+        top: 54%;
+
+        padding: 4px 8px 4px 0;
+
+        font-size: 1rem;
+        text-decoration: none;
+        opacity: 0;
+
+        transform: translateY(-50%);
+        transition: opacity 0.14s ease-in-out;
+
+        cursor: pointer;
+        content: var(--icon-header-link);
+      }
+
+      &:hover {
+        transform: translateX(25px);
+
+        :global(.link-icon) {
+          opacity: 1;
+        }
+      }
+    }
+
+    :global(h2) {
+      margin-bottom: 1.5rem;
+      font-size: var.$text-size-xl;
+
+      &:not(:first-child) {
+        margin-top: 2.5rem;
+      }
+
+      &::before {
+        position: absolute;
+        top: 0.6rem;
+        left: 0;
+        
+        display: inline-block;
+
+        width: 3px;
+        height: 1.8rem;
+        margin-right: 6px;
+
+        background-color: var(--h2-accent-color);
+        border-radius: var.$radius-m;
+
+        content: ' ';
+      }
+    }
+
+    :global(h3) {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: var.$text-size-lg;
+
+      &::before {
+        position: absolute;
+        top: 0.45rem;
+        left: 0;
+
+        display: inline-block;
+
+        width: 3px;
+        height: var.$text-size-lg;
+        margin-right: 6px;
+
+        background-color: var(--h3-accent-color);
+        border-radius: var.$radius-m;
+
+        content: ' ';
+      }
+    }
+
     // Text
+    // ======================================================================
 
     :global(b, strong) {
       color: var(--text-bold-color);
     }
 
-    // Bulletin
+    // Link
+    // ======================================================================
+
+    :global(a) {
+      // Add external link icon.
+      &[href^="http"]:not([href^="{{ (urls.Parse .Page.Permalink).Scheme }}://{{ (urls.Parse .Page.Permalink).Host }}"]):not(.no-external-icon)::after {
+        vertical-align: middle;
+        
+        display: inline-block;
+
+        width: var.$text-size-base;
+        height: var.$text-size-base;
+        margin-left: 2px;
+        margin-bottom: 4px;
+
+        background-image: var(--icon-external-link);
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        content: '';
+      }
+    }
+
+    // Lists
+    // ======================================================================
 
     :global(ul),
     :global(ol) {
@@ -73,6 +336,80 @@
       &:hover {
         &::-webkit-scrollbar-thumb {
           background-color: var(--scrollbar-thumb-color);
+        }
+      }
+
+      :global(.copy-code-button) {
+        position: sticky;
+        top: 0;
+        left: calc(100% - 34px);
+        z-index: 3;
+
+        box-sizing: border-box;
+
+        width: 32px;
+        height: 34px;
+        margin-top: 2px;
+        padding: 1px 14px 0 0;
+        overflow-x: hidden;
+
+        color: transparent;
+        font-size: var.$text-size-xs;
+        text-align: right;
+        background-color: transparent;
+        background-image: var(--icon-copy);
+        background-position: left;
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        border: none;
+        opacity: 0.3;
+
+        transition:
+          width 0.2s ease-out,
+          left 0.2s ease-out,
+          color 0.2s ease-in,
+          opacity 0.2s ease-out,
+          transform 0.2s ease-out;
+
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+          left: calc(100% - 68px);
+          width: 68px;
+          color: var(--text-normal-color);
+          opacity: 1;
+        }
+
+        // Slight press effect.
+        &:active {
+          transform: scale(0.9);
+        }
+
+        &.copied {
+          left: calc(100% - 80px);
+          width: 80px;
+          color: var(--text-normal-color);
+          background-image: var(--icon-copied);
+          opacity: 1;
+          transition-duration: 0s;
+        }
+      }
+
+      &[data-language] {
+        &::before {
+          position: sticky;
+          left: 0;
+          z-index: 2;
+
+          display: inline-block;
+
+          padding: 0.5rem 1rem;
+
+          color: var(--color-base-400);
+          font-size: var.$text-size-2xs;
+
+          content: var(--language-label, attr(data-language));
         }
       }
 
