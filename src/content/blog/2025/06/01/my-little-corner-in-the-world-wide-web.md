@@ -9,7 +9,7 @@ draft: true
 
 What Emmanuel Raymond wrote on his [blog post](https://peoray.dev/blog/digital-garden)[^1] is resonated well with me, as the goal of my personal website is aligned:
 
-> Yet, I've realized that the goal is to write for myself. If others find value in my words, that's wonderful, but if not, that's perfectly alright. It doesn't have to be flawless; there's no requirement for a minimum word count, and elaborate deep-dive, or intricate illustrations. It can be a brief snippet, a random thought, or anything that resonates with me.
+> ... I've realized that the goal is to write for myself. If others find value in my words, that's wonderful, but if not, that's perfectly alright. It doesn't have to be flawless; there's no requirement for a minimum word count, and elaborate deep-dive, or intricate illustrations. It can be a brief snippet, a random thought, or anything that resonates with me.
 >
 > Looking back, I've come to accept that very few people read my blog apart from myself. I rearely share what I've written, as I'm naturally reserved on the internet and prefer to lurk rather than engage. While I do receive some traffic, it is minimal, and most likely, it's just me clicking on my posts.
 >
