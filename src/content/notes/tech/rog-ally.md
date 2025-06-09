@@ -5,6 +5,25 @@ datePublished: 2025-06-02 07:06:00 +0700
 dateModified: 2025-06-02 07:06:00 +0700
 ---
 
+## Specification
+
+|                        |                                                                                                                                                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Operating System       | Windows 11 Home                                                                                                                                                                                  |
+| CPU                    | AMD Ryzen™ Z1 Extreme Processor ("Zen4" architecture with 4nm process, 8-core / 16-threads, 24MB total cache, up to 5.10 Ghz boost)                                                              |
+| GPU                    | AMD Radeon™ Graphics (AMD RDNA™ 3, 12 CUs, up to 2.7 GHz, up to 8.6 Teraflops)                                                                                                                   |
+| TDP                    | 9-30W                                                                                                                                                                                            |
+| RAM                    | 16GB LPDDR5 on board (6400MT/s dual channel)                                                                                                                                                     |
+| Display                | 7-inch FHD (1920 x 1080) 16:9 IPS-level 120Hz FreeSync Premium glossy display<br>Response Time: 7ms<br>Brightness: 500nits                                                                       |
+| Storage                | 512GB PCIe® 4.0 NVMe™ M.2 SSD (2230)                                                                                                                                                             |
+| Network                | Wi-Fi 6E (802.11ax) (Triple band) 2\*2<br>Bluetooth® 5.2 (\*Bluetooth® version may change with OS version different)                                                                             |
+| Battery                | 40WHrs, 4S1P, 4-cell Li-ion                                                                                                                                                                      |
+| I/O Ports              | 1 x 3.5mm Combo Audio Jack<br>1 x ROG XG Mobile Interface and USB Type-C combo port (with USB 3.2 Gen2, support DisplayPort™ 1.4)<br>1 x UHS-II microSD card reader (supports SD, SDXC and SDHC) |
+| Security               | Build-in Fingerprint Sensor<br>Microsoft Pluton security processor                                                                                                                               |
+| Power Supply           | TYPE-C, 65W AC Adapter                                                                                                                                                                           |
+| Weight                 | 608g                                                                                                                                                                                             |
+| Dimensions (W x D x H) | 28.0 x 11.1 x 2.12 ~ 3.24 cm<br>(11.02", 4.37" x 0.83" ~ 1.28")                                                                                                                                  |
+
 ## Fine-Tuning for Optimal Performance
 
 ### Disable CPU Boost
