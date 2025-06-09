@@ -109,13 +109,13 @@ const isCurrentPage = (href: string) => {
   $transition-duration: 0.2s;
 
   :root {
-    --nav-bar-bg-color: rgba(255, 255, 255, 0.45);
-    --nav-bar-border-color: #f0f0f0;
+    --nav-bar-bg-color: rgba(255, 255, 255, 0.07);
+    --nav-bar-border-color: #f3f3f3;
   }
 
   :root.theme-dark {
-    --nav-bar-bg-color: rgba(255, 255, 255, 0.05);
-    --nav-bar-border-color: #323232;
+    --nav-bar-bg-color: rgba(15, 15, 15, 0.07);
+    --nav-bar-border-color: #252525;
   }
 
   nav {
@@ -133,8 +133,8 @@ const isCurrentPage = (href: string) => {
 
     background-color: var(--nav-bar-bg-color);
     border-bottom: 1px solid var(--nav-bar-border-color);
-    backdrop-filter: blur(6px);
-    --webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
+    --webkit-backdrop-filter: blur(8px);
 
     font-family: var(--font-brand);
     font-weight: 500;

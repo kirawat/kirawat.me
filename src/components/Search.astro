@@ -66,9 +66,19 @@ import Icon from './Icon.astro';
 
     function closeModal() {
       searchModalOverlay.classList.remove('active');
+      clearSearchInput();
 
       if (preventPageScroll) {
         document.body.style.overflow = '';
+      }
+    }
+
+    function clearSearchInput() {
+      if (clearButton) {
+        clearButton.click();
+      }
+      else if (searchInput) {
+        searchInput.value = '';
       }
     }
 
@@ -109,7 +119,7 @@ import Icon from './Icon.astro';
 <style lang="scss">
   @use '../styles/abstracts/variables' as var;
 
-  $transition-duration: 0.25s;
+  $transition-duration: 0.2s;
   $modal-overlay-blur: 6px;
   $modal-padding: 10px;
 
@@ -193,7 +203,7 @@ import Icon from './Icon.astro';
     height: 100%;
     padding-top: 10vh;
 
-    background-color: rgba(20, 20, 20, 0.3);
+    background-color: rgba(15, 15, 15, 0.8);
     backdrop-filter: blur($modal-overlay-blur);
     -webkit-backdrop-filter: blur($modal-overlay-blur);
 
