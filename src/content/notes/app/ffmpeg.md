@@ -13,9 +13,9 @@ The FFmpeg project includes several key command-line tools:
 
 * `ffmpeg`: The core tool for converting multimedia files from one format to another. It can also capture and encode in real-time from various hardware and software sources.
 
-* **ffprobe**: A tool for analyzing and inspecting media files. It extracts detailed information abotu the codecs, container format, bitrates, and other metadata from a file.
+* `ffprobe`: A tool for analyzing and inspecting media files. It extracts detailed information abotu the codecs, container format, bitrates, and other metadata from a file.
 
-* **ffplay**: A simple, portable media player based on SDL and the FFmpeg libraries. It's often used by developers for testing purposes.
+* `ffplay`: A simple, portable media player based on SDL and the FFmpeg libraries. It's often used by developers for testing purposes.
 
 ## Installation
 
