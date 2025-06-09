@@ -9,15 +9,17 @@ tags:
 
 Upscaling technology is a process used to improve the resolution of images or videos, making them appear sharper and more detailed on higher resolution displays. It does this by taking a lower-resolution image or video and increasing its pixel count, essentially adding new pixels to fill in the gaps and make the image larger.
 
+Upscaling technology is particularly useful in gaming, where it can improve performance by rendering games at a lower resolution and then upscaling them for display. It can also enhance the visual quality of older games or videos that were originally produced in lower resolutions.
+
+## Upscaling Techniques
+
 There are a few different types of upscaling techniques:
 
 * **Basic Upscaling:** This is the simplest method, where existing pixels are simply replicated or stretched to fill the higher resolution. This can result in a blurry or pixelated image.
 
 * **Spatial Upscaling:** This involves analyzing neighboring pixels to estimate what the missing pixels should look like. This can provide a sharper image than basic upscaling but might introduce artifacts or distortions.
 
-* **AI Upscaling:** This uses artificial intelligence algorithms to analyze the image and predict what the missing details should be. AI upscaling can produce much higher quality results than other methods, often preserving more detail and creating a more natural-looking image.
-
-Upscaling technology is particular useful in gaming, where it can improve performance by rendering games at a lower resolution and then upscaling them for display. It can also enhance the visual quality of older games or videos that were originally produced in lower resolution.
+* **AI Upscaling:** This uses artificial intelligence algorithms to analyze the image and predict what the missing details should be. The AI model is trained on high-quality images to predict and fill in the missing pixels which can produce much higher quality results than the other methods, often preserving more detail and creating a more natural-looking image. This process also less demanding on the GPU than rendering at a native high resolution, resulting in higher frame rates in video games.
 
 ## NVIDIA
 
