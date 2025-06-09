@@ -19,6 +19,22 @@ What Emmanuel Raymond wrote on his [blog post](https://peoray.dev/blog/digital-g
 
 ## Content Deliver Strategy
 
+### Page Contents
+
+I was curious if I could have a very long piece of content in a single Markdown file, which would then be rendered into HTML by Astro. If so, would it affect performance when the large page is loaded? It turns out that modern web browsers stream content from top to bottom and render it progressively. They don't wait to download the entire page before showing anything to the user. This process is known as "progressive rendering."
+
+As soon as the browser receives the first chunk of the HTML document from the server, it begins parsing and rendering what it has processed so far. This is why you often see the top part of a webpage (like the header and navigation bar) appear first, followed by the rest of the content as you scroll down. However, this rendering process can be temporarily halted by other resources, such as CSS and JavaScript.[^2]
+
+When the browser encounters a `<link>` tag for a CSS stylesheet, it will pause rendering the rest of the page until that CSS file has been downloaded and parsed. This is because the style can affect the layout of the entire page.
+
+Similarly, when a `<script>` tag is found, the browser will typically stop everything else, download the script, execute it, and only then continue parsing and rendering the HTML. This is why it's a common practice to place `<script>` tags just before the closing `</body>` tag, so they don't block the initial rendering of the visible content.
+
+Browsers do cache CSS and JavaScript after the initial load, though, so this becomes less of an issue on subsequent visits.
+
+I can organize my content by subject, separating each part into a section within the same document. The atomic notes idea doesn't work for me, as the content itself is separated into small parts, which makes it harder to see the overall picture when you have to jump from one note to another. You can eventually get lost if you don't keep track of the trail.
+
+### Media and Images
+
 By upload the source of my website up to GitHub, I do have to think about where I up my other contents like images. Typically, the images for the website would be reside along with the source, but I want to avoid push them all up to GitHub repository.
 
 GitHub does recommend [keeping repositories small, ideally less than 1 GB](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#repository-size-limits).
@@ -32,3 +48,5 @@ Storing the images on my own server is a viable option. Just like putting the we
 Serving all the images from a NAS is free, but do limit by the speed of my home internet connection, especially the upload speed, which is typically slower than the download speed for the internet plan designed for home use. If the internet is down, the images on the website would not load at all.
 
 [^1]: Raymond, Emmanuel. ["My Blog is Dead. Long Live my Digital Garden"](https://peoray.dev/blog/digital-garden). [Archived](https://web.archive.org/web/20250605071256/https://peoray.dev/blog/digital-garden) from the original on June 5, 2025. Retrieved on June 5, 2025.
+
+[^2]: MDM Web Docs. ["Populating the page: how browsers work"](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work). [Archived](https://web.archive.org/web/20250521152508/https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work) from the original on June 10, 2025. Retrieved on June 10, 2025.
