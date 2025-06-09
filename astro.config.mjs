@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import embeds from 'astro-embed/integration';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import rehypeAstroRelativeMarkdownLinks from "astro-rehype-relative-markdown-links";
@@ -35,6 +36,7 @@ export default defineConfig({
     enabled: false,
   },
   integrations: [
+    embeds(),
     mdx(),
     sitemap(),
     (await import("astro-compress")).default(),

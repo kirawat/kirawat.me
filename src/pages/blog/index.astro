@@ -33,6 +33,18 @@ const posts = blogPosts.slice(0, 5);
 ---
 
 <BaseLayout>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>{post.data.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<!-- <BaseLayout>
   <section class="content-container">
     {
       posts.map(async (post) => {
@@ -50,7 +62,7 @@ const posts = blogPosts.slice(0, 5);
       })
     }
   </section>
-</BaseLayout>
+</BaseLayout> -->
 
 <style lang="scss">
   $article-min-width: 320px;
@@ -63,21 +75,6 @@ const posts = blogPosts.slice(0, 5);
 
     .blog-post {
       grid-column: 2;
-
-      // This CSS rule add vertical spacing between direct child elements
-      // of an element with the class `content`, but without adding space
-      // above the very first child.
-      & > :global(* + *),
-      & :global(blockquote > * + *),
-      & :global(li:has(> p)),
-      & :global(li > * + *),
-      & :global(ul > li > ul > li:only-child) {
-        margin-top: 1rem;
-      }
-
-      & :global(ul > li:has(table) > p) {
-        margin-bottom: 1rem;
-      }
     }
   }
 </style>

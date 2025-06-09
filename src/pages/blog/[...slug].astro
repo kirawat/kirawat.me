@@ -27,8 +27,12 @@ const { Content } = await render(entry);
 <BaseLayout>
   <main data-pagefind-body itemscope itemtype="https://schema.org/Blog">
     <header>
-      <a class="back-link" href="/blog/"><Icon icon="arrow-left" /> Blog</a>
-      <h1 class="post-title">{entry.data.name}</h1>
+      <div class="header-container">
+        <div class="post-meta">
+          <a class="back-link" href="/blog/"><Icon icon="arrow-left" /> Blog</a>
+          <h1 class="post-title" itemprop="name">{entry.data.name}</h1>
+        </div>
+      </div>
     </header>
     <Article>
       <Content />
@@ -37,32 +41,62 @@ const { Content } = await render(entry);
 </BaseLayout>
 
 <style lang="scss">
-  $header-min-width: 320px;
-  $header-max-width: 1280px;
-  $header-width: minmax($header-min-width, $header-max-width);
+  @use '../../styles/abstracts/variables' as var;
 
-  header {
-    display: grid;
-    grid-template-columns: 1fr $header-width 1fr;
-    margin-bottom: 2em;
+  .header-container {
+    margin-top: 1em;
+    margin-bottom: 2.5em;
+    padding: 0 var.$screen-sm-content-padding-h;
 
-    .back-link {
-      grid-column: 2;
-      justify-self: start;
-      text-decoration: 1px solid underline transparent;
-      text-underline-offset: 0.25em;
-      transition: text-decoration-color var(--theme-transition);
+    .post-meta {
+      .back-link {
+        font-size: var.$text-size-sm;
+        background-image: linear-gradient(to right, currentColor, currentColor);
+        background-position: 1.25em 100%;
+        background-size: 0% 1px;
+        background-repeat: no-repeat;
+        text-decoration: none;
+        transition: background-size var.$theme-transition;
 
-      &:hover,
-      &:focus {
-        text-decoration-color: currentColor;
+        &:hover,
+        &:focus {
+          background-size: 100% 1px;
+        }
+      }
+
+      .post-title {
+        margin-top: 0.4em;
+        padding: 0;
+        font-size: var.$text-size-xl;
+        line-height: 1.3em;
       }
     }
+  }
 
-    .post-title {
-      grid-column: 2;
-      font-family: var(--font-brand);
-      font-size: var(--text-3xl);
+  @media (min-width: var.$screen-md) {
+    .header-container {
+      padding: 0 var.$screen-md-content-padding-h;
+
+      .post-meta {
+        .back-link {
+          font-size: var.$text-size-base;
+        }
+      }
+    }
+  }
+
+  @media (min-width: var.$screen-lg) {
+    .header-container {
+      display: grid;
+      grid-template-columns: 1fr var.$article-width 1fr;
+
+      .post-meta {
+        grid-column: 2;
+
+        .post-title {
+          font-size: var.$text-size-2xl;
+        }
+      }
     }
   }
 </style>
