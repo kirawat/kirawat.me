@@ -3,7 +3,7 @@ name: "Xbox Ally Might Not Be Worth the Upgrade"
 author: "Kirawat Sahasewiyon"
 dateCreated: 2025-06-09 11:00:00 +0700
 datePublished: 2025-06-09 12:30:00 +0700
-dateModified: 2025-06-09 22:00:00 +0700
+dateModified: 2025-06-10 15:43:00 +0700
 ---
 
 ![](xbox-ally-2025.jpg)
@@ -44,7 +44,9 @@ The CPU and GPU improvements over the last generation don't seem significant. I 
 
 According to [Android Authority](https://www.androidauthority.com/xbox-rog-ally-3565410/), "ASUS claims that playing in Silent Mode on the Xbox ROG Ally X will 'feel like' playing in Performance Mode on the previous Ally X while still offering more battery life."[^3] However, since I already use a battery pack with my original ROG Ally, the improved battery life might not matter much to me. I do want bigger battery like on the ROG Ally X, though, but that still doesn't seem like a worthwhile upgrade.
 
-The most interesting addition is the dedicated NPU (Neural Processing Unit) in the new AMD Ryzen™ AI Z2 Extreme processor. This NPU, which provides up to 50 TOPS of AI compute power, could potentially benefit gaming by offloading tasks like [frame generation and upscaling](../../../../notes/tech/upscaling-technology.md), leaving the GPU to focus solely on graphics rendering. We will have to wait for performance tests on the final production units to see how this plays out.
+The most interesting addition is the dedicated NPU (Neural Processing Unit) in the new AMD Ryzen™ AI Z2 Extreme processor. This NPU, which provides up to 50 TOPS of AI compute power, could potentially benefit gaming by offloading tasks like [frame generation and upscaling](../../../../notes/tech/upscaling-technology.md), leaving the GPU to focus solely on graphics rendering. "Think of all the use cases that would blend AI based audio, AI-based gaming assisting functions, AI-based rendering capabilities," said AMD exec Sebastien Nussbaum[^5].
+
+Personally, I think it's more toward AI-based gaming assisting functions by [Copilot for Gaming](https://news.xbox.com/en-us/2025/03/13/new-copilot-for-gaming-save-time-help-get-good/) than anything else. We will have to wait for performance tests on the final production units to see how this plays out.
 
 ## The New Xbox Game Launcher
 
@@ -77,3 +79,5 @@ What I would love to see in the next update to ROG Ally, and what would make me 
 [^3]: Simons, Hadlee (2025, June 9). ["The main issue with Windows handhelds is Windows, but the Xbox ROG Ally tries to fix that"](https://www.androidauthority.com/xbox-rog-ally-3565410/) *Android Authority*. Retrieved on June 9, 2025.
 
 [^4]: Warren, Tom (2025, June 9). ["This is how Microsoft is combining Windows and Xbox for handheld PCs"](https://www.theverge.com/news/682011/microsoft-windows-xbox-pc-combination-features-rog-xbox-ally-devices) *The Verge*. [Archived](https://web.archive.org/web/20250608200234/https://www.theverge.com/news/682011/microsoft-windows-xbox-pc-combination-features-rog-xbox-ally-devices) from the original on June 9, 2025. Retrieved on June 9, 2025.
+
+[^5]: Strickland, Derek (2025, June 8). ["Xbox Ally X handheld using new AI tech in 'ways that haven't even been imagined'"](https://www.tweaktown.com/news/105657/xbox-ally-handheld-using-new-ai-tech-in-ways-that-havent-even-been-imagined/index.html) *TweakTown*. Retrieved on June 10, 2025.
