@@ -1,0 +1,98 @@
+---
+name: "Immich"
+dateCreated: 2025-06-10 21:34:00 +0700
+---
+
+## Installation
+
+### Synology NAS using Portainer
+
+For Synolog NAS with Intel CPU that support Quicksync.
+
+`docker-compose.yml`:
+
+```yaml
+name: immich
+
+services:
+  immich-server:
+    container_name: immich_server
+    image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      # Do not edit the next line. If you want to change the media storage location on your system, edit the value of UPLOAD_LOCATION in the .env file
+      - ${UPLOAD_LOCATION}:/usr/src/app/upload
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - stack.env
+    ports:
+      - '2283:2283'
+    depends_on:
+      - redis
+      - database
+    restart: always
+    healthcheck:
+      disable: false
+
+  immich-machine-learning:
+    container_name: immich_machine_learning
+    image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}
+    volumes:
+      - model-cache:/cache
+    env_file:
+      - stack.env
+    restart: always
+    healthcheck:
+      disable: false
+
+  redis:
+    container_name: immich_redis
+    image: docker.io/valkey/valkey:8-bookworm@sha256:ff21bc0f8194dc9c105b769aeabf9585fea6a8ed649c0781caeac5cb3c247884
+    healthcheck:
+      test: redis-cli ping || exit 1
+    restart: always
+
+  database:
+    container_name: immich_postgres
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0@sha256:fa4f6e0971f454cd95fec5a9aaed2ed93d8f46725cc6bc61e0698e97dba96da1
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE_NAME}
+      POSTGRES_INITDB_ARGS: '--data-checksums'
+      DB_STORAGE_TYPE: 'HDD'
+    volumes:
+      # Do not edit the next line. If you want to change the database storage location on your system, edit the value of DB_DATA_LOCATION in the .env file
+      - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  model-cache:
+```
+
+`stack.env`:
+
+```
+UPLOAD_LOCATION=/volume1/docker/immich/library
+DB_DATA_LOCATION=/volume1/docker/immich/postgres
+TZ=Etc/UTC
+IMMICH_VERSION=release
+DB_DATABASE_NAME=immich
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+```
+
+* `UPLOAD_LOCATION`: The location where your uploaded files are stored.
+
+* `DB_DATA_LOCATION`: The location where your database files are stored. Network shares are not supported for the database.
+
+* `TZ`: Your Timezone. Change "Etc/UTC" to a TZ identifier from [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+
+* `IMMICH_VERSION`: The Immich version to use. You can pin this to a specific version like "v1.71.0".
+
+* `DB_DATABASE_NAME`: The name of the database. **No need to be changed.**
+
+* `DB_USERNAME`: The username for the database. **No need to be changed.**
+
+* `DB_PASSWORD`: Connection secret for Postgres database. **You should change it to a random password.** Use only the characters `A-Za-z0-9`, without special characters or spaces.
