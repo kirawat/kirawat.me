@@ -40,7 +40,7 @@ Microsoft [announced two versions of its new Xbox handheld](https://news.xbox.co
 
 Comparing these to the specifications of the ROG Ally X, they just don't seem like a big upgrade. Even Jordan Gerblick from [Gamesradar](https://www.gamesradar.com/platforms/xbox/microsoft-insists-its-xbox-handheld-is-a-breakthrough-moment-but-it-kind-of-sounds-like-an-rog-ally-with-an-xbox-sticker-and-game-pass-to-me-it-looks-like-an-xbox-it-feels-like-an-xbox-it-plays-like-an-xbox/) said that "it kind of looks a lot like an Xbox-branded Asus ROG Ally."[^1]
 
-The CPU and GPU improvements over the last generation don't seem significant. I expected the performance increase to be about 5-10%.
+The CPU and GPU improvements over the last generation don't seem significant. Especially for the base model, the Xbox Ally, with its AMD Ryzen™ Z2 A that look identical to the Zen 2 with it 4 cores 8 threads and 8 GPU cores on SteamDeck, which came out couple years ago. The only different is a higher configurable TDP (up to 20W versus the 15W on the Steam Deck). The Ryzen Z1 Extreme on the original ROG Ally is even more powerful. As for the Xbox Ally X, I expected the performance increase to be only about 5-10% from the original ROG Ally X.
 
 According to [Android Authority](https://www.androidauthority.com/xbox-rog-ally-3565410/), "ASUS claims that playing in Silent Mode on the Xbox ROG Ally X will 'feel like' playing in Performance Mode on the previous Ally X while still offering more battery life."[^3] However, since I already use a battery pack with my original ROG Ally, the improved battery life might not matter much to me. I do want bigger battery like on the ROG Ally X, though, but that still doesn't seem like a worthwhile upgrade.
 
