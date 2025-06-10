@@ -21,3 +21,6 @@ Thumbs.db
 
 # JetBrains setting folder.
 .idea/
+
+# Obsidian
+src/content/.obsidian
