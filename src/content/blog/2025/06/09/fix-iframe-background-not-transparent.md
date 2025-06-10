@@ -1,5 +1,6 @@
 ---
 name: "Fix <iframe> Background Not Transparent"
+author: "Kirawat Sahasewiyon"
 dateCreated: 2025-06-09 22:35:00 +0700
 ---
 

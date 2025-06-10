@@ -1,5 +1,6 @@
 ---
 name: "Self-Hosted Your Own Read-It-Later with Karakeep"
+author: "Kirawat Sahasewiyon"
 dateCreated: 2025-06-10 14:14:00 +0700
 ---
 

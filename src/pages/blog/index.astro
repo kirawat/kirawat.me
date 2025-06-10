@@ -1,35 +1,66 @@
 ---
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { render } from 'astro:content';
+import { effect } from 'astro:schema';
+
+interface SortDateOptions {
+  // If true, the sort will prioritize `dateModified`.
+  // Defaults to false if not provided.
+  useModifiedDate?: boolean;
+}
+
+/**
+ * A comparator function to sort blog posts in descending chronological order.
+ * It infers the type of the post data directly from your `content.config.ts`.
+ * @param a - The first blog post to compare.
+ * @param b - The second blog post to compare.
+ * @param options - Configuration to control the sort behavior.
+ * @returns A number for the `Array.prototype.sort()`` method.
+ */
+function sortByDate(options: SortDateOptions = {}): (
+  a: CollectionEntry<'blog'>,
+  b: CollectionEntry<'blog'>,
+) => number {
+  // Set a default value for the option.
+  const { useModifiedDate = false } = options;
+
+  return (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => {
+    let effectiveDateA: Date;
+    let effectiveDateB: Date;
+
+    if (useModifiedDate) {
+      // Priority: Modified -> Published -> Created.
+      effectiveDateA = a.data.dateModified || a.data.datePublished || a.data.dateCreated;
+      effectiveDateB = b.data.dateModified || b.data.datePublished || b.data.dateCreated;
+    }
+    else {
+      // Default priority: Published -> Created.
+      effectiveDateA = a.data.datePublished || a.data.dateCreated;
+      effectiveDateB = b.data.datePublished || b.data.dateCreated;
+    }
+
+    const timeA = effectiveDateA.getTime();
+    const timeB = effectiveDateB.getTime();
+
+    // Sort in descending order (newest items will appear first).
+    // If `timeB` is more recent (larger timestamp) than `timeA`, this
+    // returns a positive number, which mean 'b' will be sorted before 'a'.
+    return timeB - timeA;
+  }
+}
 
 const blogPosts = (await getCollection('blog', ({ data }) => {
   // In production (PROD), only include posts where draft is not true.
   // In development (DEV), include all posts.
   return import.meta.env.PROD ? data.draft !== true : true;
 })).sort(
-  (a, b) => {
-    // The sort priority is:
-    // 1. dateModified (if it exists).
-    // 2. datePublished (if it exists).
-    // 3. dateCreated (as the final fallback).
-
-    const effectiveDateA = a.data.dateModified || a.data.datePublished || a.data.dateCreated;
-    const effectiveDateB = b.data.dateModified || b.data.datePublished || a.data.dateCreated;
-
-    // Convert the effective dates to numerical timestaps for comparison.
-    const timeA = effectiveDateA.valueOf();
-    const timeB = effectiveDateB.valueOf();
-
-    // Sort in descending order (newest items will appear first).
-    // If `timeB` is more recent (larger timestamp) than `timeA`, this
-    // returns a positive number, which means 'b' will be sorted before 'a'.
-    return timeB - timeA;
-  } ,
+  sortByDate({ useModifiedDate: false }),
 );
 
-const posts = blogPosts.slice(0, 5);
+const posts = blogPosts; //blogPosts.slice(0, 5);
 ---
 
 <BaseLayout>
