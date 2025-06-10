@@ -1,6 +1,8 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
+import { formatDate } from '../../utils/date-utils';
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 import Article from '../../components/Article.astro';
@@ -22,6 +24,9 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const datePublished = formatDate(entry.data.datePublished);
+const dateModified = formatDate(entry.data.dateModified);
 ---
 
 <BaseLayout>
@@ -31,6 +36,18 @@ const { Content } = await render(entry);
         <div class="post-meta">
           <a class="back-link" href="/notes/"><Icon icon="arrow-left" /> Notes</a>
           <h1 class="post-title" itemprop="name">{entry.data.name}</h1>
+          <span class="post-date">
+            {
+              datePublished && (
+                <p>Published: {datePublished}</p>
+              )
+            }
+            {
+              dateModified && (
+                <p>Last updated: {dateModified}</p>
+              )
+            }
+          </span>
         </div>
       </div>
     </header>
@@ -69,6 +86,11 @@ const { Content } = await render(entry);
         padding: 0;
         font-size: var.$text-size-xl;
         line-height: 1.3em;
+      }
+
+      .post-date {
+        font-size: var.$text-size-sm;
+        line-height: 1em;
       }
     }
   }

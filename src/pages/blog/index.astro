@@ -1,53 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import { sortByDate } from '../../utils/date-utils';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { render } from 'astro:content';
-
-interface SortDateOptions {
-  // If true, the sort will prioritize `dateModified`.
-  // Defaults to false if not provided.
-  useModifiedDate?: boolean;
-}
-
-/**
- * A comparator function to sort blog posts in descending chronological order.
- * It infers the type of the post data directly from your `content.config.ts`.
- * @param options - Configuration to control the sort behavior.
- * @returns A number for the `Array.prototype.sort()`` method.
- */
-function sortByDate(options: SortDateOptions = {}): (
-  a: CollectionEntry<'blog'>,
-  b: CollectionEntry<'blog'>,
-) => number {
-  // Set a default value for the option.
-  const { useModifiedDate = false } = options;
-
-  return (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => {
-    let effectiveDateA: Date;
-    let effectiveDateB: Date;
-
-    if (useModifiedDate) {
-      // Priority: Modified -> Published -> Created.
-      effectiveDateA = a.data.dateModified || a.data.datePublished || a.data.dateCreated;
-      effectiveDateB = b.data.dateModified || b.data.datePublished || b.data.dateCreated;
-    }
-    else {
-      // Default priority: Published -> Created.
-      effectiveDateA = a.data.datePublished || a.data.dateCreated;
-      effectiveDateB = b.data.datePublished || b.data.dateCreated;
-    }
-
-    const timeA = effectiveDateA.getTime();
-    const timeB = effectiveDateB.getTime();
-
-    // Sort in descending order (newest items will appear first).
-    // If `timeB` is more recent (larger timestamp) than `timeA`, this
-    // returns a positive number, which mean 'b' will be sorted before 'a'.
-    return timeB - timeA;
-  }
-}
 
 const blogPosts = (await getCollection('blog', ({ data }) => {
   // In production (PROD), only include posts where draft is not true.
@@ -57,7 +12,7 @@ const blogPosts = (await getCollection('blog', ({ data }) => {
   sortByDate({ useModifiedDate: false }),
 );
 
-const posts = blogPosts; //blogPosts.slice(0, 5);
+const posts = blogPosts;
 ---
 
 <BaseLayout>
@@ -71,26 +26,6 @@ const posts = blogPosts; //blogPosts.slice(0, 5);
     }
   </ul>
 </BaseLayout>
-
-<!-- <BaseLayout>
-  <section class="content-container">
-    {
-      posts.map(async (post) => {
-        const { Content } = await render(post);
-        return (
-          <div class="blog-post">
-            <header>
-              <h1 class="post-title">{post.data.name}</h1>
-            </header>
-            <article class="post-content">
-              <Content />
-            </article>
-          </div>
-        );
-      })
-    }
-  </section>
-</BaseLayout> -->
 
 <style lang="scss">
   $article-min-width: 320px;

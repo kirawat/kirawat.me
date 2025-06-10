@@ -68,19 +68,34 @@ NEXTAUTH_URL=http://localhost:3000
 
 You **should** change the `super_random_string` and `another_random_string` to your own secret keys. You can use `openssl rand -base64 36` in a Terminal to generate the random strings. You should also change the `NEXTAUTH_URL` variable to point to your server address.
 
-To setup AI for automatic tagging (which is optional), you will need to sign up for the OpenAI API Platform. Please be aware that using this feature will incur costs.
+## AI Features
 
-According to the [documentation](https://docs.karakeep.app/openai/): For text tagging, it use `gpt-4.1-mini` model. Cost per inference varies depending on the content size per article. Though, roughly, you'll be able to generate tags for almost 3000+ bookmarks for less than US$1. For image uploads, `gpt-4o-mini` model is use for extracting tags from the image. To lower the costs, Karakeep using the low resolution mode (fixed number of tokens regardless of image size). You'll be able to run inference for 1000+ images for less than a US$1.[^3]
+To setup AI for automatic tagging (which is optional), you will need to sign up for the AI API Platform. Please be aware that using this feature may incur costs.
 
-Karakeep also [support different AI providers](https://docs.karakeep.app/Guides/different-ai-providers/) such as Ollama, Gemini, Perplexity, etc., if you so choose.
+For the OpenAI (ChatGPT), according to the [documentation](https://docs.karakeep.app/openai/):
 
-You can skip using AI altogether if you don't want to spend money, or don't need the AI features.
+  * For text tagging, it use `gpt-4.1-mini` model. Cost per inference varies depending on the content size per article. Though, roughly, you'll be able to generate tags for almost 3000+ bookmarks for less than US$1.
 
-Add the OpenAI API key to the environment variables (`stack.env`):
+  * For image uploads, `gpt-4o-mini` model is use for extracting tags from the image. To lower the costs, Karakeep using the low resolution mode (fixed number of tokens regardless of image size). You'll be able to run inference for 1000+ images for less than a US$1.[^3]
+
+Karakeep also [support different AI providers](https://docs.karakeep.app/Guides/different-ai-providers/) such as Ollama, Gemini, Perplexity, etc., if you so choose. I found that Gemini has free tier available, free of charge, so that's what I'm using.
+
+Do keep in mind that the item data such as the article you put in Karakeep will be use by Gemini to train the AI further. Since there won't be any personal data, I'm OK with this as a trade off.
+
+First, you will need to **sign up** for [Google AI Studio](https://aistudio.google.com/), once you've arrived at the **Dashboard**, click on **"Get API key"**.
+
+Then add the API key along with additional parameters to the environment variables (`stack.env`):
 
 ```
+OPENAI_BASE_URL=https://generativelanguage.googleapis.com/v1beta
 OPENAI_API_KEY=your_api_key
+INFERENCE_TEXT_MODEL=gemini-2.0-flash
+INFERENCE_IMAGE_MODEL=gemini-2.0-flash
 ```
+
+Replace `your_api_key` with the key you get from Google AI Studio. Once deployed, the AI features should work properly. You can test it out and check the [Gemini API Usage](https://aistudio.google.com/app/usage) to see if all is well. With no credit card provided, I feel more safer that there won't be any surprise cost at later time.
+
+## Security
 
 If you are the only user, it is recommended that you add `DISABLE_SIGNUPS=true` to your environment variables (`stack.env`) after creating your account on your self-hosted Karakeep to prevent unauthorized sign-ups.
 

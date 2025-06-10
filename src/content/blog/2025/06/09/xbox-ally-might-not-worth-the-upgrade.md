@@ -3,7 +3,7 @@ name: "Xbox Ally Might Not Be Worth the Upgrade"
 author: "Kirawat Sahasewiyon"
 dateCreated: 2025-06-09 11:00:00 +0700
 datePublished: 2025-06-09 12:30:00 +0700
-dateModified: 2025-06-10 15:43:00 +0700
+dateModified: 2025-06-10 18:56:00 +0700
 ---
 
 ![](xbox-ally-2025.jpg)
@@ -59,6 +59,8 @@ Microsoft also plans to integrate the game libraries from other third-party stor
 > Microsoft demonstrated this handheld-friendly combination of Windows and Xbox to The Verge in a briefing earlier this week, but it was a virtual demo so we haven't been able to try it fully yet. It all starts by booting directly into a new Xbox full-screen experience on these ROG Xbox Ally devices that focuses on the Xbox app and Game Bar, alongside being a launcher for all your PC games — yes even Steam ones.[^4]
 
 With that said, this is still Windows 11 at its core, and I expect that it will come with the mainline Windows updates that will be available on all devices, including the original [ROG Ally](../../../../notes/tech/rog-ally.md).
+
+UPDATE: It is confirmed that the ["Xbox Full-Screen Experience" will be made available to other Windows handhelds in 2026](https://www.notebookcheck.net/Microsoft-says-the-ROG-Xbox-Ally-series-software-will-come-to-other-Windows-handhelds-in-2026.1032912.0.html).
 
 ## Might Not Be Worth the Upgrade
 
