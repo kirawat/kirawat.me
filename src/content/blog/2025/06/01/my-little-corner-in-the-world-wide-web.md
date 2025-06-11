@@ -55,7 +55,15 @@ Having the source of the website up on GitHub repository is good and all, but I 
 
 GitHub app does have the ability to create and edit file, but it's not anywhere close to edit it in VSCode. A proper Markdown editor is a better way. Comes Obsidian.
 
-I have been using Obsidian for quite sometimes now, and like how it doesn't store content in database, but just plain text file on my device. Obsidian Sync is seamlessly sync across all my devices. The UI look and theme are fully customizable with CSS. That's mean I can make the Markdown preview look just like how it would be like on the actual website using the same CSS code based.
+I have been using Obsidian for quite sometimes now, and like how it doesn't store content in database, but just plain text file on my device. Obsidian Sync is seamlessly sync across all my devices. The UI look and theme are fully customizable with CSS. That's mean I can make the Markdown preview look just like how it would be like on the actual website using the similar CSS code based.
+
+### Bookmark Active Documents
+
+I can bookmark the file I'm still working on. Especially those still in "draft", "seedling", or "sprout", which make it easy to find and know which content that I should revisited.
+
+### Sync Conflict with Git
+
+There is an issue where the Obsidian Sync would sync the file to all the devices, and it will crash with one that already been pushed to GitHub repository. I can simply discard changes on GitHub Desktop, but it's a thing that's not as smooth as it can be.
 
 [^1]: Raymond, Emmanuel. ["My Blog is Dead. Long Live my Digital Garden"](https://peoray.dev/blog/digital-garden). [Archived](https://web.archive.org/web/20250605071256/https://peoray.dev/blog/digital-garden) from the original on June 5, 2025. Retrieved on June 5, 2025.
 
