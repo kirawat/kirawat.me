@@ -49,6 +49,8 @@ Serving all the images from a NAS is free, but do limit by the speed of my home 
 
 [Tailscale Funnel](https://tailscale.com/kb/1223/funnel) does have potential. I have to look at it's limitations such as bandwidth allowance.
 
+Cloudflare Tunnel is another top contender.
+
 ## Edit Content Across Devices with Obsidian
 
 Having the source of the website up on GitHub repository is good and all, but I want the ability to write and edit the website content from anywhere. The idea can strike at any time of the day, and the one device that's always with me is my smartphone.

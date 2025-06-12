@@ -48,6 +48,8 @@ The most interesting addition is the dedicated NPU (Neural Processing Unit) in t
 
 Personally, I think it's more toward AI-based gaming assisting functions by [Copilot for Gaming](https://news.xbox.com/en-us/2025/03/13/new-copilot-for-gaming-save-time-help-get-good/) than anything else. We will have to wait for performance tests on the final production units to see how this plays out.
 
+The screen on the device is the same as previous generations. 7-inch 1080p.
+
 ## The New Xbox Game Launcher
 
 ![](xbox-ally-home.jpg)
