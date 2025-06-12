@@ -48,18 +48,14 @@ The most interesting addition is the dedicated NPU (Neural Processing Unit) in t
 
 Personally, I think it's more toward AI-based gaming assisting functions by [Copilot for Gaming](https://news.xbox.com/en-us/2025/03/13/new-copilot-for-gaming-save-time-help-get-good/) than anything else. We will have to wait for performance tests on the final production units to see how this plays out.
 
-<<<<<<< Updated upstream
-The screen on the device is the same as previous generations. 7-inch 1080p 120Hz VRR.
-
-=======
 The screen on the device is the same as previous generations. 7-inch 1080p 120Hz VRR. Many would want OLED screen, but ROG Ally team member Whitson Gordon explains that [they decided to go for VRR instead of OLED](https://www.purexbox.com/news/2025/06/asus-explains-why-the-rog-xbox-ally-doesnt-have-an-oled-screen) for the handheld devices:
 
 > "We did look at OLED again this year, we did some R&D and prototyping with OLED, but it's still not where we want it to be when we factor VRR into the mix. And we aren't willing to give up VRR, I'll draw that line in the sand right now. I am of the opinion that if a display doesn't have Variable Refresh Rate, it's not a gaming display in the year 2025.
 > 
 > And OLED with VRR right now draws significantly more power than the LCD that we're currently using on the Ally, and it costs more."[^6]
 
-I totally agree with their decision, as gaming on handheld devices still can't managed to get the frame rate as high and constant. I would prefer smooth gameplay with VRR over the color depth. Still, they should have slim down the bazel and increased the screen size.
->>>>>>> Stashed changes
+I totally agree with their decision, as gaming on handheld devices still can't managed to get the frame rate as high and constant. I would prefer smooth gameplay with VRR over the color depth. Still, they should have slim down the bezel and increased the screen size.
+
 ## The New Xbox Game Launcher
 
 ![](xbox-ally-home.jpg)
