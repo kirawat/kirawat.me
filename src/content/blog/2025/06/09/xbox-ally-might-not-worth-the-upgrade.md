@@ -48,8 +48,18 @@ The most interesting addition is the dedicated NPU (Neural Processing Unit) in t
 
 Personally, I think it's more toward AI-based gaming assisting functions by [Copilot for Gaming](https://news.xbox.com/en-us/2025/03/13/new-copilot-for-gaming-save-time-help-get-good/) than anything else. We will have to wait for performance tests on the final production units to see how this plays out.
 
+<<<<<<< Updated upstream
 The screen on the device is the same as previous generations. 7-inch 1080p 120Hz VRR.
 
+=======
+The screen on the device is the same as previous generations. 7-inch 1080p 120Hz VRR. Many would want OLED screen, but ROG Ally team member Whitson Gordon explains that [they decided to go for VRR instead of OLED](https://www.purexbox.com/news/2025/06/asus-explains-why-the-rog-xbox-ally-doesnt-have-an-oled-screen) for the handheld devices:
+
+> "We did look at OLED again this year, we did some R&D and prototyping with OLED, but it's still not where we want it to be when we factor VRR into the mix. And we aren't willing to give up VRR, I'll draw that line in the sand right now. I am of the opinion that if a display doesn't have Variable Refresh Rate, it's not a gaming display in the year 2025.
+> 
+> And OLED with VRR right now draws significantly more power than the LCD that we're currently using on the Ally, and it costs more."[^6]
+
+I totally agree with their decision, as gaming on handheld devices still can't managed to get the frame rate as high and constant. I would prefer smooth gameplay with VRR over the color depth. Still, they should have slim down the bazel and increased the screen size.
+>>>>>>> Stashed changes
 ## The New Xbox Game Launcher
 
 ![](xbox-ally-home.jpg)
@@ -85,3 +95,5 @@ What I would love to see in the next update to ROG Ally, and what would make me 
 [^4]: Warren, Tom (2025, June 9). ["This is how Microsoft is combining Windows and Xbox for handheld PCs"](https://www.theverge.com/news/682011/microsoft-windows-xbox-pc-combination-features-rog-xbox-ally-devices) *The Verge*. [Archived](https://web.archive.org/web/20250608200234/https://www.theverge.com/news/682011/microsoft-windows-xbox-pc-combination-features-rog-xbox-ally-devices) from the original on June 9, 2025. Retrieved on June 9, 2025.
 
 [^5]: Strickland, Derek (2025, June 8). ["Xbox Ally X handheld using new AI tech in 'ways that haven't even been imagined'"](https://www.tweaktown.com/news/105657/xbox-ally-handheld-using-new-ai-tech-in-ways-that-havent-even-been-imagined/index.html) *TweakTown*. Retrieved on June 10, 2025.
+
+[^6]: Gilbert, Fraser (2025, June 11). ["ASUS Explains Why The ROG Xbox Ally Doesn’t Have An OLED Screen"](https://www.purexbox.com/news/2025/06/asus-explains-why-the-rog-xbox-ally-doesnt-have-an-oled-screen) *Pure Xbox*. Retrieved on June 12, 2025.
