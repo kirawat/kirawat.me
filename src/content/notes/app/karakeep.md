@@ -58,3 +58,5 @@ NEXTAUTH_URL=http://localhost:3000
 ```
 
 You **should** change the `super_random_string` and `another_random_string` to your own secret keys. You can use `openssl rand -base64 36` in a Terminal to generate the random strings. You should also change the `NEXTAUTH_URL` variable to point to your server address.
+
+Add `DISABLE_SIGNUPS=true` to disable new signups.

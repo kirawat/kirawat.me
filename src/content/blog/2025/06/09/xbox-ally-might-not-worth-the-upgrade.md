@@ -1,9 +1,9 @@
 ---
-name: "Xbox Ally Might Not Be Worth the Upgrade"
-author: "Kirawat Sahasewiyon"
+name: Xbox Ally Might Not Be Worth the Upgrade
+author: Kirawat Sahasewiyon
 dateCreated: 2025-06-09 11:00:00 +0700
 datePublished: 2025-06-09 12:30:00 +0700
-dateModified: 2025-06-10 20:34:00 +0700
+dateModified: 2025-06-11 12:43:00 +0700
 ---
 
 ![](xbox-ally-2025.jpg)
