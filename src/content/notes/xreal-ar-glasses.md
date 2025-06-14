@@ -66,6 +66,11 @@ At its core, the XREAL One is engineered to provide users with a large, private 
 | Brightness | 600 nits                           |
 | Weight     | 84g                                |
 
+## Accessories
+
+### XREAL Eye
+
+[XREAL Eye](https://us.shop.xreal.com/products/xreal-eye) is a tiny camera that add to the XREAL One series glasses to help to extends the device from 3-DoF to 6-DoF. Price at US$99.
 ## Firmware Update
 
 Visit: https://www.xreal.com/ota/
