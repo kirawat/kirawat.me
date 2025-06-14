@@ -1,9 +1,9 @@
 ---
-name: "Pi-hole"
+name: Pi-hole
 dateCreated: 2025-05-27 00:00:00 +0700
 datePublished: 2025-05-27 00:00:00 +0700
 dateModified: 2025-05-27 00:00:00 +0700
-draft: true
+draft: false
 ---
 
 Pi-hole uses `pihole-FTL` (Faster Than Light), which includes a modified version of `dnsmasq`, a lightweight DNS forwarder and DHCP server, and its DNS caching capabilities are a core part of Pi-hole's functionality.

@@ -1,11 +1,11 @@
 ---
-name: "NVIDIA GeForce"
+name: NVIDIA GeForce
 dateCreated: 2025-05-28 00:00:00 +0700
 datePublished: 2025-05-28 00:00:00 +0700
 dateModified: 2025-05-28 00:00:00 +0700
 tags:
-  - "Computer"
-draft: true
+  - Computer
+draft: false
 ---
 
 ## 3D Settings

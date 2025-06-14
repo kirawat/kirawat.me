@@ -87,16 +87,16 @@ Xbox Ally X Specs:
 
 Xbox Ally Specs:
 
-|                          |                              |
-| ------------------------ | ---------------------------- |
-| CPU                      | AMD Ryzen Z2 A               |
-| CPU Cores (Architecture) | 4 Cores / 8 Threads (Zen 2)  |
-| GPU Cores (Architecture) | 8 (RDNA 2)                   |
-| RAM                      | 16GB                         |
-| SSD                      | 512TB                        |
-| Battery                  | 60Wh                         |
+|                          |                             |
+| ------------------------ | --------------------------- |
+| CPU                      | AMD Ryzen Z2 A              |
+| CPU Cores (Architecture) | 4 Cores / 8 Threads (Zen 2) |
+| GPU Cores (Architecture) | 8 (RDNA 2)                  |
+| RAM                      | 16GB                        |
+| SSD                      | 512TB                       |
+| Battery                  | 60Wh                        |
 
-From the look of the promotional images, it could have a larger screen and previous models, but it has yet to be revealed.
+See: [Xbox Ally Might Not Worth the Upgrade](../../blog/2025/06/09/xbox-ally-might-not-worth-the-upgrade.md)
 
 ## BIOS Update
 
