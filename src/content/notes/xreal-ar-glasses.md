@@ -32,6 +32,7 @@ One of the most anticipated features of Project Aura is its deep integration wit
 | DOF        | Native 3 DOF/6 DOF Supported       |
 | Display    | SONY 0.55" Micro-OLED 1080p 120 Hz |
 | Brightness | 700 nits                           |
+| Weight     | 82g                                |
 
 ### XREAL One
 

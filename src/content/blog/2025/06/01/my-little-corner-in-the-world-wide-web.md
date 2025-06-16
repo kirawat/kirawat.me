@@ -17,6 +17,16 @@ What Emmanuel Raymond wrote on his [blog post](https://peoray.dev/blog/digital-g
 >
 > I intend to contribute my knowledge to the internet and share what I have learned. Consider this blog my public journal, a means of learning rather than striving for complete pieces of work.
 
+## Contents
+
+### Blog
+
+
+
+### Notes
+
+These are fragments notes that contain information to be referenced to.
+
 ## Content Deliver Strategy
 
 ### Page Contents
