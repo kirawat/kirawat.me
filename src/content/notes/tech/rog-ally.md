@@ -34,10 +34,6 @@ Disabling CPU boost can improve battery life and thermal management, particularl
 
 In performance mode, the Ally can sometimes exceed the 15W limit, reaching up to 22W in certain demanding titles. This can negatively impact battery life and increase fan noise. By setting a strict 18W limit in manual mode, users can maintain consistent performance while optimizing battery life and managing thermals.
 
-## Uninstall Moving Out
-
-ROG Ally came with a free full game called "Moving Out" preinstalled. To remove the game from the device, delete the folowing folder: `C:\eSupport\eDriver\Software\Win32App\Team17\Moving Out\`
-
 ## Super Resolution
 
 ### FSR (FidelityFX Super Resolution)
@@ -117,3 +113,41 @@ See: [BIOS & Firmware for ROG Ally RC71L](https://rog.asus.com/gaming-handhelds/
 | 2023/07/20 | 323     | - UX improvement: Added 30W support when plugging in 65W or higher wattage PD adapters or Type-C hub.<br>- UX improvement: Modified minimum panel backlight value from 25nits to 10nits to improve usability in dark environments.<br>- UX improvement: On future BIOS updates, the "Memory Assigned to GPU" setting won't be reset to default; it will now keep its previous value.<br>- UX improvement: Optimized performance in Performance mode when plugged in. |
 | 2023/07/04 | 322     | - Bugfix: Resolved an issue that caused the ROG Ally to be stuck at the boot up loading screen when users configured a password in BIOS mode.<br>- Modified the Ally's fan curve from 30dBA to 35dBA in Turbo mode when plugged in, and from 25dBA to 30 dBA in Turbo mode when using the battery. Changed the minimum fan speed in Manual mode when device hits a certain temperature.                                                                              |
 
+## Factory Reset
+
+1. Ensure the device is completely shut down.
+
+2. Press and hold the **Volume Down** button and then press and release the **Power button**. Continue holding the Volume Down button until the BIOS menu appears on the screen.
+
+3. Once in the BIOS, press the **Y button** on the controller to open the "Advanced Mode". Navigate to the "Advanced" tab and select "ASUS Cloud Recovery".
+
+4. If you have installed others OS (e.g., SteamOS), you may have disable Secure Boot before. Ensure to enable the Secure Boot, Reset Factory Keys, and restart, then follow the step 2 again. If Secure Boot is already enabled, move on to the next step.
+
+5. The system will prompt you to connect to a Wi-Fi network. Select your network and enter the password. A stable internet connection is crucial for this step.
+
+6. After a successful connection, the device will being downloading the necessary files to reinstall the operating system. This download can be lengthy depending on your internet speed.
+
+7. The system will then proceed with the reinstallation of Windows. This is an automated process, but it may require some initial confirmations. Be patient, as it can take a significant amount of time, and the device will restart several times.
+
+Once the process is complete, your ROG Ally will boot up to the initial Windows setup screen, just as it did when you first took it out of the box.
+
+## Troubleshooting
+
+### Uninstall Moving Out
+
+ROG Ally came with a free full game called "Moving Out" preinstalled. To remove the game from the device, delete the folowing folder: `C:\eSupport\eDriver\Software\Win32App\Team17\Moving Out\`
+
+### Secure Boot Violation
+
+**Invalid signature detected. Check Secure Boot Policy in Setup**
+
+1. Ensure the device is power is off.
+2. Press and hold the **Volume Down button** and then press and release the **Power button**. Continue holding the Volume Down button until the BIOS menu appears on the screen.
+3. Once in the BIOS, press the **Y button** on the controller to open the "Advanced Mode". Navigate to the "Security" tab and select "Secure Boot" -> "Key Management" -> "Reset To Setup Mode" -> "Restore Factory Keys".
+
+### Cloud Recovery: Network Error
+
+1. Make sure that BIOS time and date is correct, or try to set it back an hour.
+2. Try another Wi-Fi hotspot.
+3. Try using Ethernet connection via USB-C dock.
+4. Reconnect the SSD.
