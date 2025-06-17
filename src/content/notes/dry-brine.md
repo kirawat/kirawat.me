@@ -5,7 +5,7 @@ datePublished: 2025-06-16 11:55 +0700
 dateModified: 2025-06-16 11:56 +0700
 tags:
   - Cooking
-draft:
+draft: false
 ---
 Dry brining is a technique used to enhance the flavor and moisture of meat and poultry without the use of a traditional liquid brine. At its core, dry brining is the process of salting meat—and sometimes seasoning it with herbs and spices—and letting it rest for a period before cooking.
 

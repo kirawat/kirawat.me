@@ -3,6 +3,8 @@ name: How to Toggle Touch Keyboard on Windows 11 Using Gamepad
 dateCreated: 2025-06-14 23:48:00 +0700
 datePublished: 2025-06-14 23:48:00 +0700
 dateModified: 2025-06-14 23:48:00 +0700
+tags:
+  - Windows
 ---
 Microsoft introduced [touch keyboard support for gamepads](https://www.engadget.com/gaming/xbox/microsoft-launches-a-new-gamepad-keyboard-layout-for-windows-11-154011591.html) to Windows 11 in early 2025. This feature, designed to enhance the experience for PC gaming handhelds and users who navigate with a controller, allows for easier text input using a gamepad.
 

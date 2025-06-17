@@ -55,3 +55,7 @@ If you have many users or automated scripts all trying to read and write bookmar
 ## Links
 
 * [GitHub](https://github.com/go-shiori/shiori)
+
+## See also
+
+* [Karakeep](karakeep.md)

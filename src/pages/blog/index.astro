@@ -16,15 +16,19 @@ const posts = blogPosts;
 ---
 
 <BaseLayout>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.id}`}>{post.data.name}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <section class="content-container">
+    <div class="blog-posts">
+      <ul>
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}`}>{post.data.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 </BaseLayout>
 
 <style lang="scss">
@@ -36,7 +40,7 @@ const posts = blogPosts;
     display: grid;
     grid-template-columns: 1fr $article-width 1fr;
 
-    .blog-post {
+    .blog-posts {
       grid-column: 2;
     }
   }

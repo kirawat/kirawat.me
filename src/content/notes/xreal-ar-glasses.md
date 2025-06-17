@@ -67,6 +67,8 @@ At its core, the XREAL One is engineered to provide users with a large, private 
 | Brightness | 600 nits                           |
 | Weight     | 84g                                |
 
+Ultra-wide mode only support 60 Hz refresh rate.
+
 ## Accessories
 
 ### XREAL Eye

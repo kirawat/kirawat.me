@@ -5,7 +5,7 @@ datePublished: 2025-06-16 11:48 +0700
 dateModified: 2025-06-16 11:48 +0700
 tags:
   - Cooking
-draft:
+draft: false
 ---
 "Cold Sear" is a cooking technique to cook steak or other meat from a cold non-stick frying pan, without using any cooking oil. This result to less smoke while cooking than standard way of cooking steak using hot pan.
 
