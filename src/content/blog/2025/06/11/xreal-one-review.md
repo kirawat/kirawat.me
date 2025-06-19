@@ -10,3 +10,5 @@ draft: true
 ---
 
 The top of the glasses can get rather warm. The heat make it a bit uncomfortable when the top bit of the glasses touch the forehead.
+
+Would I replace a proper monitor with it? The answer is "No".

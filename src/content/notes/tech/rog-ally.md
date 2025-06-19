@@ -4,7 +4,6 @@ dateCreated: 2025-06-02 07:06:00 +0700
 datePublished: 2025-06-02 07:06:00 +0700
 dateModified: 2025-06-02 07:06:00 +0700
 ---
-
 ## Specification
 
 |                           |                                                                                                                                                                                                  |
@@ -29,6 +28,89 @@ dateModified: 2025-06-02 07:06:00 +0700
 ### Disable CPU Boost
 
 Disabling CPU boost can improve battery life and thermal management, particularly in less demanding games. This has a significant impact on reducing the CPU's heat and power consumption. While it might slightly lower performance in demanding games, it can significantly extend your playtime and keep the Ally running cooler.
+
+### Disable Memory Integrity
+
+Memory Integrity (also known as Hypervisor-protected Code Integrity or HVCI) is a security feature in Windows 11 that helps protect your system from malicious code by isolating core processes of Windows in memory. Its uses hardware virtualization to create a secure, isolated environment for critical Windows processes and drivers, essentially running them in a sort of mini-virtual machine. While this provides enhanced security by making it harder for malicious software to inject code or tamper with core system functions, it introduces computational overhead. Machine has to do extra work to manage this virtualized environment.
+
+This overhead can consume CPU cycles and memory resources that would otherwise be fully dedicated to your game. This potentially leads to lower frame rates, more pronounced frame time spikes (stuttering), and increased input latency. The virtualization layer can also increase the time it takes for the CPU to access memory. In gaming, where rapid data access is crucial, even slight delays can accumulate and negatively impact performance.
+
+While it's generally recommended to keep Memory Integrity enabled for optimal security, you might consider disabling it on the ROG Ally if you'll primarily be gaming on the machine. For high-end gaming PCs, the performance loss might be negligible or barely noticeable. However, for devices like the ROG Ally, with less powerful CPUs and limited RAM, the impact tends to be more noticeable as they have fewer resources to spare for the virtualization overhead.
+
+[Microsoft acknowledges that these features can impact gaming performance](https://support.microsoft.com/en-us/windows/options-to-optimize-gaming-performance-in-windows-11-a255f612-2949-4373-a566-ff6f3f474613) and provides the option to disable them:
+
+1. Click the **Start** button.
+
+2. Type "Core Isolation" in the search bar and select **Core isolation** from the results. This will open the Windows Security app.
+    * Alternatively, you can go to **Settings** -> **Privacy & security** -> **Windows Security**, then click on **Device security**, and then **Core isolation details**.
+
+3. On the "Core isolation" page, you'll see a toggle switch for **Memory integrity**. Flip the toggle to the **Off** position.
+
+4. You will be prompted to restart your computer for the changes to take effect. Do it.
+
+### Turn Off Virtual Machine Platform
+
+The Virtual Machine Platform is a Windows feature that provides core virtualization services for running virtual machines, like those used by Windows Subsystem for Linux (WSL) or third-party virtualization software (e.g., VirtualBox, VMware Workstation). If you're only going to be gaming on ROG Ally, you might want to turn it off.
+
+1. Click the **Start** button.
+
+2. Type "Turn Windows features on or off" in the search bar and select the corresponding option from the results. This will open the "Windows Features" dialog box.
+
+3. In the "Windows Features" list, scroll down and **uncheck** the box next to **Virtual Machine Platform**.
+
+4. If you also want to disable other related virtualization features, you might also consider unchecking:
+    * Hyper-V (if it's enabled).
+    * Windows Hypervisor Platform.
+    * Windows Sandbox.
+
+5. Click **OK**.
+
+6. Windows will apply the changes and likely prompt you to restart. Click **Restart now** to complete the process.
+
+### Enable Game Mode
+
+Ensure Game Mode is enabled. Windows aims to optimize system resources for gaming when it detects a game running.
+
+1. Go to **Settings** -> **Gaming** -> **Game Mode**.
+
+2. Ensure **Game Mode** is toggled **On**.
+
+### Turn on Hardware-Accelerated GPU Scheduling and Optimizations for Windowed Games
+
+1. Go to **Settings** -> **System** -> **Display** -> **Graphics**.
+
+2. Click "Change default graphics settings".
+
+3. Toggle **"Hardware-accelerated GPU scheduling"** to **On**.
+
+4. Toggle **"Optimizations for windowed games** to **On**. (Can help with borderless windowed mode).
+
+5. Restart your device.
+
+### Disable Xbox Game Bar Overlays
+
+While some like the Game Bar, its overlay can sometimes impact performance.
+
+1. Go to **Settings** -> **Gaming** -> **Game Bar** -> **Allow your controller to open Game Bar** and toggle it **Off**.
+    * Or, if you use it, ensure any recording or streaming features are off unless actively needed.
+
+### Set VRAM to 6 GB
+
+The ROG Ally comes with a default VRAM allocation of 4 GB, which leaves 12 GB of system RAM (out of 16 GB total on the Ally) for Windows and other applications. This is generally enough for lighter games.
+
+6 GB VRAM leaves 10 GB of system RAM. This is still a comfortable amount for Windows and most background processes, while providing a boost in VRAM for game textures and assets. Many modern AAA games start to demand more then 4 GB, and 6 GB provides a good buffer without excessively starving the system RAM.
+
+Setting the VRAM on your ROG Ally to 6 GB is a straightforward process done through the Armoury Crate software:
+
+1. You can do this by pressing the Armoury Crate button on your ROG Ally.
+2. Once Armoury Crate is open, look for the "Settings" tab at the top. Click on it.
+3. Within the Settings, you'll see a few options. Look for "Operating Mode" or sometime it might be labelled "Performance". Click on it.
+4. On the left side of the screen, you should see "GPU Settings". Click on this.
+5. At the top of the GPU settings, you'll find a dropdown menu labeled "Memory Assigned to GPU". By default, it's usually set to 4 GB.
+6. From the available options, select 6 GB.
+7. For the VRAM change to take effect, you must restart your device.
+
+After rebooting, your ROG Ally will be allocating 6 GB of its system RAM specifically for the integrated GPU's VRAM.
 
 ### 18W TDP
 
