@@ -1,9 +1,9 @@
 ---
-name: Fix CSS Sticky Not Working on Horizontal Scrolling
-author: Kirawat Sahasewiyon
-dateCreated: 2025-06-04 15:58:00 +0700
-datePublished: 2025-06-04 15:58:00 +0700
-dateModified: 2025-06-04 22:33:00 +0700
+name: "Fix CSS Sticky Not Working on Horizontal Scrolling"
+author: "Kirawat Sahasewiyon"
+dateCreated: 2025-06-04T15:58:00+07:00
+datePublished: 2025-06-04T15:58:00+07:00
+dateModified: 2025-06-04T22:33:00+07:00
 tags:
   - CSS
 ---

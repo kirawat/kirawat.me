@@ -1,8 +1,9 @@
 ---
-name: Pairing the Samsung Galaxy S25 with XREAL Glasses
-dateCreated: 2025-06-16 11:31 +0700
-datePublished: 2025-06-16 11:31 +0700
-dateModified: 2025-06-17 15:30 +0700
+name: "Pairing the Samsung Galaxy S25 with XREAL Glasses"
+author: "Kirawat Sahasewiyon"
+dateCreated: 2025-06-16T11:31:00+07:00
+datePublished: 2025-06-16T11:31:00+07:00
+dateModified: 2025-06-17T15:30:00+07:00
 tags:
   - XREAL
   - DeX

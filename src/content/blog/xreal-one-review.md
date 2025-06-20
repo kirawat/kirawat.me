@@ -1,8 +1,8 @@
 ---
-name: XREAL One Review
-dateCreated: 2025-06-11 17:00:00 +0700
-datePublished: 2025-06-11 17:00:00 +0700
-dateModified: 2025-06-15 03:01:00 +0700
+name: "XREAL One Review"
+dateCreated: 2025-06-11T17:00:00+07:00
+datePublished: 2025-06-11T17:00:00+07:00
+dateModified: 2025-06-15T03:01:00+07:00
 tags:
   - XREAL
   - Review

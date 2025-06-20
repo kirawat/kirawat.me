@@ -1,7 +1,7 @@
 ---
 name: "Self-Hosted Your Own Read-It-Later with Karakeep"
 author: "Kirawat Sahasewiyon"
-dateCreated: 2025-06-10 14:14:00 +0700
+dateCreated: 2025-06-10T14:14:00+07:00
 ---
 
 A read-it-later service is a digital tool designed to help you save online content—such as articles, blog posts, and webpages—to be consumed at a more convenient time. Think of it as a sophisticated bookmarking system that not only saves the link but also downloads and reformats the content for an optimized and distraction-free reading experience.

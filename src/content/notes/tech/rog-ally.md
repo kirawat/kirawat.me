@@ -174,7 +174,7 @@ Xbox Ally Specs:
 | SSD                      | 512TB                       |
 | Battery                  | 60Wh                        |
 
-See: [Xbox Ally Might Not Worth the Upgrade](../../blog/2025/06/09/xbox-ally-might-not-worth-the-upgrade.md)
+See: [Xbox Ally Might Not Worth the Upgrade](../../blog/xbox-ally-might-not-worth-the-upgrade.md)
 
 ## BIOS Update
 

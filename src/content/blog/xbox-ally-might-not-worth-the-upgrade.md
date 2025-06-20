@@ -1,9 +1,9 @@
 ---
-name: Xbox Ally Might Not Be Worth the Upgrade
-author: Kirawat Sahasewiyon
-dateCreated: 2025-06-09 11:00:00 +0700
-datePublished: 2025-06-09 12:30:00 +0700
-dateModified: 2025-06-11 12:43:00 +0700
+name: "Xbox Ally Might Not Be Worth the Upgrade"
+author: "Kirawat Sahasewiyon"
+dateCreated: 2025-06-09T11:00:00+07:00
+datePublished: 2025-06-09T12:30:00+07:00
+dateModified: 2025-06-11T12:43:00+07:00
 tags:
   - Gaming
   - Xbox
@@ -11,7 +11,7 @@ tags:
   - ROGAlly
 ---
 
-![](xbox-ally-2025.jpg)
+![](https://syd.cloud.appwrite.io/v1/storage/buckets/6854f278001a08881184/files/6854f2c60035c62bc4f1/view?project=6854f2140011fa29fc67&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjg1NGYzNzI2M2U5MmJjYWE3YmUiLCJyZXNvdXJjZUlkIjoiNjg1NGYyNzgwMDFhMDg4ODExODQ6Njg1NGYyYzYwMDM1YzYyYmM0ZjEiLCJyZXNvdXJjZVR5cGUiOiJmaWxlcyIsInJlc291cmNlSW50ZXJuYWxJZCI6IjQ4ODoxIiwiZXhwIjo5LjIyMzM3MjAzODYwNTE3M2UrMTh9.zmsy231t9Lw-4lR488i7Ab_oHvHviGGrrK_cjoTB9no)
 
 Microsoft [announced two versions of its new Xbox handheld](https://news.xbox.com/en-us/2025/06/08/xbox-handheld-rog-ally-x-games-showcase/) today at the Xbox Games Showcase 2025: The Xbox Ally and the Xbox Ally X. The released specifications for both models are as follows:
 
@@ -63,7 +63,7 @@ I totally agree with their decision, as gaming on handheld devices still can't m
 
 ## The New Xbox Game Launcher
 
-![](xbox-ally-home.jpg)
+![](https://syd.cloud.appwrite.io/v1/storage/buckets/6854f278001a08881184/files/6854f2cc003a03d68a91/view?project=6854f2140011fa29fc67&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjg1NGYzYmNlNDdlYTcwMTkzZDMiLCJyZXNvdXJjZUlkIjoiNjg1NGYyNzgwMDFhMDg4ODExODQ6Njg1NGYyY2MwMDNhMDNkNjhhOTEiLCJyZXNvdXJjZVR5cGUiOiJmaWxlcyIsInJlc291cmNlSW50ZXJuYWxJZCI6IjQ4ODoyIiwiZXhwIjo5LjIyMzM3MjAzODYwNTE3M2UrMTh9.sr_ne5s0ctkWQKsK1E4rTgjYCp_7zcQHBbRN7HtAn2E)
 
 What is really interesting is not on the hardware, but on the software side. While the device still runs Windows 11, when it is turned on, it will boot directly to a full-screen interface called the "Xbox Experience for Handheld," for which the Xbox team managed to integrated the code directly into the Windows branch. This interface hides the traditional Windows desktop by default, alongside minimizing background activity and deferring non-essential tasks to free up system resources, resulting in around 2 GB of RAM savings.[^2][^3] The ability to put the device to sleep mid-game and resume later is also said to be better implemented, hopefully achieving a seamless experience similar to the SteamOS.
 

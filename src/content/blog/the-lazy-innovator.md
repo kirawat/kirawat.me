@@ -1,7 +1,7 @@
 ---
 name: "The Lazy Innovator: Solving the Hard Problems with Laziness"
-author: Kirawat Sahasewiyon
-dateCreated: 2025-06-12 22:42:00 +0700
+author: "Kirawat Sahasewiyon"
+dateCreated: 2025-06-12T22:42:00+07:00
 status: Seedling
 tags:
   - Business
