@@ -77,6 +77,13 @@ I can bookmark the file I'm still working on. Especially those still in "draft",
 
 There is an issue where the Obsidian Sync would sync the file to all the devices, and it will crash with one that already been pushed to GitHub repository. I can simply discard changes on GitHub Desktop, but it's a thing that's not as smooth as it can be.
 
+The entire strategy boils down to "Pull Before Work, Sync Before Commit" principle. I must ensure one system has fully completed its work and the files are in a "rest state" before letting the other system begin.
+
+Before I write or edit a single word on my content, I must pull the latest changes from the Git repository. This ensures my local repository is up-to-date with any changes I might have pushed from another devices. If this command result in a merge conflict, I will have to resolve it before opening Obsidian.
+
+Now, when I open Obsidian, I have to wait for Obsidian Sync to do its job. Once it finished, my local content files are now fully up-to-date. I can work on my notes in Obsidian, and Obsidian Sync will be syncing these changes to the cloud in the background, which is fine. Once finished, I will commit and push the latest changes to GitHub repository.
+
+
 [^1]: Raymond, Emmanuel. ["My Blog is Dead. Long Live my Digital Garden"](https://peoray.dev/blog/digital-garden). [Archived](https://web.archive.org/web/20250605071256/https://peoray.dev/blog/digital-garden) from the original on June 5, 2025. Retrieved on June 5, 2025.
 
 [^2]: MDM Web Docs. ["Populating the page: how browsers work"](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work). [Archived](https://web.archive.org/web/20250521152508/https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work) from the original on June 10, 2025. Retrieved on June 10, 2025.
