@@ -9,6 +9,7 @@ tags:
   - Xbox
   - Windows
   - ROGAlly
+status: Budding
 ---
 
 ![](https://syd.cloud.appwrite.io/v1/storage/buckets/6854f278001a08881184/files/6854f2c60035c62bc4f1/view?project=6854f2140011fa29fc67&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklkIjoiNjg1NGYzNzI2M2U5MmJjYWE3YmUiLCJyZXNvdXJjZUlkIjoiNjg1NGYyNzgwMDFhMDg4ODExODQ6Njg1NGYyYzYwMDM1YzYyYmM0ZjEiLCJyZXNvdXJjZVR5cGUiOiJmaWxlcyIsInJlc291cmNlSW50ZXJuYWxJZCI6IjQ4ODoxIiwiZXhwIjo5LjIyMzM3MjAzODYwNTE3M2UrMTh9.zmsy231t9Lw-4lR488i7Ab_oHvHviGGrrK_cjoTB9no)

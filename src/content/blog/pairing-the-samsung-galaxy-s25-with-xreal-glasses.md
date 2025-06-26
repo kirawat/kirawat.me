@@ -7,6 +7,7 @@ dateModified: 2025-06-17T15:30:00+07:00
 tags:
   - XREAL
   - DeX
+status: Budding
 draft: false
 ---
 With the rise of XR glasses like the XREAL One, you can have a personal cinema or a portable workstation anywhere you go with just your smartphone. But to drive that experience, you need a proper device that support such feature.

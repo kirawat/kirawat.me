@@ -5,6 +5,7 @@ datePublished: 2025-06-14T23:48:00+07:00
 dateModified: 2025-06-14T23:48:00+07:00
 tags:
   - Windows
+status: Budding
 ---
 Microsoft introduced [touch keyboard support for gamepads](https://www.engadget.com/gaming/xbox/microsoft-launches-a-new-gamepad-keyboard-layout-for-windows-11-154011591.html) to Windows 11 in early 2025. This feature, designed to enhance the experience for PC gaming handhelds and users who navigate with a controller, allows for easier text input using a gamepad.
 

@@ -6,6 +6,7 @@ datePublished: 2025-06-04T15:58:00+07:00
 dateModified: 2025-06-04T22:33:00+07:00
 tags:
   - CSS
+status: Evergreen
 ---
 
 I found an odd case of `sticky` doesn't work as intended on the horizontal scrolling. I wanted a "Sticky" button to stick to the top-right corner inside a `<pre>` element that was horizontally scrollable.

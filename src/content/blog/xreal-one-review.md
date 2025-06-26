@@ -6,6 +6,7 @@ dateModified: 2025-06-15T03:01:00+07:00
 tags:
   - XREAL
   - Review
+status: Seedling
 draft: true
 ---
 

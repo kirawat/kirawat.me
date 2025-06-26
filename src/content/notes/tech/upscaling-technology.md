@@ -39,6 +39,16 @@ There are a few different types of upscaling techniques:
 
 **DLSS 4** was released in 2025, introducing features like Multi Frame Generation for RTX 50 series graphics cards, enhancements to its AI models, including the use of a transformer-based architecture for improved image quality, frame stability, reduced memory usage, and increased lighting detail across its components like Super Resolution, Ray Reconstruction, and DLAA (Deep Learning Anti-Aliasing).[^2]
 
+### Deep Learning Anti-Aliasing (DLAA)
+
+DLAA is the NVIDIA technology designed to improve image quality in games by reducing "jaggies" or the "staircase effect" on the edges of objects. Like NVIDIA's DLSS, DLAA leverages AI and the Tensor Cores found in RTX graphics cards. However, their goals are different.
+
+Unlike DLSS, which renders a game at a lower resolution and then uses AI to upscale it to a higher resolution to boost performance, DLAA operates at game's native resolution. Its sole purpose is to apply superior anti-aliasing to smooth out edges without upscaling.
+
+DLAA uses a convolutional neural network trained on vast datasets of high-quality reference images. This network analyzes game rendering data, like raw input, motion vectors, depth buffers, etc., and processes the image to reduce aliasing while preserving fine details. It's more sophisticated than traditional anti-aliasing methods, which can sometimes blur fine details.
+
+It's ideal for gamers who have powerful RTX GPUs and can already run their games at their desired resolution and frame rate comfortably. If you prioritize the absolute best possible image quality and don't need a performance boost, DLAA is the option to choose.
+
 ### RTX Dynamic Vibrance
 
 RTX Dynamic Vibrance is an AI-powered filter developed by NVIDIA that enhances the vibrancy and clarity of colors in supported games. It aims to make the visuals more vivid and appealing without causing oversaturation or color distortion.
