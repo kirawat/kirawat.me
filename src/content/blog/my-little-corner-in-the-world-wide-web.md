@@ -75,7 +75,7 @@ I can bookmark the file I'm still working on. Especially those still in "draft",
 
 ### Sync Conflict with Git
 
-There is an issue where the Obsidian Sync would sync the file to all the devices, and it will crash with one that already been pushed to GitHub repository. I can simply discard changes on GitHub Desktop, but it's a thing that's not as smooth as it can be.
+There is an issue where the Obsidian Sync would sync the file to all the devices, and it will have merge conflict with one that already been pushed to GitHub repository.
 
 The entire strategy boils down to "Pull Before Work, Sync Before Commit" principle. I must ensure one system has fully completed its work and the files are in a "rest state" before letting the other system begin.
 
