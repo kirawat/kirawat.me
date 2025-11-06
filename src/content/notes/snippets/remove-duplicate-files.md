@@ -36,7 +36,7 @@ def find_and_remove_duplicate_files(directory_path, dry_run=True, remove_both_fi
   abs_directory_path = os.path.abspath(directory_path)
 
   if not os.path.isdir(abs_directory_path):
-    print(f"Error: Directory not found at '{abs_directory_path}'.")")
+    print(f"Error: Directory not found at '{abs_directory_path}'.")
     return
   
   # Print the absolute path.
@@ -125,7 +125,7 @@ def find_and_remove_duplicate_files(directory_path, dry_run=True, remove_both_fi
   print(f"Total items scanned in directory: {files_processed}")
   print(f"Duplicate pairs identified: {pairs_identified}")
   if dry_run:
-    print(f"Total files that would be removed: {files_targeted_in_dry_run}")")
+    print(f"Total files that would be removed: {files_targeted_in_dry_run}")
   else:
     print(f"Total files removed: {files_removed_count}")
 
@@ -152,7 +152,7 @@ if __name__ == "__main__":
   parser.add_argument(
     "--all",
     action="store_true",
-    help="If specified, remove all files in a duplicate pair. Default is to remove only 'file(N).ext'.","
+    help="If specified, remove all files in a duplicate pair. Default is to remove only 'file(N).ext'.",
   )
 
   args = parser.parse_args()
@@ -169,8 +169,8 @@ if __name__ == "__main__":
   find_and_remove_duplicate_files(directory_to_scan, dry_run=is_dry_run, remove_both_files=is_remove_both_files)
 
   if is_dry_run:
-    live_command_example = f"python {os.path,basename(__file__)} \"{directory_to_scan}\" --live"
-    if is_remove_both:
+    live_command_example = f"python {os.path.basename(__file__)} \"{directory_to_scan}\" --live"
+    if is_remove_both_files:
       # All flag to example if it was used.
       live_command_example += " --all"
     print("\nTo actually delete files with the current settings, run:")
